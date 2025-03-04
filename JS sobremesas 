@@ -1,0 +1,33 @@
+// Atualiza o contador de uma sobremesa
+function updateCount(sobremesa, change) {
+    try {
+        let newValue = dessertCounts[sobremesa] + change;
+
+        if (newValue < 0) {
+            throw new Error(`Erro: ${sobremesa} não pode ser menor que 0.`);
+        }
+        if (newValue > 10) {
+            throw new Error(`Erro: ${sobremesa} não pode ser maior que 10.`);
+        }
+
+        dessertCounts[sobremesa] = newValue;
+        document.getElementById(`${sobremesa}-count`).textContent = newValue;
+        updateTotal();
+
+    } catch (error) {
+        console.error(error.message);
+        alert(error.message);
+    }
+}
+
+// Atualiza o total geral de sobremesas e o valor total em dinheiro
+function updateTotal() {
+    let totalSobremesas = Object.values(dessertCounts).reduce((sum, value) => sum + value, 0);
+    let totalDinheiro = totalSobremesas * precoPorSobremesa;
+
+    document.getElementById("total").textContent = `Total de sobremesas: ${totalSobremesas}`;
+    document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalDinheiro.toFixed(2)}`;
+}
+
+// Chama a função ao carregar a página
+document.addEventListener("DOMContentLoaded", createDessertCounters);
