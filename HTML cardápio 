@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Cardápio</h2>
+
+        <div id="cardápio-container"></div>
+
+        <div id="total">Total de Comidas e Petiscos: 0</div>
+        <div id="valor-total">Total em dinheiro: R$ 0,00</div>
+    </div>
+     
+    <script src="script.js"></script>
+    <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">Retornar à Página Inicial</button>
+    
+</body>
+</html>
