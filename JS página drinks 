@@ -1,0 +1,73 @@
+const drinks = [
+    { name: "Piña Colada", ingredients: ["Rum", "Leite de Coco", "Suco de Abacaxi"] },
+    { name: "Margarita", ingredients: ["Tequila", "Licor de Laranja", "Suco de Limão"] },
+    { name: "Mojito", ingredients: ["Rum Branco", "Hortelã", "Açúcar", "Suco de Limão", "Água com Gás"] },
+    { name: "Caipirinha", ingredients: ["Cachaça", "Açúcar", "Limão"] },
+    { name: "Daiquiri", ingredients: ["Rum Branco", "Suco de Limão", "Açúcar"] },
+    { name: "Tequila Sunrise", ingredients: ["Tequila", "Suco de Laranja", "Groselha"] },
+    { name: "Negroni", ingredients: ["Gin", "Vermute Rosso", "Campari"] },
+    { name: "Bloody Mary", ingredients: ["Vodka", "Suco de Tomate", "Molho Inglês", "Pimenta", "Suco de Limão"] },
+    { name: "Mai Tai", ingredients: ["Rum", "Licor de Laranja", "Suco de Limão", "Xarope de Amêndoa"] }
+];
+
+const precoPorBebida = 20.00;
+let drinkCounts = {};
+
+// Inicializa os drinks com contador 0
+drinks.forEach(drink => {
+    drinkCounts[drink.name] = 0;
+});
+
+// Função para criar os elementos HTML dinamicamente
+function createDrinkCounters() {
+    const container = document.getElementById("drinks-container");
+
+    drinks.forEach(drink => {
+        const drinkDiv = document.createElement("div");
+        drinkDiv.classList.add("ingredient");
+
+        drinkDiv.innerHTML = `
+            <span><strong>${drink.name}</strong> (R$ ${precoPorBebida.toFixed(2)}):</span>
+            <p class="ingredients">${drink.ingredients.join(", ")}</p>
+            <button class="decrement" onclick="updateCount('${drink.name}', -1)">-</button>
+            <span id="${drink.name}-count">0</span>
+            <button class="increment" onclick="updateCount('${drink.name}', 1)">+</button>
+        `;
+
+        container.appendChild(drinkDiv);
+    });
+}
+
+// Atualiza o contador de um drink
+function updateCount(drink, change) {
+    try {
+        let newValue = drinkCounts[drink] + change;
+
+        if (newValue < 0) {
+            throw new Error(`Erro: ${drink} não pode ser menor que 0.`);
+        }
+        if (newValue > 10) {
+            throw new Error(`Erro: ${drink} não pode ser maior que 10.`);
+        }
+
+        drinkCounts[drink] = newValue;
+        document.getElementById(`${drink}-count`).textContent = newValue;
+        updateTotal();
+
+    } catch (error) {
+        console.error(error.message);
+        alert(error.message);
+    }
+}
+
+// Atualiza o total geral de drinks e o valor total em dinheiro
+function updateTotal() {
+    let totalBebidas = Object.values(drinkCounts).reduce((sum, value) => sum + value, 0); 
+ let totalDinheiro = totalBebidas * precoPorBebida;
+
+    document.getElementById("total").textContent = `Total de bebidas: ${totalBebidas}`;
+    document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalDinheiro.toFixed(2)}`;
+}
+
+// Chama a função ao carregar a página
+createDrinkCounters();
