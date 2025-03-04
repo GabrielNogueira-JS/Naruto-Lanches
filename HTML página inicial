@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Naruto-Lanches</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Bem-vindo ao Naruto-Lanches</h1>
+
+    <div class="container-imagens">
+        <img src="Naruto-Lancges" 
+             alt="Sasuke" 
+             class="img-esquerda">
+
+        <img src="https://w7.pngwing.com/pngs/363/343/png-transparent-hamburger-cheeseburger-fast-food-veggie-burger-hamburger-food-cheese-recipe-thumbnail.png" 
+             alt="Hambúrguer Meramente Ilustrativo" 
+             class="img-meio">
+
+        <img src="https://w7.pngwing.com/pngs/477/548/png-transparent-naruto-uzumaki-sasuke-uchiha-kakashi-hatake-uchiha-clan-naruto-hand-black-hair-cartoon-thumbnail.png" 
+             alt="Naruto" 
+             class="img-direita">
+    </div>
+
+    <div class="botoes">
+        <button class="Drinks">Drinks</button>
+        <button class="Especiais">Especiais</button>
+        <button class="Cardápio">Cardápio</button>
+        <button class="Entrar">Entrar</button>
+        <button class="Sobremesas">Sobremesas</button>
+    </div>
+
+</body>
+</html>
