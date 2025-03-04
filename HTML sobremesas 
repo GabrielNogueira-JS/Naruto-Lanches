@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Sobremesas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Contador de Sobremesas</h2>
+
+        <div id="dessert-container"></div>
+
+        <div id="total">Total de sobremesas: 0</div>
+        <div id="valor-total">Total em dinheiro: R$ 0,00</div>
+
+        <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">
+            Retornar à Página Inicial
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
