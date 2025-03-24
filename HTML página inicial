@@ -25,11 +25,11 @@
     </div>
 
     <div class="botoes">
-        <button class="Drinks">Drinks</button>
-        <button class="Especiais">Especiais</button>
         <button class="Cardápio">Cardápio</button>
-        <button class="Entrar">Entrar</button>
+        <button class="Especiais">Especiais</button>
+        <button class="Drinks">Drinks</button>
         <button class="Sobremesas">Sobremesas</button>
+        <button class="Entrar">Entrar</button>
     </div>
 
 </body>
