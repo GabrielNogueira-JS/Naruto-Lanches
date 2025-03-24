@@ -17,7 +17,7 @@
         <div id="valor-total">Total em dinheiro: R$ 0,00</div>
     </div>
      
-    <script src="script.js"></script>
+    <script src="cardapio.js"></script>
     <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">Retornar à Página Inicial</button>
     
 </body>
