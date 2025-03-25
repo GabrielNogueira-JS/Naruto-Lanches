@@ -1,13 +1,15 @@
 const drinks = [
-    { name: "Piña Colada", ingredients: ["Rum", "Leite de Coco", "Suco de Abacaxi"] },
-    { name: "Margarita", ingredients: ["Tequila", "Licor de Laranja", "Suco de Limão"] },
-    { name: "Mojito", ingredients: ["Rum Branco", "Hortelã", "Açúcar", "Suco de Limão", "Água com Gás"] },
-    { name: "Caipirinha", ingredients: ["Cachaça", "Açúcar", "Limão"] },
-    { name: "Daiquiri", ingredients: ["Rum Branco", "Suco de Limão", "Açúcar"] },
-    { name: "Tequila Sunrise", ingredients: ["Tequila", "Suco de Laranja", "Groselha"] },
-    { name: "Negroni", ingredients: ["Gin", "Vermute Rosso", "Campari"] },
-    { name: "Bloody Mary", ingredients: ["Vodka", "Suco de Tomate", "Molho Inglês", "Pimenta", "Suco de Limão"] },
-    { name: "Mai Tai", ingredients: ["Rum", "Licor de Laranja", "Suco de Limão", "Xarope de Amêndoa"] }
+    { name: "Piña Colada", emoji: "🍍", ingredients: ["Rum", "Leite de Coco", "Suco de Abacaxi"] },
+    { name: "Margarita", emoji: "🍸", ingredients: ["Tequila", "Licor de Laranja", "Suco de Limão"] },
+    { name: "Mojito", emoji: "🌿", ingredients: ["Rum Branco", "Hortelã", "Açúcar", "Suco de Limão", "Água com Gás"] },
+    { name: "Caipirinha", emoji: "🍋", ingredients: ["Cachaça", "Açúcar", "Limão"] },
+    { name: "Daiquiri", emoji: "🍹", ingredients: ["Rum Branco", "Suco de Limão", "Açúcar"] },
+    { name: "Tequila Sunrise", emoji: "🌅", ingredients: ["Tequila", "Suco de Laranja", "Groselha"] },
+    { name: "Negroni", emoji: "🍊", ingredients: ["Gin", "Vermute Rosso", "Campari"] },
+    { name: "Bloody Mary", emoji: "🍅", ingredients: ["Vodka", "Suco de Tomate", "Molho Inglês", "Pimenta", "Suco de Limão"] },
+    { name: "Mai Tai", emoji: "🌴", ingredients: ["Rum", "Licor de Laranja", "Suco de Limão", "Xarope de Amêndoa"] }
+];
+//para adicionar emoji precisa apenas escrever emoji e enre parenteses o emogi desejado
 ];
 
 const precoPorBebida = 20.00;
