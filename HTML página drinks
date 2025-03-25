@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador de Drinks</title>
+    <title> 🍹Cardápio Shinobi🍹 </title>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="cssdrinks.css">
 </head>
+
 <body>
+
+    <header> 
+        <h1> 🍹Drinks Ninjas🍹 </h1>
+    </header>
 
     <div class="container">
         <h2>Contador de Drinks</h2>
@@ -16,7 +22,7 @@
         <div id="total">Total de bebidas: 0</div>
         <div id="valor-total">Total em dinheiro: R$ 0,00</div>
     </div>
-     
+
     <script src="drinks.js"></script>
     <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">Retornar à Página Inicial</button>
     
