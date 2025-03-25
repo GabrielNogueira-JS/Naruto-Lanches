@@ -37,11 +37,9 @@ button:hover {
     margin-top: 15px;
     color: orange;
 }
-
 header {
-    background: linear-gradient(to top, #5DADE2, #21618C); 
+    background: linear-gradient(to top, #4A90E2, #1B4F72); 
     color: white; 
     padding: 20px;
     text-align: center;
     font-family: 'Bree Serif', serif;
-}
