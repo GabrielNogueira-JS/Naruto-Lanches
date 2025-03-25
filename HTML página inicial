@@ -36,6 +36,7 @@
          class="img-direita">
   </div>
 
+  <script src="inicial.js"></script>
   
   <button class="entrar">Entrar</button>
 </body>
