@@ -9,7 +9,7 @@ const drinks = [
     { name: "Bloody Mary", emoji: "🍅", ingredients: ["Vodka", "Suco de Tomate", "Molho Inglês", "Pimenta", "Suco de Limão"] },
     { name: "Mai Tai", emoji: "🌴", ingredients: ["Rum", "Licor de Laranja", "Suco de Limão", "Xarope de Amêndoa"] }
 ];
-//para adicionar emoji precisa apenas escrever emoji e enre parenteses o emogi desejado
+// Para adicionar emoji precisa apenas escrever emoji e enre parenteses o emogi desejado
 ];
 
 const precoPorBebida = 20.00;
