@@ -4,24 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador de Sobremesas</title>
+    
+    <!-- Links para fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="sobremesas.css">
 </head>
 <body>
-
     <div class="container">
         <h2>Contador de Sobremesas</h2>
-
-        <div id="dessert-container"></div>
-
+        
+        <div class="flex-container">
+            <div class="left-column" id="left-desserts"></div>
+            <div class="image-space">
+                <img src="imagem.jpg" alt="Imagem de referência">
+            </div>
+            <div class="right-column" id="right-desserts"></div>
+        </div>
+        
         <div id="total">Total de sobremesas: 0</div>
         <div id="valor-total">Total em dinheiro: R$ 0,00</div>
-
+        
         <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">
             Retornar à Página Inicial
         </button>
     </div>
-
+    
     <script src="sobremesas.js"></script>
-
 </body>
 </html>
