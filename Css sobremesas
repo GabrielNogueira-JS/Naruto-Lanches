@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
 body {
-    /* Gradiente linear: de um verde mais fechado para um verde mais vibrante, indo de baixo para cima */
-    background: linear-gradient(to top, rgb(0,150,0) 0%, rgb(0,255,0) 100%);
+    /* Gradiente linear: rosa claro na esquerda e roxo mais escuro na direita */
+    background: linear-gradient(to right, rgb(255, 182, 193) 0%, rgb(128, 0, 128) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
