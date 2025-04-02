@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+body {
+    /* Gradiente linear: de um verde mais fechado para um verde mais vibrante, indo de baixo para cima */
+    background: linear-gradient(to top, rgb(0,150,0) 0%, rgb(0,255,0) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: "Bree Serif", Arial, sans-serif;
+    color: white;
+}
+
+#drinks-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ingredient {
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 2px solid orange;
+    width: 300px;
+    font-family: "Bree Serif", serif;  /* Força o uso da fonte Bree Serif */
+    color: black; /* Texto em preto */
+}
+
+.ingredient strong {
+    font-size: 22px;
+    color: black; /* Nome do ingrediente em preto */
+}
+
+.ingredients {
+    font-size: 14px;
+    font-style: italic;
+    margin: 5px 0;
+    color: black; /* Ingredientes em preto */
+}
+
+/* Container para botões e valor do contador */
+.counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo para botões de incremento e decremento */
+button.increment, button.decrement {
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: "Bree Serif", serif;
+}
+
+button.increment:hover, button.decrement:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Estilo para o valor do contador */
+.counter-value {
+    font-family: "Bree Serif", serif;
+    color: black;
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+#total, #valor-total {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: orange;
+}
+
+.bree-serif-regular {
+  font-family: "Bree Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
