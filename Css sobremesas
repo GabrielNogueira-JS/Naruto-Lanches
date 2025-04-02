@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
 body {
-    /* Gradiente linear: rosa claro na esquerda e roxo mais escuro na direita */
-    background: linear-gradient(to right, rgb(255, 182, 193) 0%, rgb(128, 0, 128) 100%);
+    background: linear-gradient(to right, rgb(255, 182, 193), rgb(128, 0, 128));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,56 +9,96 @@ body {
     flex-direction: column;
     font-family: "Bree Serif", Arial, sans-serif;
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
-#drinks-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.container {
+    max-width: 1300px;
+    width: 90%;
     background-color: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-.ingredient {
+/* Título */
+.container h2 {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Layout flexível */
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Ajuste das imagens laterais */
+.side-image {
+    width: 15%; /* Define a largura da imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.side-image img {
+    width: 100%; /* Garante que a imagem ocupe toda a largura do container */
+    max-width: 150px; /* Limita o tamanho da imagem */
+    border-radius: 10px; /* Adiciona bordas arredondadas */
+}
+
+/* Container dos alimentos */
+.desserts-container {
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+}
+
+/* Colunas da lista */
+.left-column, .right-column {
+    width: 50%;
+}
+
+/* Estilização dos alimentos */
+.ingredient {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 15px;
     padding: 10px;
-    border-bottom: 2px solid orange;
-    width: 300px;
-    font-family: "Bree Serif", serif;  /* Força o uso da fonte Bree Serif */
-    color: black; /* Texto em preto */
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #fff;
+    color: black;
+    font-family: "Bree Serif", serif;
 }
 
+/* Nome da sobremesa */
 .ingredient strong {
-    font-size: 22px;
-    color: black; /* Nome do ingrediente em preto */
+    font-size: 18px;
+    color: black;
+    margin-right: 10px;
 }
 
+/* Ingredientes em itálico */
 .ingredients {
     font-size: 14px;
     font-style: italic;
     margin: 5px 0;
-    color: black; /* Ingredientes em preto */
+    color: black;
 }
 
-/* Container para botões e valor do contador */
-.counter-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Estilo para botões de incremento e decremento */
+/* Botões */
 button.increment, button.decrement {
     background-color: black;
     border: 2px solid black;
     color: white;
-    font-size: 18px;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 50px;
+    font-size: 14px;
+    padding: 6px 12px;
+    margin: 0 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
     font-family: "Bree Serif", serif;
@@ -70,23 +109,31 @@ button.increment:hover, button.decrement:hover {
     color: black;
 }
 
-/* Estilo para o valor do contador */
-.counter-value {
-    font-family: "Bree Serif", serif;
-    color: black;
-    font-size: 18px;
-    margin: 0 10px;
-}
-
+/* Total de sobremesas */
 #total, #valor-total {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin-top: 15px;
     color: orange;
+    text-align: center;
 }
 
-.bree-serif-regular {
-  font-family: "Bree Serif", serif;
-  font-weight: 400;
-  font-style: normal;
+/* Botão de retorno */
+#return-button {
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 20px auto 0 auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    font-family: "Bree Serif", serif;
+}
+
+#return-button:hover {
+    background-color: white;
+    color: black;
 }
