@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador de Sobremesas</title>
     
-    <!-- Links para fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
@@ -17,11 +16,21 @@
         <h2>Contador de Sobremesas</h2>
         
         <div class="flex-container">
-            <div class="left-column" id="left-desserts"></div>
-            <div class="image-space">
-                <img src="imagem.jpg" alt="Imagem de referência">
+            <!-- Imagem da esquerda -->
+            <div class="side-image">
+                <img src="imagem-esquerda.jpg" alt="Imagem Esquerda">
             </div>
-            <div class="right-column" id="right-desserts"></div>
+
+            <!-- Lista de sobremesas -->
+            <div class="desserts-container">
+                <div class="left-column" id="left-desserts"></div>
+                <div class="right-column" id="right-desserts"></div>
+            </div>
+
+            <!-- Imagem da direita -->
+            <div class="side-image">
+                <img src="imagem-direita.jpg" alt="Imagem Direita">
+            </div>
         </div>
         
         <div id="total">Total de sobremesas: 0</div>
