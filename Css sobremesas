@@ -22,10 +22,12 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Título */
 .container h2 {
+    font-family: "Bree Serif", serif;
+    color: #000000;
     text-align: center;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 /* Layout flexível */
