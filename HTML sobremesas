@@ -12,9 +12,10 @@
   <link rel="stylesheet" href="sobremesas.css">
 </head>
 <body>
-  <header>
-    <h1>Cardápio Shinobi - Doces Ninjas</h1>
-  </header>
+ <header>
+  <div class="borda">Cardápio Shinobi - Doces Ninja</div>
+</header>
+
 
   <div class="main-content">
     <!-- Imagem lateral esquerda -->
