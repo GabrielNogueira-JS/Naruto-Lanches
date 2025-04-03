@@ -1,141 +1,164 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    background: linear-gradient(to right, rgb(255, 182, 193), rgb(128, 0, 128));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    font-family: "Bree Serif", Arial, sans-serif;
-    color: white;
-    margin: 0;
-    padding: 0;
+  /* O gradiente fica apenas na área principal, mas o header e footer terão fundo fixo */
+  background: linear-gradient(to right, rgb(255, 182, 193), rgb(128, 0, 128));
+  display: flex;
+  flex-direction: column;
+  font-family: "Bree Serif", Arial, sans-serif;
+  color: white;
 }
 
-.container {
-    max-width: 1300px;
-    width: 90%;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+/* Header e Footer com fundo bege (sem gradiente) e divisórias pretas */
+header, footer {
+  width: 100%;
+  background: #D2B48C; /* Fundo bege mediano */
+  text-align: center;
+  font-family: "Bree Serif", serif;
+  flex-shrink: 0;
 }
 
-.container h2 {
-    font-family: "Bree Serif", serif;
-    color: #000000;
-    text-align: center;
-    margin-bottom: 20px;
-    width: 100%;
+header {
+  height: 120px;  /* 1,5x maior que o footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid black;
 }
 
-/* Layout flexível */
-.flex-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+footer {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid black;
 }
 
-/* Ajuste das imagens laterais */
+/* A área central preenche o espaço entre header e footer */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* Imagens laterais posicionadas fora da caixa dos ingredientes */
 .side-image {
-    width: 15%; /* Define a largura da imagem */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
 }
 
 .side-image img {
-    width: 100%; /* Garante que a imagem ocupe toda a largura do container */
-    max-width: 150px; /* Limita o tamanho da imagem */
-    border-radius: 10px; /* Adiciona bordas arredondadas */
+  width: 100%;
+  max-width: 150px;
+  border-radius: 10px;
 }
 
-/* Container dos alimentos */
+/* Container dos ingredientes e contador */
+.container {
+  max-width: 1300px;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container h2 {
+  font-family: "Bree Serif", serif;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Container dos itens de sobremesas */
 .desserts-container {
-    display: flex;
-    justify-content: space-between;
-    width: 65%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-/* Colunas da lista */
 .left-column, .right-column {
-    width: 50%;
+  width: 48%;
 }
 
-/* Estilização dos alimentos */
 .ingredient {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 2px solid #333;
-    border-radius: 10px;
-    background-color: #fff;
-    color: black;
-    font-family: "Bree Serif", serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: #fff;
+  color: black;
+  font-family: "Bree Serif", serif;
 }
 
-/* Nome da sobremesa */
 .ingredient strong {
-    font-size: 18px;
-    color: black;
-    margin-right: 10px;
+  font-size: 18px;
+  color: black;
+  margin-right: 10px;
 }
 
-/* Ingredientes em itálico */
 .ingredients {
-    font-size: 14px;
-    font-style: italic;
-    margin: 5px 0;
-    color: black;
+  font-size: 14px;
+  font-style: italic;
+  margin: 5px 0;
+  color: black;
 }
 
-/* Botões */
 button.increment, button.decrement {
-    background-color: black;
-    border: 2px solid black;
-    color: white;
-    font-size: 14px;
-    padding: 6px 12px;
-    margin: 0 5px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-family: "Bree Serif", serif;
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  font-size: 14px;
+  padding: 6px 12px;
+  margin: 0 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: "Bree Serif", serif;
 }
 
 button.increment:hover, button.decrement:hover {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 
-/* Total de sobremesas */
 #total, #valor-total {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 15px;
-    color: orange;
-    text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: orange;
+  text-align: center;
 }
 
-/* Botão de retorno */
 #return-button {
-    background-color: black;
-    border: 2px solid black;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 20px auto 0 auto;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-    display: block;
-    font-family: "Bree Serif", serif;
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 20px auto 0 auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: block;
+  font-family: "Bree Serif", serif;
 }
 
 #return-button:hover {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
