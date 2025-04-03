@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
+
+.borda {
+  width: 250px; /* Largura do retângulo */
+  height: 80px; /* Altura do retângulo */
+  background-color: gray; /* Cor interna */
+  border: 4px solid black; /* Cor da borda */
+  border-radius: 20px; /* Cantos arredondados */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px; /* Ajuste do tamanho do texto */
+  font-weight: bold; /* Deixa o texto mais destacado */
+  color: white; /* Cor do texto */
+}
+
+
+
 html, body {
   height: 100%;
   margin: 0;
