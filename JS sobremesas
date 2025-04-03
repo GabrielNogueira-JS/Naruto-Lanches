@@ -1,5 +1,5 @@
- const dessertCounts = {}; 
-const precoPorSobremesa = {}; 
+ const dessertCounts = {}; // Armazena a quantidade de cada sobremesa
+const precoPorSobremesa = {}; // Armazena o preço de cada sobremesa
 
 const menu = {
     "🍨 Taça Colegial - Equipe 7": ["Duas bolas de sorvete sabor creme", "Duas cerejas ao topo", "Calda de morango", "Confetes"],
@@ -13,12 +13,12 @@ const menu = {
     "☕ Café - Chakra da Madrugada": ["Café Árabe (200ml)", "Açúcar"]
 };
 
-
+// Função para gerar um preço aleatório entre 10 e 18
 function gerarPrecoAleatorio() {
     return (Math.random() * (18 - 10) + 10).toFixed(2);
 }
 
-
+// Inicializa os contadores e distribui os itens entre as colunas
 function createDessertCounters() {
     const leftContainer = document.getElementById("left-desserts");
     const rightContainer = document.getElementById("right-desserts");
@@ -38,6 +38,7 @@ function createDessertCounters() {
             <button onclick="updateCount('${sobremesa}', 1)">+</button>
         `;
 
+        // Distribui alternadamente os itens entre as colunas
         if (index % 2 === 0) {
             leftContainer.appendChild(itemDiv);
         } else {
@@ -46,7 +47,7 @@ function createDessertCounters() {
     });
 }
 
-
+// Atualiza a contagem de cada sobremesa
 function updateCount(sobremesa, change) {
     try {
         let newValue = dessertCounts[sobremesa] + change;
@@ -65,7 +66,7 @@ function updateCount(sobremesa, change) {
     }
 }
 
-
+// Atualiza o total de sobremesas e o valor total em dinheiro
 function updateTotal() {
     let totalSobremesas = 0;
     let totalDinheiro = 0;
@@ -79,5 +80,6 @@ function updateTotal() {
     document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalDinheiro.toFixed(2)}`;
 }
 
-
+// Inicia o menu ao carregar a página
 document.addEventListener("DOMContentLoaded", createDessertCounters);
+
