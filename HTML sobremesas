@@ -20,7 +20,7 @@
   <div class="main-content">
     <!-- Imagem lateral esquerda -->
     <div class="side-image left">
-      <img src="imagem-esquerda.jpg" alt="Imagem Esquerda">
+    <img src="../sakura.png">
     </div>
 
     <!-- Container dos ingredientes e contador -->
@@ -46,7 +46,7 @@
 
     <!-- Imagem lateral direita -->
     <div class="side-image right">
-      <img src="imagem-direita.jpg" alt="Imagem Direita">
+      <img src="naruto.png">
     </div>
   </div>
 
