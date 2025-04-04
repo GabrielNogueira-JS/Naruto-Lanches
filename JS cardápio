@@ -39,7 +39,8 @@ function createMenuCounters() {
             <span><strong>${item.name}</strong> (R$ ${item.price.toFixed(2)}):</span>
             <p class="ingredients">${item.ingredients.join(", ")}</p>
             <button class="decrement" onclick="updateCount('${item.name}', -1)">-</button>
-            <span id="${item.name}-count">0</span>
+           <span id="${item.name.replace(/[^a-zA-Z0-9]/g, "-")}-count">0</span>
+
             <button class="increment" onclick="updateCount('${item.name}', 1)">+</button>
         `;
 
@@ -59,7 +60,8 @@ function updateCount(item, change) {
         }
 
         menuCounts[item] = newValue;
-        document.getElementById(`${item}-count`).textContent = newValue;
+       document.getElementById(`${item.replace(/[^a-zA-Z0-9]/g, "-")}-count`).textContent = newValue;
+
         updateTotal();
 
     } catch (error) {
