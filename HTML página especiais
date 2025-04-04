@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanches Especiais</title>
-    <link rel="stylesheet" href="csspaginaespeciais.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lanches Especiais</title>
+  <link rel="stylesheet" href="csspaginaespeciais.css">
 </head>
 <body>
-   
-        <h2>Contador de Lanches Especiais</h2>
-        <div id="lanches-container"></div>
-        <div id="total-lanches">Total de lanches: 0</div>
-        <div id="valor-total-lanches">Total em dinheiro: R$ 0,00</div>
-    </div>
-       <div id="lanches-container"></div>
-<div id="total"></div>
-<div id="valor-total"></div>
+  <header>
+    <h1 class="titulo-com-borda">Lanches Especiais</h1>
+  </header>
+
+  <div class="container">
+    <h2>Contador de Lanches Especiais</h2>
+    <div id="lanches-container"></div>
+    <div id="total">Total de lanches: 0</div>
+    <div id="valor-total">Total em dinheiro: R$ 0,00</div>
+  </div>
+
+  <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">
+    Retornar à Página Inicial
+  </button>
 
   <script src="especial.js"></script>
-
-    <button onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">Retornar à Página Inicial</button>
 </body>
 </html>
