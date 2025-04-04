@@ -19,51 +19,54 @@ const menuItems = [
     { name: "🌿 Kuat - Força do País do Chá", ingredients: ["Refrigerante de Guaraná"], price: 7 },
     { name: "🍹 Suco de Laranja - Jutsu da Vitalidade", ingredients: ["Laranja", "Açúcar", "Água"], price: 8 },
     { name: "🍷 Suco de Uva - Sangue de Shinobi", ingredients: ["Uva", "Açúcar", "Água"], price: 8 },
-    { name: "🍓 Suco de Morango - Chakra Vermelho", ingredients: ["Morango", "Açúcar", "Água"], price: 8,50 }
+    { name: "🍓 Suco de Morango - Chakra Vermelho", ingredients: ["Morango", "Açúcar", "Água"], price: 8.50 }
 ];
 
 let menuCounts = {};
 
+// Gera um id "seguro" para cada item removendo caracteres especiais
 menuItems.forEach(item => {
-    menuCounts[item.name] = 0;
+    item.safeId = item.name.replace(/[^a-zA-Z0-9]/g, "-");
+    menuCounts[item.safeId] = 0;
 });
 
 function createMenuCounters() {
-    const container = document.getElementById("cardápio-container");
+    const leftContainer = document.getElementById("left-menu");
+    const rightContainer = document.getElementById("right-menu");
 
-    menuItems.forEach(item => {
+    menuItems.forEach((item, index) => {
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("ingredient");
 
         itemDiv.innerHTML = `
-            <span><strong>${item.name}</strong> (R$ ${item.price.toFixed(2)}):</span>
+            <span><strong>${item.name}</strong> (R$ ${parseFloat(item.price).toFixed(2)}):</span>
             <p class="ingredients">${item.ingredients.join(", ")}</p>
-            <button class="decrement" onclick="updateCount('${item.name}', -1)">-</button>
-           <span id="${item.name.replace(/[^a-zA-Z0-9]/g, "-")}-count">0</span>
-
-            <button class="increment" onclick="updateCount('${item.name}', 1)">+</button>
+            <button class="decrement" onclick="updateCount('${item.safeId}', -1)">-</button>
+            <span id="${item.safeId}-count">0</span>
+            <button class="increment" onclick="updateCount('${item.safeId}', 1)">+</button>
         `;
 
-        container.appendChild(itemDiv);
+        // Distribui os itens: índices pares para a coluna esquerda, ímpares para a direita
+        if (index % 2 === 0) {
+            leftContainer.appendChild(itemDiv);
+        } else {
+            rightContainer.appendChild(itemDiv);
+        }
     });
 }
 
-function updateCount(item, change) {
+function updateCount(safeId, change) {
     try {
-        let newValue = menuCounts[item] + change;
-
+        let newValue = menuCounts[safeId] + change;
         if (newValue < 0) {
-            throw new Error(`Erro: ${item} não pode ser menor que 0.`);
+            throw new Error(`Erro: ${safeId} não pode ser menor que 0.`);
         }
         if (newValue > 10) {
-            throw new Error(`Erro: ${item} não pode ser maior que 10.`);
+            throw new Error(`Erro: ${safeId} não pode ser maior que 10.`);
         }
-
-        menuCounts[item] = newValue;
-       document.getElementById(`${item.replace(/[^a-zA-Z0-9]/g, "-")}-count`).textContent = newValue;
-
+        menuCounts[safeId] = newValue;
+        document.getElementById(`${safeId}-count`).textContent = newValue;
         updateTotal();
-
     } catch (error) {
         console.error(error.message);
         alert(error.message);
@@ -71,9 +74,12 @@ function updateCount(item, change) {
 }
 
 function updateTotal() {
-    let totalItems = Object.values(menuCounts).reduce((sum, value) => sum + value, 0);
-    let totalPrice = Object.keys(menuCounts).reduce((sum, item) => sum + (menuCounts[item] * menuItems.find(i => i.name === item).price), 0);
-
+    let totalItems = 0;
+    let totalPrice = 0;
+    menuItems.forEach(item => {
+        totalItems += menuCounts[item.safeId];
+        totalPrice += menuCounts[item.safeId] * item.price;
+    });
     document.getElementById("total").textContent = `Total de Comidas e Petiscos: ${totalItems}`;
     document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalPrice.toFixed(2)}`;
 }
