@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 🍹Cardápio Shinobi🍹 </title>
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="cssdrinks.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍹Cardápio Shinobi🍹</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cssdrinks.css">
 </head>
-
 <body>
+ <header>
+  <h1 class="titulo-com-borda">🍶Cardápio Shinobi - Drinks Ninja🍶</h1>
+</header>
 
-    <header> 
-        <h1> 🍹Drinks Ninjas🍹 </h1>
-    </header>
-
-    <div class="container">
-        <h2>Contador de Drinks</h2>
-
-        <div id="drinks-container"></div>
-
-        <div id="total">Total de bebidas: 0</div>
-        <div id="valor-total">Total em dinheiro: R$ 0,00</div>
+     
+     
+  
+  <div class="main-content">
+    <!-- Imagem à esquerda -->
+    <div class="side-image">
+      <img src="caminho/para/imagem-esquerda.jpg" alt="Imagem Esquerda">
     </div>
 
-    <script src="drinks.js"></script>
-    <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">Retornar à Página Inicial</button>
-    
+    <!-- Container central com os drinks -->
+    <div class="container">
+      <h2>Drinks da Perdição</h2>
+      <div id="drinks-container"></div>
+      <div id="total">Total de bebidas: 0</div>
+      <div id="valor-total">Total em dinheiro: R$ 0,00</div>
+    </div>
+
+    <!-- Imagem à direita -->
+    <div class="side-image">
+      <img src="caminho/para/imagem-direita.jpg" alt="Imagem Direita">
+    </div>
+  </div>
+
+  <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">
+    Retornar à Página Inicial
+  </button>
+  
+  <script src="drinks.js"></script>
 </body>
 </html>
