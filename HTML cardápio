@@ -1,31 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardápio</title>
-    <link rel="stylesheet" href="csscardapio.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio</title>
+  <!-- Importação da fonte Bree Serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="csscardapio.css">
 </head>
 <body>
+  <header>
+   <h1 class="titulo-com-borda">🍜Cardápio Shinobi - Ichiraku Ramen🍜</h1>
 
-    <div class="container">
-        <h2>Cardápio</h2>
-
-        <div id="cardápio-container"></div>
-
-      <div class="img-center">
-      <img src="narutoimg/image.png" alt="Cardápio" width="300">
+  </header>
+  
+  <div class="container">
+    <!-- Área flex com duas colunas de itens e imagem central -->
+    <div class="flex-container">
+      <div class="left-column" id="left-menu">
+        <!-- Itens (metade) serão inseridos via JS aqui -->
       </div>
-
-   
-
-
-        <div id="total">Total de Comidas e Petiscos: 0</div>
-        <div id="valor-total">Total em dinheiro: R$ 0,00</div>
+      
+      <!-- Imagem central -->
+      <div class="img-center">
+        <img src="cardapio.png" alt="Imagem Cardápio" width="300">
+      </div>
+      
+      <div class="right-column" id="right-menu">
+        <!-- Itens (outra metade) serão inseridos via JS aqui -->
+      </div>
     </div>
-     
-    <script src="cardapio.js"></script>
-    <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">Retornar à Página Inicial</button>
     
+    <!-- Totais -->
+    <div id="total">Total de Comidas e Petiscos: 0</div>
+    <div id="valor-total">Total em dinheiro: R$ 0,00</div>
+    
+    <!-- Botão de retorno -->
+    <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">
+      Retornar à Página Inicial
+    </button>
+  </div>
+  
+  <footer>
+    
+  </footer>
+  
+  <script src="cardapio.js"></script>
 </body>
 </html>
+
