@@ -82,4 +82,3 @@ function updateTotal() {
 
 
 document.addEventListener("DOMContentLoaded", createDessertCounters);
-
