@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Degradê de bege: do bege claro (#f5f5dc) ao bege mais escuro (#d2b48c) */
+  background: linear-gradient(to right, #f5f5dc, #d2b48c);
+  display: flex;
+  flex-direction: column;
+  font-family: "Bree Serif", Arial, sans-serif;
+  color: white;
+}
+
+header {
+  width: 100%;
+  background: #000080; /* Azul marinho escuro */
+  text-align: center;
+  font-family: "Bree Serif", serif;
+  flex-shrink: 0;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid black;
+}
+
+.container {
+  max-width: 1300px;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin: 20px auto;
+}
+
+.container h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.ingredient {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: #fff;
+  color: black;
+  font-family: "Bree Serif", serif;
+}
+
+.ingredient span {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.ingredients {
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 10px;
+  color: black;
+}
+
+button.increment, button.decrement {
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  font-size: 14px;
+  padding: 6px 12px;
+  margin: 2px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: "Bree Serif", serif;
+}
+
+button.increment:hover, button.decrement:hover {
+  background-color: white;
+  color: black;
+}
+
+#total, #valor-total {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: orange;
+  text-align: center;
+}
+
+#return-button {
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 20px auto 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: block;
+  font-family: "Bree Serif", serif;
+}
+
+#return-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Título com borda no header com fundo acinzentado */
+.titulo-com-borda {
+  font-family: 'Bree Serif', serif;
+  font-size: 2rem;
+  color: black;
+  border: 3px solid black;
+  border-radius: 25px;
+  padding: 10px 20px;
+  display: inline-block;
+  background-color: #d3d3d3; /* Fundo acinzentado */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
