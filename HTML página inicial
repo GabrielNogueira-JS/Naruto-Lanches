@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bem-vindo ao Naruto-Lanches</title>
- <link rel="stylesheet" href="csspaginainicial.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Naruto Lanches</title>
+  <!-- Importando a fonte Bree Serif -->
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <header class="header">
-    <div class="header-left">
-      <button class="btn">Cardápio</button>
-      <button class="btn">Especiais</button>
-    </div>
-    <div class="header-center">
-      <!-- Imagem da logo,com uma fonte mudada --!>
-    </div>
-    <div class="header-right">
-      <button class="btn">Drinks</button>
-      <button class="btn">Sobremesas</button>
+  <header>
+    <div class="header-container">
+      <nav class="button-nav left-nav">
+        <button class="btn">Drinks</button>
+        <button class="btn">Especiais</button>
+      </nav>
+      <div class="logo-container">
+        <h1>Naruto Lanches</h1>
+      </div>
+      <nav class="button-nav right-nav">
+        <button class="btn">Cardápio</button>
+        <button class="btn">Sobremesas</button>
+      </nav>
     </div>
   </header>
-
- 
-  <div class="container-imagens">
-    <img src="Naruto-Lancges" 
-         alt="Sasuke" 
-         class="img-esquerda">
-    <img src="https://w7.pngwing.com/pngs/363/343/png-transparent-hamburger-cheeseburger-fast-food-veggie-burger-hamburger-food-cheese-recipe-thumbnail.png" 
-         alt="Hambúrguer Meramente Ilustrativo" 
-         class="img-meio">
-    <img src="https://w7.pngwing.com/pngs/477/548/png-transparent-naruto-uzumaki-sasuke-uchiha-kakashi-hatake-uchiha-clan-naruto-hand-black-hair-cartoon-thumbnail.png" 
-         alt="Naruto" 
-         class="img-direita">
-  </div>
-
-  <script src="inicial.js"></script>
   
-  <button class="entrar">Entrar</button>
+  <main>
+    <div class="images-container">
+      <img src="https://via.placeholder.com/180x350?text=Sasuke" alt="Sasuke" class="img-left">
+      <img src="https://via.placeholder.com/300x300?text=Burger" alt="Hambúrguer" class="img-center">
+      <img src="https://via.placeholder.com/180x350?text=Naruto" alt="Naruto" class="img-right">
+    </div>
+  </main>
+  
+  <footer>
+    <div class="footer-icons">
+      <a href="#"><img src="https://via.placeholder.com/40?text=FB" alt="Facebook"></a>
+      <a href="#"><img src="https://via.placeholder.com/40?text=IG" alt="Instagram"></a>
+      <a href="#"><img src="https://via.placeholder.com/40?text=YT" alt="YouTube"></a>
+    </div>
+  </footer>
+  
+  <script src="home.js"></script>
 </body>
 </html>
