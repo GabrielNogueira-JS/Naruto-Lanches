@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body com degradê de cor bege */
+body {
+  background: linear-gradient(to right, #f5deb3, #d2b48c);
+  font-family: "Bree Serif", serif;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+header {
+  background-color: #ff0000; /* Fundo vermelho */
+  padding: 10px;
+  border-bottom: 2px solid #000; /* Linha preta separando header do body */
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Botões do menu - fundo laranja, dimensões aumentadas */
+.button-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  background-color: #ffa500; /* Fundo laranja */
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 50px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Bree Serif", serif;
+  font-size: 1.1rem;
+}
+
+.btn:hover {
+  background-color: #e69500;
+}
+
+/* Contêiner do logo: retangular com cantos arredondados e fundo laranja */
+.logo-container {
+  background-color: #ffa500;
+  border: 2px solid #000;
+  border-radius: 25px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container h1 {
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}
+
+/* ===== MAIN ===== */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.images-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.images-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: #444; /* Cinza */
+  padding: 20px; /* Footer um "dedo" maior */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-icons img {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.footer-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+  .header-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  
+  .images-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
