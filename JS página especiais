@@ -61,3 +61,4 @@ function updateTotal() {
 
 // Inicializa os contadores ao carregar a página
 createLancheCounters();
+
