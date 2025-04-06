@@ -179,4 +179,3 @@ button.increment:hover, button.decrement:hover {
   background-color: white;
   color: black;
 }
-
