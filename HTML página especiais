@@ -8,12 +8,18 @@
 </head>
 <body>
   <header>
-    <h1 class="titulo-com-borda">Lanches Especiais</h1>
+    <h1 class="titulo-com-borda">🍔Cardápio Shinobi - Lanches Ninjas🍔</h1>
   </header>
 
   <div class="container">
-    <h2>Contador de Lanches Especiais</h2>
+    <h2>Fome da Akatsuki</h2>
+
+    <div class="img-left"></div>
+
     <div id="lanches-container"></div>
+
+    <div class="img-right"></div>
+
     <div id="total">Total de lanches: 0</div>
     <div id="valor-total">Total em dinheiro: R$ 0,00</div>
   </div>
@@ -25,3 +31,4 @@
   <script src="especial.js"></script>
 </body>
 </html>
+
