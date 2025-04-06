@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">
+  <button id="return-button" onclick="">
     Retornar à Página Inicial
   </button>
   
