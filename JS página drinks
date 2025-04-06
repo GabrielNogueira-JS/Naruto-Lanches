@@ -74,7 +74,3 @@ function updateTotal() {
 }
 
 document.addEventListener("DOMContentLoaded", createDrinkCounters);
-
-
-// Chama a função ao carregar a página
-createDrinkCounters();
