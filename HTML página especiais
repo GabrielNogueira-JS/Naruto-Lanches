@@ -24,8 +24,8 @@
     <div id="valor-total">Total em dinheiro: R$ 0,00</div>
   </div>
 
-  <button id="return-button" onclick="window.location.href='https://codepen.io/GabrielNogueira-JS/pen/zxYKvPR'">
-    Retornar à Página Inicial
+  <button id="return-button" onclick="">
+   Página Inicial
   </button>
 
   <script src="especial.js"></script>
