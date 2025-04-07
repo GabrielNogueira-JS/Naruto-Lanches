@@ -133,3 +133,16 @@ footer {
     gap: 20px;
   }
 }
+.images-container {
+  display: flex;
+  justify-content: center; /* centraliza as imagens */
+  gap: 20px;               /* espaço entre elas */
+  margin-top: 20px;        /* opcional, dá respiro */
+}
+
+.img-char {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;       /* corta a imagem certinho sem distorcer */
+  border-radius: 8px;      /* opcional, bordas suaves */
+}
