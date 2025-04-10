@@ -6,19 +6,21 @@ const menuItems = [
     { name: "🐙 Takoyaki - Jutsu do Polvo Flamejante", ingredients: ["Massa", "Polvo", "Molho Takoyaki", "Cebolinha", "Katsuobushi"], price: Math.floor(Math.random() * 46) + 25 },
     { name: "🦐 Tempurá - Defesa Perfeita do Byakugan", ingredients: ["Camarão", "Legumes", "Massa Crocante"], price: Math.floor(Math.random() * 19) + 25 },
     { name: "🍢 Churrasquinho Yakitori - Espetos de Chakra", ingredients: ["Frango", "Molho Tarê"], price: Math.floor(Math.random() * 19) + 25 },
+    { name: "🥩 Churrasquinho Uchiha - Espetos do Sasuke", ingredients: ["Fraudinha", "Molho Shoyu","Maionese de Alho" ], price: Math.floor(Math.random() * 19) + 25 },
     { name: "🐟 Sashimi - Técnica do Estilo Água", ingredients: ["Peixe Cru", "Shoyu", "Gengibre"], price: Math.floor(Math.random() * 25) + 25 },
     { name: "🍗 Karaage (Frango Frito Japonês) - Golpe Rápido de Taijutsu", ingredients: ["Frango", "Molho de Soja", "Gengibre", "Farinha de Batata"], price: Math.floor(Math.random() * 46) + 25 },
     { name: "🥞 Okonomiyaki - Jutsu Secreto de Osaka", ingredients: ["Massa", "Repolho", "Carne de Porco", "Molho Okonomiyaki"], price: Math.floor(Math.random() * 46) + 25 },
     { name: "🌱 Edamame (Soja Cozida) - Chakra Verde", ingredients: ["Soja", "Sal Grosso"], price: Math.floor(Math.random() * 46) + 25 },
-    { name: "🍟 Batata Frita - Jutsu das Lâminas Douradas", ingredients: ["Batata", "Sal"], price: Math.floor(Math.random() * 46) + 25 },
-    { name: "💧 Água Mineral - Fonte de Energia Natural", ingredients: ["Água Purificada"], price: 5 },
-    { name: "💦 Água com Gás - Técnica Borbulhante", ingredients: ["Água Gasificada"], price: 6 },
-    { name: "🥤 Coca-Cola - Chakra Explosivo", ingredients: ["Refrigerante de Cola"], price: 7 },
-    { name: "🍊 Fanta Laranja - Modo Kurama", ingredients: ["Refrigerante de Laranja"], price: 7 },
+    { name: "🍟 Batata Frita - Jutsu das Lâminas Douradas", ingredients: ["Batata (500 gramas)", "Sal"], price: Math.floor(Math.random() * 20) + 15 },
+    { name: "💧 Água Mineral - Fonte de Energia Natural", ingredients: ["Água Mineral (500ml)"], price: 5 },
+    { name: "💦 Água com Gás - Técnica Borbulhante", ingredients: ["Água Gasificada (500ml)"], price: 6 },
+    { name: "🥤 Coca-Cola - Chakra Explosivo", ingredients: ["Refrigerante de Cola (600ml Tradicional ou zero)"], price: 7 },
+    { name: "🍊 Fanta Laranja - Modo Kurama", ingredients: ["Refrigerante de Laranja (600ml)"], price: 7 },
     { name: "🍇 Fanta Uva - Genjutsu Roxo", ingredients: ["Refrigerante de Uva"], price: 7 },
     { name: "🌿 Kuat - Força do País do Chá", ingredients: ["Refrigerante de Guaraná"], price: 7 },
     { name: "🍹 Suco de Laranja - Jutsu da Vitalidade", ingredients: ["Laranja", "Açúcar", "Água"], price: 8 },
-    { name: "🍷 Suco de Uva - Sangue de Shinobi", ingredients: ["Uva", "Açúcar", "Água"], price: 8 }
+    { name: "🍇 Suco de Uva - Uvas da floresta Shinobi", ingredients: ["Uva", "Açúcar", "Água"], price: 8 },
+    { name: "🍷 Vinho Tinto - Sangue de Shinobi", ingredients: ["Uvas Cabernet", "Água", "Açucar Da Uva"], price: Math.floor(Math.random() * 40 + 21) }
 ];
 
 let menuCounts = {};
