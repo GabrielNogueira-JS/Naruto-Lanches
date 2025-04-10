@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-  /* Degradê azulado: do azul médio (#3a7bd5) para o azul escuro (#3a6073) */
+  
   background: linear-gradient(to right, #3a7bd5, #3a6073);
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ body {
   color: white;
 }
 
-/* Header e Footer com fundo azul marinho escuro */
+
 header, footer {
   width: 100%;
   background: #000080;
@@ -25,7 +25,7 @@ header, footer {
 }
 
 header {
-  height: 120px;  /* Header 1,5x maior que o footer */
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,91 +40,42 @@ footer {
   border-top: 2px solid black;
 }
 
-/* Container principal */
-.container {
-  max-width: 1300px;
-  width: 90%;
+
+.main-content {
+  width: 55%;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  margin: 20px auto;
+  text-align: center;
 }
 
-/* Flex container para organizar as colunas e a imagem central */
+h2 {
+  margin-bottom: 15px;
+}
+
+
 .flex-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1300px;
+  gap: 20px;
 }
 
-.left-column, .right-column {
-  width: 40%;
+
+.side-image {
+  width: 20%;
 }
 
-.img-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 15%;
+.side-image img {
+  width: 100%;
+  height: auto;
 }
 
-/* Estilização de cada item do menu */
-.ingredient {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 2px solid #333;
-  border-radius: 10px;
-  background-color: #fff;
-  color: black;
-  font-family: "Bree Serif", serif;
-}
 
-.ingredient span {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.ingredients {
-  font-size: 14px;
-  font-style: italic;
-  margin-bottom: 10px;
-  color: black;
-}
-
-/* Estilização dos botões */
-button.increment, button.decrement {
-  background-color: black;
-  border: 2px solid black;
-  color: white;
-  font-size: 14px;
-  padding: 6px 12px;
-  margin: 2px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-  font-family: "Bree Serif", serif;
-}
-
-button.increment:hover, button.decrement:hover {
-  background-color: white;
-  color: black;
-}
-
-/* Estilização dos totais */
-#total, #valor-total {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 15px;
-  color: orange;
-  text-align: center;
-}
-
-/* Botão de retorno */
 #return-button {
   background-color: black;
   border: 2px solid black;
@@ -144,15 +95,16 @@ button.increment:hover, button.decrement:hover {
   color: black;
 }
 
-/* Destaque no footer para a palavra "Cardápio" */
-.footer-highlight {
-  border: 2px solid black;
-  padding: 4px 8px;
-  border-radius: 15px;
-  background-color: rgba(255,255,255,0.2);
+
+#total, #valor-total {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: orange;
+  text-align: center;
 }
 
-/* Estilo para o título do header com borda (para envolver "Cardápio Shinobi") */
+
 .titulo-com-borda {
   font-family: 'Bree Serif', serif;
   font-size: 2rem;
@@ -164,4 +116,3 @@ button.increment:hover, button.decrement:hover {
   background-color: white;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
-
