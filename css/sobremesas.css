@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
-
 .borda {
   width: 250px; /* Largura do retângulo */
   height: 80px; /* Altura do retângulo */
@@ -10,12 +9,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px; /* Ajuste do tamanho do texto */
-  font-weight: bold; /* Deixa o texto mais destacado */
-  color: white; /* Cor do texto */
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
 }
-
-
 
 html, body {
   height: 100%;
@@ -24,7 +21,7 @@ html, body {
 }
 
 body {
-  /* O gradiente fica apenas na área principal, mas o header e footer terão fundo fixo */
+  /* O gradiente fica apenas na área principal; header e footer terão fundo fixo */
   background: linear-gradient(to right, rgb(255, 182, 193), rgb(128, 0, 128));
   display: flex;
   flex-direction: column;
@@ -32,17 +29,17 @@ body {
   color: white;
 }
 
-/* Header e Footer com fundo bege (sem gradiente) e divisórias pretas */
+/* Header e Footer com fundo bege e divisórias pretas */
 header, footer {
   width: 100%;
-  background: #D2B48C; /* Fundo bege mediano */
+  background: #D2B48C;
   text-align: center;
   font-family: "Bree Serif", serif;
   flex-shrink: 0;
 }
 
 header {
-  height: 120px;  /* 1,5x maior que o footer */
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,7 +54,7 @@ footer {
   border-top: 2px solid black;
 }
 
-/* A área central preenche o espaço entre header e footer */
+/* Flex container para posicionar as imagens laterais fora do container central */
 .main-content {
   flex: 1;
   display: flex;
@@ -67,7 +64,7 @@ footer {
   margin: 20px 0;
 }
 
-/* Imagens laterais posicionadas fora da caixa dos ingredientes */
+/* Estilo para as imagens laterais */
 .side-image {
   display: flex;
   justify-content: center;
@@ -81,7 +78,7 @@ footer {
   border-radius: 10px;
 }
 
-/* Container dos ingredientes e contador */
+/* Container central dos itens (sobremesas) */
 .container {
   max-width: 1300px;
   width: 90%;
@@ -167,7 +164,7 @@ button.increment:hover, button.decrement:hover {
   color: white;
   font-size: 16px;
   padding: 10px 20px;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 0;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
@@ -178,4 +175,4 @@ button.increment:hover, button.decrement:hover {
 #return-button:hover {
   background-color: white;
   color: black;
-}  
+}
