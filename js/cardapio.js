@@ -18,8 +18,7 @@ const menuItems = [
     { name: "🍇 Fanta Uva - Genjutsu Roxo", ingredients: ["Refrigerante de Uva"], price: 7 },
     { name: "🌿 Kuat - Força do País do Chá", ingredients: ["Refrigerante de Guaraná"], price: 7 },
     { name: "🍹 Suco de Laranja - Jutsu da Vitalidade", ingredients: ["Laranja", "Açúcar", "Água"], price: 8 },
-    { name: "🍷 Suco de Uva - Sangue de Shinobi", ingredients: ["Uva", "Açúcar", "Água"], price: 8 },
-    { name: "🍓 Suco de Morango - Chakra Vermelho", ingredients: ["Morango", "Açúcar", "Água"], price: 8.50 }
+    { name: "🍷 Suco de Uva - Sangue de Shinobi", ingredients: ["Uva", "Açúcar", "Água"], price: 8 }
 ];
 
 let menuCounts = {};
