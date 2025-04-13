@@ -11,7 +11,7 @@ const menuItems = [
     { name: "🍗 Karaage (Frango Frito Japonês) - Golpe Rápido de Taijutsu", ingredients: ["Frango", "Molho de Soja", "Gengibre", "Farinha de Batata"], price: Math.floor(Math.random() * 46) + 25 },
     { name: "🥞 Okonomiyaki - Jutsu Secreto de Osaka", ingredients: ["Massa", "Repolho", "Carne de Porco", "Molho Okonomiyaki"], price: Math.floor(Math.random() * 46) + 25 },
     { name: "🌱 Edamame (Soja Cozida) - Chakra Verde", ingredients: ["Soja", "Sal Grosso"], price: Math.floor(Math.random() * 46) + 25 },
-<<<<<<< HEAD
+
     { name: "🍟 Batata Frita - Jutsu das Lâminas Douradas", ingredients: ["Batata (500 gramas)", "Sal"], price: 25.50 },
     { name: "🍟 Batata Frita com Cheddar e Bacon- Jutsu das Lâminas Douradas Cremosas", ingredients: ["Batata (600 gramas)", "Sal"], price: 29.90 },
     { name: "💧 Água Mineral - Fonte de Energia Natural", ingredients: ["Água Mineral (500ml)"], price: 5 },
@@ -24,19 +24,6 @@ const menuItems = [
     { name: "🍇 Suco de Uva - Uvas da floresta Shinobi", ingredients: ["Uva", "Açúcar", "Água"], price: 8 },
     { name: "🍷 Vinho Tinto (1 Litro)- Sangue de Shinobi", ingredients: ["Uvas Cabernet", "Água", "Açucar Da Uva"], price: 49.90}    
 
-=======
-    { name: "🍟 Batata Frita Com Cheddar e Bacon(600gramas)- Jutsu das Lâminas Douradas Cremosas", ingredients: ["Batata", "Sal"], price: Math.floor(Math.random() * 46) + 25 },
-    { name: "🍟 Batata Frita (450gramas)- Jutsu das Lâminas Douradas", ingredients: ["Batata", "Sal"], price: Math.floor(Math.random() * 32) + 20 },
-    { name: "💧 Água Mineral (500ml) - Fonte de Energia Natural", ingredients: ["Água Purificada"], price: 5 },
-    { name: "💦 Água com Gás (500ml) - Técnica Borbulhante", ingredients: ["Água Gasificada"], price: 6 },
-    { name: "🥤 Coca-Cola (2 Litros)- Chakra Explosivo", ingredients: ["Refrigerante de Cola"], price: 12.90 },
-    { name: "🍊 Fanta Laranja (2 Litros) - Modo Kurama", ingredients: ["Refrigerante de Laranja"], price: 10.25 },
-    { name: "🍇 Fanta Uva (2 Litros) - Genjutsu Roxo", ingredients: ["Refrigerante de Uva"], price: 10.25 },
-    { name: "🌿 Kuat (2 Litros) - Força do País do Chá", ingredients: ["Refrigerante de Guaraná"], price: 8.50 },
-    { name: "🍹 Suco de Laranja (600ml)- Jutsu da Vitalidade", ingredients: ["Laranja", "Açúcar", "Água"], price: 8 },
-    { name: "🍇 Suco de Uva (600ml)- Jutso das Uvas", ingredients: ["Uva", "Açúcar", "Água"], price: 8 },
-    { name: "🍷 Vinho Tinto (1 Litro)- Sangue de Shinobi", ingredients: ["Uva Fermentada", "Açúcar Natural (Frutose)", "Água", ], price: 49.90 }
->>>>>>> 09f1d98 (Adicionar um elemento para ficar a mesma quantidade de ambos os lados)
 ];
 
 let menuCounts = {};
