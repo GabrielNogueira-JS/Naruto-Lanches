@@ -1,6 +1,7 @@
 const menuItems = [
     { name: "🍜 Lámen Ichiraku - Ramen do Naruto", ingredients: ["Macarrão", "Caldo de Porco", "Ovo", "Cebolinha", "Chashu"], price: Math.floor(Math.random() * 46) + 25 },
     { name: "🍙 Bola de Arroz Onigiri - Missão Rápida", ingredients: ["Arroz Japonês", "Alga Nori", "Recheio Variado"], price: Math.floor(Math.random() * 46) + 25 },
+    { name: "🍙 Onigiri da Hinata", ingredients: ["Arroz Japonês", "Alga Nori", "Salmão Grelhado", "Gergelim"],price: 12.50},   
     { name: "🍢 Dango - Doce Favorito dos Ninjas", ingredients: ["Massa de Arroz", "Molho de Soja Doce"], price: Math.floor(Math.random() * 25) + 25 },
     { name: "🍛 Curry Japonês - Chakra Picante", ingredients: ["Carne", "Cenoura", "Batata", "Arroz", "Molho Curry"], price: Math.floor(Math.random() * 46) + 25 },
     { name: "🐙 Takoyaki - Jutsu do Polvo Flamejante", ingredients: ["Massa", "Polvo", "Molho Takoyaki", "Cebolinha", "Katsuobushi"], price: Math.floor(Math.random() * 46) + 25 },
@@ -11,7 +12,6 @@ const menuItems = [
     { name: "🍗 Karaage (Frango Frito Japonês) - Golpe Rápido de Taijutsu", ingredients: ["Frango", "Molho de Soja", "Gengibre", "Farinha de Batata"], price: Math.floor(Math.random() * 46) + 25 },
     { name: "🥞 Okonomiyaki - Jutsu Secreto de Osaka", ingredients: ["Massa", "Repolho", "Carne de Porco", "Molho Okonomiyaki"], price: Math.floor(Math.random() * 46) + 25 },
     { name: "🌱 Edamame (Soja Cozida) - Chakra Verde", ingredients: ["Soja", "Sal Grosso"], price: Math.floor(Math.random() * 46) + 25 },
-
     { name: "🍟 Batata Frita - Jutsu das Lâminas Douradas", ingredients: ["Batata (500 gramas)", "Sal"], price: 25.50 },
     { name: "🍟 Batata Frita com Cheddar e Bacon- Jutsu das Lâminas Douradas Cremosas", ingredients: ["Batata (600 gramas)", "Sal"], price: 29.90 },
     { name: "💧 Água Mineral - Fonte de Energia Natural", ingredients: ["Água Mineral (500ml)"], price: 5 },
@@ -28,7 +28,6 @@ const menuItems = [
 
 let menuCounts = {};
 
-// Gera um id "seguro" para cada item removendo caracteres especiais
 menuItems.forEach(item => {
     item.safeId = item.name.replace(/[^a-zA-Z0-9]/g, "-");
     menuCounts[item.safeId] = 0;
@@ -50,7 +49,7 @@ function createMenuCounters() {
             <button class="increment" onclick="updateCount('${item.safeId}', 1)">+</button>
         `;
 
-        // Distribui os itens: índices pares para a coluna esquerda, ímpares para a direita
+        
         if (index % 2 === 0) {
             leftContainer.appendChild(itemDiv);
         } else {
