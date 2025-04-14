@@ -59,22 +59,24 @@ function createMenuCounters() {
 }
 
 function updateCount(safeId, change) {
-    try {
-        let newValue = menuCounts[safeId] + change;
-        if (newValue < 0) {
-            throw new Error(`Erro: ${safeId} não pode ser menor que 0.`);
-        }
-        if (newValue > 10) {
-            throw new Error(`Erro: ${safeId} não pode ser maior que 10.`);
-        }
-        menuCounts[safeId] = newValue;
-        document.getElementById(`${safeId}-count`).textContent = newValue;
-        updateTotal();
-    } catch (error) {
-        console.error(error.message);
-        alert(error.message);
+    let newValue = menuCounts[safeId] + change;
+
+    if (newValue < 0) {
+ 
+        return;
     }
+
+    if (newValue > 10) {
+        alert("O limite por mesa foi atingido");
+        return;
+    }
+
+    menuCounts[safeId] = newValue;
+    document.getElementById(`${safeId}-count`).textContent = newValue;
+    updateTotal();
 }
+
+
 
 function updateTotal() {
     let totalItems = 0;

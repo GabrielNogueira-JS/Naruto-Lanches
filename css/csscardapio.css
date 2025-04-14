@@ -60,14 +60,14 @@ footer {
 }
 
 .left-column, .right-column {
-  width: 40%;
+  width: 50%;
 }
 
 .img-center {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 65%;
 }
 
 /* Estilização de cada item do menu */
