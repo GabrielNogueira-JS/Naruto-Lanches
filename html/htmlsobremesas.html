@@ -16,45 +16,53 @@
     <div class="borda">🍡Cardápio Shinobi🍡 - Doces Ninja</div>
   </header>
 
-  <!-- Flex container para alinhar as imagens laterais e o conteúdo central -->
+  <!-- Flex container principal -->
   <div class="main-content">
-    
+
     <!-- Imagem lateral esquerda -->
     <div class="side-image left">
-      <img src="../imagens/sakura.png" >
-      <img srs="../imagens/random.png" >    
+      <img src="../imagens/sakura.png" alt="Sakura">
+      <img src="../imagens/random.png" alt="Outro personagem">
     </div>
 
-    <!-- Container central dos itens -->
+    <!-- Conteúdo central -->
     <div class="container">
       <h2>Um bom ninja precisa adoçar sua armagura...</h2>
-      
-      <div class="desserts-container">
-        <div class="left-column" id="left-desserts">
-          <!-- Itens de sobremesa da coluna esquerda -->
-        </div>
-        <div class="right-column" id="right-desserts">
-          <!-- Itens de sobremesa da coluna direita -->
-        </div>
-      </div>
-      
+
       <div id="total">Total de sobremesas: 0</div>
       <div id="valor-total">Total em dinheiro: R$ 0,00</div>
       
       <a href="index.html">
         <button id="return-button">Retornar à Página Inicial</button>
       </a>
+
+      <!-- Container dos doces -->
+      <div class="desserts-container">
+        <div class="left-column" id="left-desserts">
+          <!-- Itens da coluna esquerda -->
+        </div>
+        <div class="right-column" id="right-desserts">
+          <!-- Itens da coluna direita -->
+        </div>
+      </div>
     </div>
 
     <!-- Imagem lateral direita -->
     <div class="side-image right">
-      <img src="../imagens/hinata.png" >
-      <img src="../imagens/choji.png" >
+      <img src="../imagens/hinata.png" alt="Hinata">
+      <img src="../imagens/choji.png" alt="Chouji">
     </div>
   </div>
 
+  <!-- Imagens extras abaixo do conteúdo -->
+  <div class="extra-images">
+    <img src="../imagens/mulher.png" >
+    <img src="../imagens/mulher2.png" >
+    <img src="../imagens/mulher3.png" >
+  </div>
+
   <footer>
-    <!-- Conteúdo do footer se necessário -->
+   
   </footer>
 
   <script src="../js/sobremesas.js"></script>
