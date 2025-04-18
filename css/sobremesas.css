@@ -1,20 +1,45 @@
-/*----------------------------------------------------------------------------------
-  Sobremesas.css
-  Fonte: Google Fonts – “Bree Serif”
-----------------------------------------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+/@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
-/* Reset básico e box‑sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Borda estilizada do cabeçalho */
+html, body {
+  height: 100%;
+  font-family: 'Bree Serif', serif;
+  background: linear-gradient(to right, #ffc0cb, #800080);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+header, footer {
+  width: 100%;
+  background: #D2B48C;
+  text-align: center;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  height: 120px;
+  border-bottom: 2px solid black;
+}
+
+footer {
+  height: 80px;
+  border-top: 2px solid black;
+  color: black;
+  font-size: 14px;
+}
+
 .borda {
-  width: 250px;       /* Largura do retângulo */
-  height: 80px;       /* Altura do retângulo */
+  width: 250px;
+  height: 80px;
   background-color: gray;
   border: 4px solid black;
   border-radius: 20px;
@@ -26,43 +51,6 @@
   color: white;
   font-family: 'Bree Serif', serif;
 }
-
-
-html, body {
-  height: 100%;
-  font-family: 'Bree Serif', Arial, sans‑serif;
-  color: white;
-  background: linear-gradient(to right, rgb(255, 182, 193), rgb(128, 0, 128));
-  display: flex;
-  flex-direction: column;
-}
-
-
-header, footer {
-  width: 100%;
-  background: #D2B48C;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-header {
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 2px solid black;
-}
-
-footer {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top: 2px solid black;
-  color: black;
-  font-size: 14px;
-}
-
 
 .main-content {
   flex: 1;
@@ -91,7 +79,7 @@ footer {
 
 .container {
   background-color: rgba(0, 0, 0, 0.6);
-  padding: 20px 30px;
+  padding: 20px 30px 80px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   max-width: 900px;
@@ -105,11 +93,6 @@ footer {
   font-size: 24px;
 }
 
-
-.actions {
-  margin-bottom: 40px;    
-}
-
 #total,
 #valor-total {
   font-size: 18px;
@@ -119,7 +102,6 @@ footer {
 }
 
 #return-button {
-  display: inline-block;
   background-color: black;
   color: white;
   border: 2px solid black;
@@ -147,7 +129,6 @@ footer {
 .right-column {
   width: 48%;
 }
-
 
 .ingredient {
   display: flex;
@@ -189,18 +170,19 @@ button.decrement:hover {
   color: black;
 }
 
+
 .extra-images {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 30px 0;
-  background: linear-gradient(to right, rgb(255, 182, 193), rgb(128, 0, 128));
+  margin-top: -60px; 
+  padding-bottom: 40px;
+  background: transparent;
 }
 
 .extra-images img {
-  width: 150px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 150px;
+  border-radius: 10px;
 }
