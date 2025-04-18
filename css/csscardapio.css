@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-  /* Degradê de verde: do tom mediano (#6dbf88) para o verde mais escuro (#2e7d32) */
+  
   background: linear-gradient(to right, #6dbf88, #2e7d32);
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ body {
   color: white;
 }
 
-/* Header e Footer com fundo bege mediano e divisórias pretas */
+
 header, footer {
   width: 100%;
   background: #D2B48C;
@@ -25,7 +25,7 @@ header, footer {
 }
 
 header {
-  height: 120px;  /* Header 1,5x maior que o footer */
+  height: 120px;  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +40,7 @@ footer {
   border-top: 2px solid black;
 }
 
-/* Container principal */
+
 .container {
   max-width: 1300px;
   width: 90%;
@@ -51,7 +51,7 @@ footer {
   margin: 20px auto;
 }
 
-/* Flex container para organizar as colunas e a imagem central */
+
 .flex-container {
   display: flex;
   justify-content: space-between;
@@ -70,7 +70,7 @@ footer {
   width: 65%;
 }
 
-/* Estilização de cada item do menu */
+
 .ingredient {
   display: flex;
   flex-direction: column;
@@ -96,7 +96,7 @@ footer {
   color: black;
 }
 
-/* Estilização dos botões (inspirado nos anteriores) */
+
 button.increment, button.decrement {
   background-color: black;
   border: 2px solid black;
@@ -115,7 +115,7 @@ button.increment:hover, button.decrement:hover {
   color: black;
 }
 
-/* Estilização dos totais */
+
 #total, #valor-total {
   font-size: 18px;
   font-weight: bold;
@@ -124,7 +124,7 @@ button.increment:hover, button.decrement:hover {
   text-align: center;
 }
 
-/* Botão de retorno */
+
 #return-button {
   background-color: black;
   border: 2px solid black;
@@ -144,7 +144,7 @@ button.increment:hover, button.decrement:hover {
   color: black;
 }
 
-/* Destaque no footer para a palavra "Cardápio" */
+
 .footer-highlight {
   border: 2px solid black;
   padding: 4px 8px;
@@ -161,7 +161,7 @@ button.increment:hover, button.decrement:hover {
   border-radius: 25px;
   padding: 10px 20px;
   display: inline-block;
-  background-color: white; /* Pode trocar se quiser outro fundo */
+  background-color: darkcyan; 
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 

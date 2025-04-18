@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-  /* Degradê de bege: do bege claro (#f5f5dc) ao bege mais escuro (#d2b48c) */
+  
   background: linear-gradient(to right, #f5f5dc, #d2b48c);
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ body {
 
 header {
   width: 100%;
-  background: #000080; /* Azul marinho escuro */
+  background: #000080; 
   text-align: center;
   font-family: "Bree Serif", serif;
   flex-shrink: 0;
@@ -114,7 +114,7 @@ button.increment:hover, button.decrement:hover {
   color: black;
 }
 
-/* Título com borda no header com fundo acinzentado */
+
 .titulo-com-borda {
   font-family: 'Bree Serif', serif;
   font-size: 2rem;
@@ -123,7 +123,7 @@ button.increment:hover, button.decrement:hover {
   border-radius: 25px;
   padding: 10px 20px;
   display: inline-block;
-  background-color: #d3d3d3; /* Fundo acinzentado */
+  background-color: #d3d3d3; 
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
