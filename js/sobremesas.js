@@ -10,11 +10,13 @@ const menu = {
     "🦄 Taça Infantil Unicórnio - Invocação de Gamakichi": ["Uma bola de sorvete sabor morango", "Calda de amora", "Unicórnio de pasta americana", "Fini minhocas cítricas", "MM’s variados"],
     "🍫 Petit Gateau - Jutsu do Dragão Negro": ["Uma bola de sorvete de creme", "Mini bolo de chocolate recheado", "Calda de chocolate"],
     "🍩 Sonho - Sonho do Tsukuyomi Infinito": ["Pão doce", "Leite condensado", "Açúcar refinado polvilhado", "Canela"],
-    "☕ Café - Chakra da Madrugada": ["Café Árabe (200ml)", "Açúcar"]
+    "☕ Café - Chakra da Madrugada": ["Café Árabe (200ml)", "Açúcar"],
+    "🍰 Bolo de Morango - Chakra do Amanhecer": ["3 Ovos", "Açucar", "Leite", "Óleo", "Trigo", "Fermento", "200gr Morango", "Leite Moça", "Manteiga", "Creme de leite"]
 };
 
 function gerarPrecoAleatorio() {
-    return (Math.random() * (18 - 10) + 10).toFixed(2);
+    const preco = Math.random() * (20 - 10) + 10; // entre 10 e 20
+    return preco.toFixed(2);
 }
 
 function createDessertCounters() {
@@ -37,7 +39,6 @@ function createDessertCounters() {
             <div class="error-message" id="${sobremesa}-error"></div>
         `;
 
-        // Alterna entre adicionar à coluna da esquerda ou direita
         if (index % 2 === 0) {
             leftContainer.appendChild(itemDiv);
         } else {
@@ -60,10 +61,10 @@ function updateCount(sobremesa, change) {
         dessertCounts[sobremesa] = newValue;
         document.getElementById(`${sobremesa}-count`).textContent = newValue;
         updateTotal();
-        errorMessageDiv.textContent = ''; // Limpa qualquer mensagem de erro anterior
+        errorMessageDiv.textContent = '';
     } catch (error) {
         console.error(error.message);
-        errorMessageDiv.textContent = error.message; // Exibe o erro no HTML
+        errorMessageDiv.textContent = error.message;
     }
 }
 
