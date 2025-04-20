@@ -32,12 +32,15 @@ function createDessertCounters() {
         itemDiv.classList.add("item");
         
         itemDiv.innerHTML = `
-            <span>${sobremesa} - R$ ${precoPorSobremesa[sobremesa].toFixed(2)}</span>
-            <button onclick="updateCount('${sobremesa}', -1)">-</button>
-            <span id="${sobremesa}-count">0</span>
-            <button onclick="updateCount('${sobremesa}', 1)">+</button>
-            <div class="error-message" id="${sobremesa}-error"></div>
-        `;
+    <span><strong>${item.name}</strong> (R$ ${parseFloat(item.price).toFixed(2)}):</span>
+    <p class="ingredients">${item.ingredients.join(", ")}</p>
+    <div class="buttons">
+        <button class="decrement" onclick="updateCount('${item.safeId}', -1)">-</button>
+        <span id="${item.safeId}-count">0</span>
+        <button class="increment" onclick="updateCount('${item.safeId}', 1)">+</button>
+    </div>
+`;
+
 
         if (index % 2 === 0) {
             leftContainer.appendChild(itemDiv);
