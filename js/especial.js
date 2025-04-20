@@ -9,52 +9,63 @@ const lanches = [
   { name: "🌱X-Vegano", ingredients: ["Pão integral", "Hambúrguer de soja", "Queijo vegano", "Alface", "Tomate", "Maionese vegana"], price: 17.50 }
 ];
 
-
-
 let lancheCounts = {};
-lanches.forEach(lanche => {
-  lancheCounts[lanche.name] = 0;
-});
+let precoPorLanche = {};
 
-function createLancheCounters() {
-  const container = document.getElementById("lanches-container");
-  container.innerHTML = ""; // Limpa o container
+// Inicializa contadores e tabela de preços
+function initLanches() {
   lanches.forEach(lanche => {
-    const lancheDiv = document.createElement("div");
-    lancheDiv.classList.add("ingredient");
-
-    lancheDiv.innerHTML = `
-      <span><strong>${lanche.name}</strong> (R$ ${precoPorLanche[lanche.name].toFixed(2)}):</span>
-      <p class="ingredients">${lanche.ingredients.join(", ")}</p>
-      <button class="decrement" onclick="updateCount('${lanche.name}', -1)">-</button>
-      <span id="${lanche.name}-count">0</span>
-      <button class="increment" onclick="updateCount('${lanche.name}', 1)">+</button>
-    `;
-
-    container.appendChild(lancheDiv);
+    lancheCounts[lanche.name] = 0;
+    precoPorLanche[lanche.name] = lanche.price;
   });
 }
 
+// Gera o HTML de cada lanche e insere no container
+function createLancheCounters() {
+  const container = document.getElementById("lanches-container");
+  container.innerHTML = ""; // limpa antes de renderizar
+
+  lanches.forEach(lanche => {
+    const div = document.createElement("div");
+    div.classList.add("ingredient");
+    div.innerHTML = `
+      <span><strong>${lanche.name}</strong> (R$ ${lanche.price.toFixed(2)}):</span>
+      <p class="ingredients">${lanche.ingredients.join(", ")}</p>
+      <div class="buttons">
+        <button class="decrement" onclick="updateCount('${lanche.name}', -1)">-</button>
+        <span id="${lanche.name}-count">0</span>
+        <button class="increment" onclick="updateCount('${lanche.name}', 1)">+</button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+
+  updateTotal();
+}
+
+// Ajusta a quantidade de um lanche
 function updateCount(lanche, change) {
   let newValue = lancheCounts[lanche] + change;
   if (newValue < 0) newValue = 0;
   if (newValue > 10) newValue = 10;
-
   lancheCounts[lanche] = newValue;
   document.getElementById(`${lanche}-count`).textContent = newValue;
   updateTotal();
 }
 
+// Atualiza totais exibidos
 function updateTotal() {
-  let totalLanches = Object.values(lancheCounts).reduce((sum, value) => sum + value, 0);
-  let totalDinheiro = Object.keys(lancheCounts).reduce((sum, lanche) => {
-    return sum + (lancheCounts[lanche] * precoPorLanche[lanche]);
-  }, 0);
+  const totalLanches = Object.values(lancheCounts).reduce((sum, v) => sum + v, 0);
+  const totalDinheiro = Object.keys(lancheCounts)
+    .reduce((sum, lanche) => sum + (lancheCounts[lanche] * precoPorLanche[lanche]), 0);
 
-  document.getElementById("total").textContent = `Total de lanches: ${totalLanches}`;
+  document.getElementById("total").textContent       = `Total de lanches: ${totalLanches}`;
   document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalDinheiro.toFixed(2)}`;
 }
 
-// Inicializa os contadores ao carregar a página
-createLancheCounters();
+// Espera o DOM e inicializa tudo
+document.addEventListener("DOMContentLoaded", () => {
+  initLanches();
+  createLancheCounters();
+});
 
