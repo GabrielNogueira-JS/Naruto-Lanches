@@ -1,127 +1,142 @@
-/* Definindo o corpo e a fonte principal */
-body {
-  background-color: #f6c1d0; /* Rosa suave para o fundo */
-  color: #333; /* Cor de texto padrão */
-  font-family: 'Bree Serif', serif; /* Font personalizada */
+/* ===== Reset & Base ===== */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Ajustado para que o conteúdo se alinhe ao topo */
+}
+
+html, body {
   height: 100vh;
-}
-
-/* Borda superior */
-.borda {
-  padding: 15px;
-  text-align: center;
-  background-color: #f36f6f; /* Rosa mais forte */
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  width: 100%;
-}
-
-/* Container principal */
-.main-content {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 30px; /* Ajustado para garantir o título visível */
-}
-
-/* Container central com itens */
-.container {
+  font-family: 'Bree Serif', serif;
+  background: linear-gradient(to right, #ffc0cb, #800080); /* Rosa suave */
+  color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  max-width: 600px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  margin-top: 20px; /* Ajustado para que o box não sobreponha o título */
-  border: 5px solid #9b4d9e; /* Borda intensa de rosa/roxo ao redor do box */
+  justify-content: space-between;
 }
 
-/* Título */
-h2 {
-  font-size: 1.8rem;
-  color: #f36f6f; /* Cor rosa do título */
-  margin-bottom: 20px;
+header, footer {
+  width: 100%;
+  background: #D2B48C; /* Bege */
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-/* Box de total */
-#total, #valor-total {
-  font-size: 1.2rem;
-  color: #333;
+/* Centraliza o título dentro do header */
+header .borda {
+  background-color: #800080; /* Rosa forte */
+  padding: 12px 20px;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ===== Page Layout ===== */
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  gap: 20px;
+}
+
+/* ===== Main Container (Box) ===== */
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+  width: 60%;
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.container h2 {
+  color: #000;
   margin-bottom: 20px;
+  font-size: 26px;
 }
 
-/* Botões */
-button {
-  background-color: #f36f6f; /* Cor do botão em rosa */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+/* Itens e botões dentro do box */
+#total, #valor-total {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffa500;
+  margin: 12px 0;
+}
+
+/* Posiciona o botão de retorno e totais ao final do box */
+#return-button {
+  background-color: #2c3e50;
+  color: #fff;
+  border: 2px solid #2c3e50;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
   cursor: pointer;
-  margin: 10px;
-  font-size: 1rem;
+  font-family: 'Bree Serif', serif;
+  transition: background 0.3s ease;
+  margin-top: 30px;
 }
 
-button:hover {
-  background-color: #d95b5b; /* Cor mais escura ao passar o mouse */
+#return-button:hover {
+  background-color: #34495e;
 }
 
-/* Container de sobremesas com 2 colunas */
+button.increment,
+button.decrement {
+  background: transparent;
+  border: 2px solid #e91e63;
+  color: #e91e63;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+button.increment:hover,
+button.decrement:hover {
+  background: #e91e63;
+  color: #fff;
+}
+
+/* ===== Container dos itens ===== */
 .desserts-container {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  flex-direction: row;
+  gap: 40px;
   margin-top: 20px;
+  width: 100%;
 }
 
-/* Colunas das sobremesas */
 .left-column, .right-column {
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  text-align: center; /* Centralizando os itens dentro das colunas */
-}
-
-.item {
-  background-color: #fce4e4; /* Fundo claro para cada item */
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+  flex: 1;
 }
 
-/* Centralizando o nome da sobremesa e os botões */
-.item span {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Ajustes no título da página e texto para garantir legibilidade */
-h2 {
-  font-size: 1.8rem;
-  color: #f36f6f;
-  margin-bottom: 20px;
+/* ===== Footer ===== */
+footer {
+  background: #D2B48C; /* Bege */
+  padding: 10px;
   text-align: center;
-}
-
-/* Centralização e estilos para o botão retornar */
-#return-button {
-  display: block;
-  margin: 20px auto;
+  font-size: 14px;
+  color: #000;
 }
