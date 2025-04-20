@@ -47,18 +47,6 @@ footer {
   gap: 20px;
 }
 
-/* ===== Side Images ===== */
-.side-image {
-  flex: 0 0 120px;
-}
-
-.side-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
 /* ===== Main Container (Box) ===== */
 .container {
   background-color: rgba(0, 0, 0, 0.7);
@@ -116,20 +104,4 @@ button.increment:hover,
 button.decrement:hover {
   background: #e91e63;
   color: #fff;
-}
-
-/* ===== Extra Images Below Container ===== */
-.extra-images {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding-bottom: 20px;
-  width: 100%;
-}
-
-.extra-images img {
-  width: 120px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 12px;
 }
