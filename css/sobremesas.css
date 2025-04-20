@@ -8,7 +8,7 @@ body {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Ajustado para que o conteúdo se alinhe ao topo */
   height: 100vh;
 }
 
@@ -20,6 +20,7 @@ body {
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
+  width: 100%;
 }
 
 /* Container principal */
@@ -42,7 +43,7 @@ body {
   border-radius: 15px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin-top: 50px; /* Ajustado para que o box não sobreponha o título */
+  margin-top: 20px; /* Ajustado para que o box não sobreponha o título */
   border: 5px solid #9b4d9e; /* Borda intensa de rosa/roxo ao redor do box */
 }
 
@@ -51,6 +52,7 @@ h2 {
   font-size: 1.8rem;
   color: #f36f6f; /* Cor rosa do título */
   margin-bottom: 20px;
+  text-align: center;
 }
 
 /* Box de total */
@@ -90,6 +92,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  text-align: center; /* Centralizando os itens dentro das colunas */
 }
 
 .item {
@@ -97,23 +100,28 @@ button:hover {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-button {
-  background-color: #f36f6f;
-}
-
-/* Mensagem de erro */
-.error-message {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: 5px;
+/* Centralizando o nome da sobremesa e os botões */
+.item span {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 /* Ajustes no título da página e texto para garantir legibilidade */
 h2 {
   font-size: 1.8rem;
-  color: #ee346c;
+  color: #f36f6f;
   margin-bottom: 20px;
   text-align: center;
+}
+
+/* Centralização e estilos para o botão retornar */
+#return-button {
+  display: block;
+  margin: 20px auto;
 }
