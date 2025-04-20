@@ -69,25 +69,24 @@ function updateCount(sobremesa, change) {
         let newValue = dessertCounts[sobremesa] + change;
 
         if (newValue < 0) {
-            throw new Error(); // Não queremos alert aqui
+            return;
         }
 
         if (newValue > 10) {
             alert("Limite por mesa atingido!"); // Alerta amigável, direto ao ponto
-            throw new Error(`${sobremesa} não pode ser maior que 10.`);
+            throw new Error();
         }
 
         dessertCounts[sobremesa] = newValue;
         document.getElementById(`${sobremesa}-count`).textContent = newValue;
         updateTotal();
-        errorMessageDiv.textContent = ''; // Limpa mensagens anteriores
+        errorMessageDiv.textContent = ''; // Limpa mensagens anteriores, mas não exibe nada no erro
     } catch (error) {
         console.error(error.message);
-        if (error.message) {
-            errorMessageDiv.textContent = error.message;
-        }
+        // Aqui não atualizamos a mensagem de erro para o item
     }
 }
+
 
 function updateTotal() {
     let totalSobremesas = 0;
