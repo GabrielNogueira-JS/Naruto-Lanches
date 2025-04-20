@@ -204,3 +204,17 @@ button.decrement:hover {
   font-size: 12px;
   margin-top: 5px;
 }
+/* ===== Container ===== */
+.container {
+  background-color: #fce4e4; /* Fundo rosa suave */
+  border: 5px solid #9b4d9e; /* Borda rosa/roxo intensa */
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 800px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
