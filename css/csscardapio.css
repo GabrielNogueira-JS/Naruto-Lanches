@@ -108,16 +108,18 @@ button.increment, button.decrement {
   cursor: pointer;
   transition: 0.3s;
   font-family: "Bree Serif", serif;
-}
 
+
+
+
+  
+
+}
 button.increment:hover, button.decrement:hover {
-  font-family: "Bree Serif", serif;
+  
   background-color: rgba(248, 95, 95, 0.781);
   color: rgb(44, 25, 25);
-  padding: 10px 20px;
-  margin: 20px auto 0;
-  border-radius: 10px;
-  cursor: pointer;
+  
 }
 
 /* Estilização dos totais */
