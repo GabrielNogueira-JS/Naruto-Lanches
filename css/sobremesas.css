@@ -168,7 +168,7 @@ button:hover {
   background-color: #34495e;
 }
 .ingredient {
-  background-color: #ffe6f0; /* rosa clarinho */
+  background-color: #eb75a4; /* rosa clarinho */
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 15px;
@@ -199,3 +199,8 @@ button.decrement:hover {
   background-color: #e6005c;
 }
 
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

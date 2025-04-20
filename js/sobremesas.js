@@ -30,18 +30,30 @@ function createDessertCounters() {
 
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("item");
+
+        // Gerando o preço e ingredientes corretos
+        const ingredientes = menu[sobremesa];
+        const preco = precoPorSobremesa[sobremesa];
         
+        // Criando o div para mostrar o erro
+        const errorMessageDiv = document.createElement("div");
+        errorMessageDiv.id = `${sobremesa}-error`;
+        errorMessageDiv.classList.add("error-message");
+
         itemDiv.innerHTML = `
-    <span><strong>${item.name}</strong> (R$ ${parseFloat(item.price).toFixed(2)}):</span>
-    <p class="ingredients">${item.ingredients.join(", ")}</p>
-    <div class="buttons">
-        <button class="decrement" onclick="updateCount('${item.safeId}', -1)">-</button>
-        <span id="${item.safeId}-count">0</span>
-        <button class="increment" onclick="updateCount('${item.safeId}', 1)">+</button>
-    </div>
-`;
+            <span><strong>${sobremesa}</strong> (R$ ${preco}):</span>
+            <p class="ingredients">${ingredientes.join(", ")}</p>
+            <div class="buttons">
+                <button class="decrement" onclick="updateCount('${sobremesa}', -1)">-</button>
+                <span id="${sobremesa}-count">0</span>
+                <button class="increment" onclick="updateCount('${sobremesa}', 1)">+</button>
+            </div>
+        `;
 
+        // Adicionando a div de erro ao itemDiv
+        itemDiv.appendChild(errorMessageDiv);
 
+        // Colocando a sobremesa no container correspondente (esquerdo ou direito)
         if (index % 2 === 0) {
             leftContainer.appendChild(itemDiv);
         } else {
@@ -76,7 +88,6 @@ function updateCount(sobremesa, change) {
         }
     }
 }
-
 
 function updateTotal() {
     let totalSobremesas = 0;
