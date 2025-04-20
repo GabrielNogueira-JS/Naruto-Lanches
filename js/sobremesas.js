@@ -12,40 +12,34 @@ const menu = [
     { name: "🍩 Sonho - Sonho do Tsukuyomi Infinito", ingredients: ["Pão doce", "Leite condensado", "Açúcar refinado polvilhado", "Canela"], price: 7.00 },
     { name: "☕ Café - Chakra da Madrugada", ingredients: ["Café Árabe (200ml)", "Açúcar"], price: 4.50 },
     { name: "🍰 Bolo de Morango - Chakra do Amanhecer", ingredients: ["3 Ovos", "Açúcar", "Leite", "Óleo", "Trigo", "Fermento", "200gr Morango", "Leite Moça", "Manteiga", "Creme de leite"], price: 22.00 }
-   
 ];
-
-    
-
 
 function createDessertCounters() {
     const leftContainer = document.getElementById("left-desserts");
     const rightContainer = document.getElementById("right-desserts");
 
-    const sobremesas = Object.keys(menu);
-    sobremesas.forEach((sobremesa, index) => {
-        dessertCounts[sobremesa] = 0;
-        precoPorSobremesa[sobremesa] = parseFloat(gerarPrecoAleatorio());
+    menu.forEach((sobremesa, index) => {
+        dessertCounts[sobremesa.name] = 0;
+        precoPorSobremesa[sobremesa.name] = sobremesa.price;
 
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("item");
 
-        // Gerando o preço e ingredientes corretos
-        const ingredientes = menu[sobremesa];
-        const preco = precoPorSobremesa[sobremesa];
+        const ingredientes = sobremesa.ingredients;
+        const preco = precoPorSobremesa[sobremesa.name];
         
         // Criando o div para mostrar o erro
         const errorMessageDiv = document.createElement("div");
-        errorMessageDiv.id = `${sobremesa}-error`;
+        errorMessageDiv.id = `${sobremesa.name}-error`;
         errorMessageDiv.classList.add("error-message");
 
         itemDiv.innerHTML = `
-            <span><strong>${sobremesa}</strong> (R$ ${preco}):</span>
+            <span><strong>${sobremesa.name}</strong> (R$ ${preco.toFixed(2)}):</span>
             <p class="ingredients">${ingredientes.join(", ")}</p>
             <div class="buttons">
-                <button class="decrement" onclick="updateCount('${sobremesa}', -1)">-</button>
-                <span id="${sobremesa}-count">0</span>
-                <button class="increment" onclick="updateCount('${sobremesa}', 1)">+</button>
+                <button class="decrement" onclick="updateCount('${sobremesa.name}', -1)">-</button>
+                <span id="${sobremesa.name}-count">0</span>
+                <button class="increment" onclick="updateCount('${sobremesa.name}', 1)">+</button>
             </div>
         `;
 
@@ -85,7 +79,6 @@ function updateCount(sobremesa, change) {
         // Aqui não atualizamos a mensagem de erro para o item
     }
 }
-
 
 function updateTotal() {
     let totalSobremesas = 0;

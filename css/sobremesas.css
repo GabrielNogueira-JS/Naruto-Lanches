@@ -94,7 +94,7 @@ header .borda {
 
 /* Cada item */
 .item {
-  background-color: #fce4e4;
+  background-color: #f86bad;
   border-radius: 10px;
   padding: 12px;
   width: 100%;
@@ -199,11 +199,7 @@ button.decrement:hover {
   background-color: #e6005c;
 }
 
-.error-message {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
-}
+
 /* ===== Container ===== */
 .container {
   background-color: #fce4e4; /* Fundo rosa suave */
