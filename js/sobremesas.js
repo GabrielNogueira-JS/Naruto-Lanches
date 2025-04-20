@@ -1,4 +1,4 @@
- const dessertCounts = {}; 
+const dessertCounts = {}; 
 const precoPorSobremesa = {}; 
 
 const menu = {
@@ -13,11 +13,9 @@ const menu = {
     "☕ Café - Chakra da Madrugada": ["Café Árabe (200ml)", "Açúcar"]
 };
 
-
 function gerarPrecoAleatorio() {
     return (Math.random() * (18 - 10) + 10).toFixed(2);
 }
-
 
 function createDessertCounters() {
     const leftContainer = document.getElementById("left-desserts");
@@ -30,16 +28,16 @@ function createDessertCounters() {
 
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("item");
-        //Criar um css descente
-
+        
         itemDiv.innerHTML = `
             <span>${sobremesa} - R$ ${precoPorSobremesa[sobremesa].toFixed(2)}</span>
             <button onclick="updateCount('${sobremesa}', -1)">-</button>
             <span id="${sobremesa}-count">0</span>
             <button onclick="updateCount('${sobremesa}', 1)">+</button>
+            <div class="error-message" id="${sobremesa}-error"></div>
         `;
 
-        
+        // Alterna entre adicionar à coluna da esquerda ou direita
         if (index % 2 === 0) {
             leftContainer.appendChild(itemDiv);
         } else {
@@ -48,25 +46,26 @@ function createDessertCounters() {
     });
 }
 
-
 function updateCount(sobremesa, change) {
+    const errorMessageDiv = document.getElementById(`${sobremesa}-error`);
+    
     try {
         let newValue = dessertCounts[sobremesa] + change;
         if (newValue < 0) {
-            throw new Error(`Erro: ${sobremesa} não pode ser menor que 0.`);
+            throw new Error(`${sobremesa} não pode ser menor que 0.`);
         }
         if (newValue > 10) {
-            throw new Error(`Erro: ${sobremesa} não pode ser maior que 10.`);
+            throw new Error(`${sobremesa} não pode ser maior que 10.`);
         }
         dessertCounts[sobremesa] = newValue;
         document.getElementById(`${sobremesa}-count`).textContent = newValue;
         updateTotal();
+        errorMessageDiv.textContent = ''; // Limpa qualquer mensagem de erro anterior
     } catch (error) {
         console.error(error.message);
-        alert(error.message);
+        errorMessageDiv.textContent = error.message; // Exibe o erro no HTML
     }
 }
-
 
 function updateTotal() {
     let totalSobremesas = 0;
@@ -80,6 +79,5 @@ function updateTotal() {
     document.getElementById("total").textContent = `Total de sobremesas: ${totalSobremesas}`;
     document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalDinheiro.toFixed(2)}`;
 }
-
 
 document.addEventListener("DOMContentLoaded", createDessertCounters);
