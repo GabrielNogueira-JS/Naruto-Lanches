@@ -111,8 +111,13 @@ button.increment, button.decrement {
 }
 
 button.increment:hover, button.decrement:hover {
-  background-color: white;
-  color: black;
+  font-family: "Bree Serif", serif;
+  background-color: rgba(248, 95, 95, 0.781);
+  color: rgb(44, 25, 25);
+  padding: 10px 20px;
+  margin: 20px auto 0;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 /* Estilização dos totais */
@@ -149,7 +154,7 @@ button.increment:hover, button.decrement:hover {
   border: 2px solid black;
   padding: 4px 8px;
   border-radius: 15px;
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(219, 29, 29, 0.2);
 }
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
@@ -164,4 +169,5 @@ button.increment:hover, button.decrement:hover {
   background-color: white; /* Pode trocar se quiser outro fundo */
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
+
 
