@@ -30,6 +30,7 @@ function createDessertCounters() {
 
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("item");
+        //Criar um css descente
 
         itemDiv.innerHTML = `
             <span>${sobremesa} - R$ ${precoPorSobremesa[sobremesa].toFixed(2)}</span>
