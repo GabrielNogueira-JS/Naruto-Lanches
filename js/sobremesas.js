@@ -49,24 +49,31 @@ function createDessertCounters() {
 
 function updateCount(sobremesa, change) {
     const errorMessageDiv = document.getElementById(`${sobremesa}-error`);
-    
+
     try {
         let newValue = dessertCounts[sobremesa] + change;
+
         if (newValue < 0) {
-            throw new Error(`${sobremesa} não pode ser menor que 0.`);
+            throw new Error(); // Não queremos alert aqui
         }
+
         if (newValue > 10) {
+            alert("Limite por mesa atingido!"); // Alerta amigável, direto ao ponto
             throw new Error(`${sobremesa} não pode ser maior que 10.`);
         }
+
         dessertCounts[sobremesa] = newValue;
         document.getElementById(`${sobremesa}-count`).textContent = newValue;
         updateTotal();
-        errorMessageDiv.textContent = '';
+        errorMessageDiv.textContent = ''; // Limpa mensagens anteriores
     } catch (error) {
         console.error(error.message);
-        errorMessageDiv.textContent = error.message;
+        if (error.message) {
+            errorMessageDiv.textContent = error.message;
+        }
     }
 }
+
 
 function updateTotal() {
     let totalSobremesas = 0;

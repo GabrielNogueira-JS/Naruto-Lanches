@@ -25,12 +25,14 @@ header, footer {
 
 header {
   height: 80px;
+  padding: 25px 0;
 }
 
 footer {
   height: 60px;
   font-size: 0.9rem;
   color: #000;
+  padding: 25px 0;
 }
 
 /* Caixa rosa forte centralizada no header */
@@ -111,28 +113,30 @@ header .borda {
   text-align: center;
 }
 
-/* Botões de quantidade */
-.item .botoes {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
 
-.item .botoes button {
-  background: transparent;
-  border: 2px solid #e91e63;
-  color: #e91e63;
-  border-radius: 6px;
+/* Estilos para os botões de + e - */
+button {
+  background: linear-gradient(135deg, #ff8c94, #ffaaa5); /* Degrade rosa/vermelho sutil */
+  border: 2px solid #ff647c; /* Borda destacada */
+  border-radius: 8px; /* Cantos arredondados */
   padding: 6px 12px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: border-color 0.3s ease, transform 0.2s ease, background 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.item .botoes button:hover {
-  background: #e91e63;
-  color: #fff;
+/* Efeito de hover para os botões */
+button:hover {
+  border-color: #cc3f5a; /* Escurece a borda */
+  background: #e91e63; /* Altera fundo para rosa mais escuro */
+  color: #fff; /* Altera cor do texto */
+  transform: scale(1.05); /* Leve zoom */
 }
+
+
 
 /* ===== Totais e Botão no fim do container ===== */
 .footer-box {
