@@ -8,135 +8,158 @@
 html, body {
   height: 100vh;
   font-family: 'Bree Serif', serif;
-  background: linear-gradient(to right, #ffc0cb, #800080); /* Rosa suave */
-  color: #fff;
+  background-color: #f6c1d0; /* Rosa suave no restante */
+  color: #333;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
 }
 
+/* ===== Header & Footer ===== */
 header, footer {
   width: 100%;
-  background: #D2B48C; /* Bege */
-  text-align: center;
+  background-color: #D2B48C; /* Bege */
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
-/* Centraliza o título dentro do header */
+header {
+  height: 80px;
+}
+
+footer {
+  height: 60px;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+/* Caixa rosa forte centralizada no header */
 header .borda {
-  background-color: #800080; /* Rosa forte */
-  padding: 12px 20px;
+  background-color: #9b4d9e; /* Rosa/roxo intenso */
+  padding: 12px 24px;
   color: #fff;
   border-radius: 10px;
-  font-size: 24px;
+  font-size: 1.3rem;
   font-weight: bold;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-/* ===== Page Layout ===== */
+/* ===== Main Layout ===== */
 .layout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex: 1;
-  width: 100%;
-  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 0;
 }
 
-/* ===== Main Container (Box) ===== */
+/* ===== Container ===== */
 .container {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.6);
-  width: 60%;
+  background-color: #fff;
+  border: 5px solid #9b4d9e; /* Borda rosa/roxo intensa */
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  width: 90%;
   max-width: 800px;
-  text-align: center;
-  position: relative;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
 }
 
+/* Título interno */
 .container h2 {
-  color: #000;
+  color: #9b4d9e;
+  font-size: 1.8rem;
   margin-bottom: 20px;
-  font-size: 26px;
+  text-align: center;
 }
 
-/* Itens e botões dentro do box */
-#total, #valor-total {
-  font-size: 20px;
-  font-weight: bold;
-  color: #ffa500;
-  margin: 12px 0;
+/* ===== Desserts Grid ===== */
+.desserts-container {
+  display: flex;
+  width: 100%;
+  gap: 30px;
 }
 
-/* Posiciona o botão de retorno e totais ao final do box */
-#return-button {
-  background-color: #2c3e50;
-  color: #fff;
-  border: 2px solid #2c3e50;
+.left-column,
+.right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Cada item */
+.item {
+  background-color: #fce4e4;
   border-radius: 10px;
-  padding: 12px 24px;
-  font-size: 16px;
-  cursor: pointer;
-  font-family: 'Bree Serif', serif;
-  transition: background 0.3s ease;
-  margin-top: 30px;
+  padding: 12px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#return-button:hover {
-  background-color: #34495e;
+/* Nome do doce centralizado */
+.item .nome-doce {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-button.increment,
-button.decrement {
+/* Botões de quantidade */
+.item .botoes {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.item .botoes button {
   background: transparent;
   border: 2px solid #e91e63;
   color: #e91e63;
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 15px;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.2s, color 0.2s;
 }
 
-button.increment:hover,
-button.decrement:hover {
+.item .botoes button:hover {
   background: #e91e63;
   color: #fff;
 }
 
-/* ===== Container dos itens ===== */
-.desserts-container {
-  display: flex;
-  flex-direction: row;
-  gap: 40px;
-  margin-top: 20px;
+/* ===== Totais e Botão no fim do container ===== */
+.footer-box {
+  margin-top: 30px;
+  text-align: center;
   width: 100%;
 }
 
-.left-column, .right-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  flex: 1;
+.footer-box p {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 8px 0;
 }
 
-/* ===== Footer ===== */
-footer {
-  background: #D2B48C; /* Bege */
-  padding: 10px;
-  text-align: center;
-  font-size: 14px;
-  color: #000;
+/* Botão Retornar */
+#return-button {
+  background-color: #2c3e50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.3s;
+}
+
+#return-button:hover {
+  background-color: #34495e;
 }

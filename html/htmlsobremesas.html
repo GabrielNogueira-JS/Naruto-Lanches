@@ -16,32 +16,32 @@
     <div class="borda">🍡 Cardápio Shinobi 🍡 - Doces Ninja</div>
   </header>
 
-  <!-- Flex container principal -->
-  <div class="main-content">
-
-    <!-- Conteúdo central -->
+  <main class="layout">
     <div class="container">
-      <h2>Um bom ninja precisa adoçar sua armadura...</h2>
+      <h2>Um bom ninja precisa adoçar sua amargura...</h2>
 
-      <div id="total">Total de sobremesas: 0</div>
-      <div id="valor-total">Total em dinheiro: R$ 0,00</div>
-      
-      <button id="return-button">Retornar à Página Inicial</button>
-
-      <!-- Container dos doces -->
       <div class="desserts-container">
         <div class="left-column" id="left-desserts">
-          <!-- Itens da coluna esquerda -->
+          <!-- Itens gerados pelo JS -->
         </div>
         <div class="right-column" id="right-desserts">
-          <!-- Itens da coluna direita -->
+          <!-- Itens gerados pelo JS -->
         </div>
       </div>
-    </div>
 
-  </div>
+      <!-- Totais e botão ao fim do box -->
+      <div class="footer-box">
+        <p id="total">Total de sobremesas: 0</p>
+        <p id="valor-total">Total em dinheiro: R$ 0,00</p>
+        <button id="return-button" onclick="window.location.href='index.html'">
+          Retornar à Página Inicial
+        </button>
+      </div>
+    </div>
+  </main>
 
   <footer>
+    <p>🍥 Desenvolvido com alma shinobi e açúcar na medida 🍥</p>
   </footer>
 
   <script src="../js/sobremesas.js"></script>
