@@ -1,19 +1,15 @@
 const lanches = [
-  { name: "🥓X-Bacon", ingredients: ["Pão de hambúrguer", "Bacon", "Queijo", "Hambúrguer", "Maionese"] },
-  { name: "🥒X-Salada", ingredients: ["Pão de hambúrguer", "Queijo", "Hambúrguer", "Alface", "Tomate", "Maionese"] },
-  { name: "🍱X-Tudo", ingredients: ["Pão de hambúrguer", "Hambúrguer", "Queijo", "Presunto", "Bacon", "Ovo", "Alface", "Tomate", "Maionese"] },
-  { name: "🐔X-Frango", ingredients: ["Pão de hambúrguer", "Frango desfiado", "Queijo", "Alface", "Tomate", "Maionese"] },
-  { name: "🫑X-Calabresa", ingredients: ["Pão de hambúrguer", "Calabresa", "Queijo", "Tomate", "Maionese"] },
-  { name: "🍳X-Egg", ingredients: ["Pão de hambúrguer", "Ovo", "Queijo", "Hambúrguer", "Maionese"] },
-  { name: "🍖X-Picanha", ingredients: ["Pão de hambúrguer", "Picanha", "Queijo", "Alface", "Tomate", "Maionese"] },
-  { name: "🌱X-Vegano", ingredients: ["Pão integral", "Hambúrguer de soja", "Queijo vegano", "Alface", "Tomate", "Maionese vegana"] }
+  { name: "🥓X-Bacon", ingredients: ["Pão de hambúrguer", "Bacon", "Queijo", "Hambúrguer", "Maionese"], price: 15.90 },
+  { name: "🥒X-Salada", ingredients: ["Pão de hambúrguer", "Queijo", "Hambúrguer", "Alface", "Tomate", "Maionese"], price: 13.50 },
+  { name: "🍱X-Tudo", ingredients: ["Pão de hambúrguer", "Hambúrguer", "Queijo", "Presunto", "Bacon", "Ovo", "Alface", "Tomate", "Maionese"], price: 18.00 },
+  { name: "🐔X-Frango", ingredients: ["Pão de hambúrguer", "Frango desfiado", "Queijo", "Alface", "Tomate", "Maionese"], price: 14.50 },
+  { name: "🫑X-Calabresa", ingredients: ["Pão de hambúrguer", "Calabresa", "Queijo", "Tomate", "Maionese"], price: 16.00 },
+  { name: "🍳X-Egg", ingredients: ["Pão de hambúrguer", "Ovo", "Queijo", "Hambúrguer", "Maionese"], price: 14.00 },
+  { name: "🍖X-Picanha", ingredients: ["Pão de hambúrguer", "Picanha", "Queijo", "Alface", "Tomate", "Maionese"], price: 19.90 },
+  { name: "🌱X-Vegano", ingredients: ["Pão integral", "Hambúrguer de soja", "Queijo vegano", "Alface", "Tomate", "Maionese vegana"], price: 17.50 }
 ];
 
-// Gera um preço aleatório para cada lanche entre R$15 e R$35
-let precoPorLanche = {};
-lanches.forEach(lanche => {
-  precoPorLanche[lanche.name] = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
-});
+
 
 let lancheCounts = {};
 lanches.forEach(lanche => {
