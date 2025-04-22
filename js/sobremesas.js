@@ -3,7 +3,7 @@ const precoPorSobremesa = {};
 
 const menu = [
      
-    { name: "🍰 Bolo de Chocolate - Chakra do Amanhecer", ingredients: ["3 Ovos", "Açúcar", "Leite", "Óleo", "Trigo", "Fermento", "200gr Diamante Negro", "Leite Moça", "Manteiga", "Creme de leite"], price: 22.50 },
+    { name: "🍰 Bolo de Chocolate - Chakra do Anoitecer", ingredients: ["3 Ovos", "Açúcar", "Leite", "Óleo", "Trigo", "Fermento", "200gr Diamante Negro", "Leite Moça", "Manteiga", "Creme de leite"], price: 22.50 },
     { name: "🍨 Taça Colegial - Equipe 7", ingredients: ["Duas bolas de sorvete sabor creme", "Duas cerejas ao topo", "Calda de morango", "Confetes"], price: 15.90 },
     { name: "🍮 Pudim - Técnica Secreta do Clã Nara", ingredients: ["Leite condensado", "Licor de doce de leite", "Açúcar", "Leite", "Leite em pó"], price: 12.50 },
     { name: "🥤 Milk-Shake - Onda de Chakra Rosa", ingredients: ["Leite", "Morango", "Açúcar", "Essência de morango", "Canudos de morango"], price: 18.00 },
@@ -12,7 +12,7 @@ const menu = [
     { name: "🦄 Taça Infantil Unicórnio - Invocação de Gamakichi", ingredients: ["Uma bola de sorvete sabor morango", "Calda de amora", "Unicórnio de pasta americana", "Fini minhocas cítricas", "MM’s variados"], price: 20.00 },
     { name: "🍫 Petit Gateau - Jutsu do Dragão Negro", ingredients: ["Uma bola de sorvete de creme", "Mini bolo de chocolate recheado", "Calda de chocolate"], price: 19.90 },
     { name: "🍩 Sonho - Sonho do Tsukuyomi Infinito", ingredients: ["Pão doce", "Leite condensado", "Açúcar refinado polvilhado", "Canela"], price: 7.00 },
-    { name: "☕ Café - Chakra da Madrugada", ingredients: ["Café Árabe (200ml)", "Açúcar"], price: 4.50 },
+    { name: "☕ Café - Chakra da Madrugada", ingredients: ["Selecionados grãos de Jamaica Blue Mountain Coffee (300ml)", "Açúcar", "Leite SemiDesnatado"], price: 7.50 },
     { name: "🍰 Bolo de Morango - Chakra do Amanhecer", ingredients: ["3 Ovos", "Açúcar", "Leite", "Óleo", "Trigo", "Fermento", "200gr Morango", "Leite Moça", "Manteiga", "Creme de leite"], price: 22.00 }
 ];
 
