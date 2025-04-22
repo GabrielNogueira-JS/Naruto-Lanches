@@ -2,6 +2,23 @@ const dessertCounts = {};
 const precoPorSobremesa = {}; 
 
 const menu = [
+
+   // {
+    //    nome: "Creme de Pistache",
+    //    descricao: "Delicioso creme da fruta que é um sucesso total, servido em camadas com os toppings que desejar.",
+    //    preco: 19.50,
+       // imagem: "imagens/pistache.jpg"
+    
+      // {
+        // nome:  "🍰 Bolo de Chocolate - Chakra do Anoitecer",
+         //descrição: "Quatro fatias de Bolo macio sabor chocolate com diamante negro,creme de leite,leite condensado da melhor qualidade e uma calda de chocolate temperado",
+         //preço: 22.50,
+       //  imagem: "" alt : Serve até quatro pessoas
+         
+
+
+
+     //+  }
      
     { name: "🍰 Bolo de Chocolate - Chakra do Anoitecer", ingredients: ["3 Ovos", "Açúcar", "Leite", "Óleo", "Trigo", "Fermento", "200gr Diamante Negro", "Leite Moça", "Manteiga", "Creme de leite"], price: 22.50 },
     { name: "🍨 Taça Colegial - Equipe 7", ingredients: ["Duas bolas de sorvete sabor creme", "Duas cerejas ao topo", "Calda de morango", "Confetes"], price: 15.90 },
@@ -93,6 +110,98 @@ function updateTotal() {
 
     document.getElementById("total").textContent = `Total de sobremesas: ${totalSobremesas}`;
     document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalDinheiro.toFixed(2)}`;
+}
+
+document.addEventListener("DOMContentLoaded", createDessertCounters);
+const dessertCounts = {};
+const precoPorSobremesa = {};
+
+const menu = [
+  {
+    nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer",
+    descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.",
+    observacao: "Serve até quatro pessoas.",
+    preco: 22.50,
+    // imagem: "imagens/bolo-chocolate.jpg"
+  },
+  {
+    nome: "🍨 Taça Colegial – Equipe 7",
+    descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.",
+    observacao: "Serve até duas pessoas.",
+    preco: 15.90,
+    // imagem: "imagens/taca-colegial.jpg"
+  }
+  // ... adicione os demais itens
+];
+
+function createDessertCounters() {
+  const leftContainer  = document.getElementById("left-desserts");
+  const rightContainer = document.getElementById("right-desserts");
+
+  menu.forEach((item, index) => {
+    dessertCounts[item.nome]     = 0;
+    precoPorSobremesa[item.nome] = item.preco;
+
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("card");
+
+    const errorMessageDiv = document.createElement("div");
+    errorMessageDiv.id = `${item.nome}-error`;
+    errorMessageDiv.classList.add("error-message");
+
+    itemDiv.innerHTML = `
+      <div class="card-left">
+        <h4 class="item-name"><strong>${item.nome}</strong></h4>
+        <p class="desc">${item.descricao}</p>
+        <p class="observacao">${item.observacao}</p>
+        <p class="price"><strong>R$ ${item.preco.toFixed(2)}</strong></p>
+        <div class="buttons">
+          <button class="decrement" onclick="updateCount('${item.nome}', -1)">-</button>
+          <span id="${item.nome}-count">0</span>
+          <button class="increment" onclick="updateCount('${item.nome}', 1)">+</button>
+        </div>
+      </div>
+      <div class="card-right">
+        <!-- <img src="${item.imagem}" alt="${item.nome}" /> -->
+      </div>
+    `;
+
+    itemDiv.appendChild(errorMessageDiv);
+
+    if (index % 2 === 0) {
+      leftContainer.appendChild(itemDiv);
+    } else {
+      rightContainer.appendChild(itemDiv);
+    }
+  });
+}
+
+function updateCount(sobremesa, change) {
+  const errorDiv = document.getElementById(`${sobremesa}-error`);
+  try {
+    let newValue = dessertCounts[sobremesa] + change;
+    if (newValue < 0) return;
+    if (newValue > 10) {
+      alert("Limite por mesa atingido!");
+      throw new Error("Limite atingido");
+    }
+    dessertCounts[sobremesa] = newValue;
+    document.getElementById(`${sobremesa}-count`).textContent = newValue;
+    updateTotal();
+    errorDiv.textContent = "";
+  } catch (err) {
+    console.error(err.message);
+  }
+}
+
+function updateTotal() {
+  let totalQty = 0, totalMoney = 0;
+  for (let nome in dessertCounts) {
+    totalQty += dessertCounts[nome];
+    totalMoney += dessertCounts[nome] * precoPorSobremesa[nome];
+  }
+  document.getElementById("total").textContent = `Total de sobremesas: ${totalQty}`;
+  document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalMoney.toFixed(2)}`;
 }
 
 document.addEventListener("DOMContentLoaded", createDessertCounters);
