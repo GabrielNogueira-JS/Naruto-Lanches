@@ -2,6 +2,8 @@ const dessertCounts = {};
 const precoPorSobremesa = {}; 
 
 const menu = [
+     
+    { name: "🍰 Bolo de Chocolate - Chakra do Amanhecer", ingredients: ["3 Ovos", "Açúcar", "Leite", "Óleo", "Trigo", "Fermento", "200gr Diamante Negro", "Leite Moça", "Manteiga", "Creme de leite"], price: 22.50 },
     { name: "🍨 Taça Colegial - Equipe 7", ingredients: ["Duas bolas de sorvete sabor creme", "Duas cerejas ao topo", "Calda de morango", "Confetes"], price: 15.90 },
     { name: "🍮 Pudim - Técnica Secreta do Clã Nara", ingredients: ["Leite condensado", "Licor de doce de leite", "Açúcar", "Leite", "Leite em pó"], price: 12.50 },
     { name: "🥤 Milk-Shake - Onda de Chakra Rosa", ingredients: ["Leite", "Morango", "Açúcar", "Essência de morango", "Canudos de morango"], price: 18.00 },
