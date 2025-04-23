@@ -7,8 +7,8 @@ const menu = [
     descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.",
     observacao: "Serve até quatro pessoas.",
     preco: 22.50,
-    // imagem: "imagens/bolo-chocolate.jpg"
-    imagem : "../imagens/cakechoco.jpg"
+    imagem: "imagens/cakechoco.jpg"
+
     
 
   },

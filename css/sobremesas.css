@@ -111,6 +111,11 @@ header .borda {
   -webkit-line-clamp: unset;
   overflow: visible;
 }
+.desc:hover {
+  cursor: pointer; 
+  color: #9ec2e9; 
+  text-decoration: underline; 
+}
 
 
 .observacao {
