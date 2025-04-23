@@ -1,5 +1,43 @@
 const dessertCounts = {};
 const precoPorSobremesa = {};
+const container = document.querySelector("#menu");
+
+menu.forEach((item, index) => {
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  card.innerHTML = `
+    <img src="${item.imagem}" alt="${item.nome}">
+    <h3>${item.nome}</h3>
+    <p>${item.descricao}</p>
+    <p>Preço: R$ ${item.preco.toFixed(2)}</p>
+
+    <label for="obs-${index}">Remover algo?</label>
+    <input type="text" id="obs-${index}" placeholder="Ex: sem calda">
+
+    <button class="add-btn" data-index="${index}">Adicionar</button>
+  `;
+
+  container.appendChild(card);
+});
+const pedido = [];
+
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("add-btn")) {
+    const index = e.target.dataset.index;
+    const item = menu[index];
+    const observacao = document.querySelector(`#obs-${index}`).value;
+
+    pedido.push({
+      nome: item.nome,
+      preco: item.preco,
+      observacao: observacao
+    });
+
+    console.log(pedido); // ou exibe no carrinho
+  }
+});
+
 
 const menu = [
   {
@@ -155,9 +193,19 @@ function updateTotal() {
 }
 
 document.addEventListener("DOMContentLoaded", createDessertCounters);
-
+//fazer isso com imagen tambem expandir img
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("desc")) {
     e.target.classList.toggle("expandida");
   }
 });
+
+class Item { 
+  constructor ({descricao, preco, nome, observacao, imagem}) {
+  this.descricao = descricao;
+  this.preco = preco;
+ this.nome = nome;
+  this.observacao = observacao;
+  this.imagem = imagem;
+ }
+}
