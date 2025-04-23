@@ -8,6 +8,9 @@ const menu = [
     observacao: "Serve até quatro pessoas.",
     preco: 22.50,
     // imagem: "imagens/bolo-chocolate.jpg"
+    imagem : "../imagens/cakechoco.jpg"
+    
+
   },
   {
     nome: "🍨 Taça Colegial – Equipe 7",
@@ -152,3 +155,9 @@ function updateTotal() {
 }
 
 document.addEventListener("DOMContentLoaded", createDessertCounters);
+
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("desc")) {
+    e.target.classList.toggle("expandida");
+  }
+});
