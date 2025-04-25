@@ -9,7 +9,7 @@ const menu = [
     observacao: "Serve até quatro pessoas.",
     preco: 22.50,
     imagem: "../imagens/chococake.jpg"
-    
+
 
     
 
@@ -89,20 +89,21 @@ const menu = [
 menu.forEach((item, index) => {
   const card = document.createElement("div");
   card.classList.add("card");
-
+//linha 94 = >
   card.innerHTML = `
-    <img src="${item.imagem}" alt="${item.nome}">
+    <img src="${item.imagem}" 
     <h3>${item.nome}</h3>
     <p>${item.descricao}</p>
     <p>Preço: R$ ${item.preco.toFixed(2)}</p>
 
-    <label for="obs-${index}">Remover algo?</label>
-    <input type="text" id="obs-${index}" placeholder="Ex: sem calda">
+    <label for="obs-${index}"></label>
+    <input type="text" id="obs-${index}" placeholder="Retirar Algo?">
 
-    <button class="add-btn" data-index="${index}">Adicionar</button>
+    <button class="add-btn" data-index="${index}">Adicionar</button>    
   `;
 
   container.appendChild(card);
+  //linha 96 tirei o remover algo?
 });
 const pedido = [];
 
