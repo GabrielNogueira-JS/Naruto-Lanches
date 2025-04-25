@@ -1,224 +1,112 @@
+// sobremesas.js - Atualizado: expandir descrição e imagem, adicionar/remover itens e atualizar totais
+
 const dessertCounts = {};
 const precoPorSobremesa = {};
-const container = document.querySelector("#menu");
+const container = document.querySelector('#menu');
 
+// array 'menu' original permanece aqui
 const menu = [
-  {
-    nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer",
-    descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.",
-    observacao: "Serve até quatro pessoas.",
-    preco: 22.50,
-    imagem: "../imagens/chococake.jpg"
-
-
-    
-
-  },
-  {
-    nome: "🍨 Taça Colegial – Equipe 7",
-    descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.",
-    observacao: "Serve até duas pessoas.",
-    preco: 15.90,
-     imagem: "imagens/taca-colegial.jpg"
-  },
-  {
-    nome: "🍮 Pudim – Técnica Secreta do Clã Nara",
-    descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.",
-    observacao: "Serve até três pessoas.",
-    preco: 12.50,
-     imagem: "imagens/pudim.jpg"
-  },
-  {
-    nome: "🥤 Milk-Shake – Onda de Chakra Rosa",
-    descricao: "Milk-shake cremoso de morango com essência natural e chantilly por cima.",
-    observacao: "Serve uma pessoa.",
-    preco: 18.00,
-     imagem: "imagens/milkshake.jpg"
-  },
-  {
-    nome: "🧁 Cupcake – Estilo Sakura Blossom",
-    descricao: "Cupcake de limão com cobertura de calda de morango e confetes coloridos.",
-    observacao: "Serve uma pessoa.",
-    preco: 10.90,
-     imagem: "imagens/cupcake.jpg"
-  },
-  {
-    nome: "🥐 Croissant – Golpe Sombrio do Uchiha",
-    descricao: "Croissant folhado recheado com chocolate ao leite derretido e pincelado com calda especial.",
-    observacao: "Serve uma pessoa.",
-    preco: 8.50,
-    imagem: "imagens/croissant.jpg"
-  },
-  {
-    nome: "🦄 Taça Infantil Unicórnio – Invocação de Gamakichi",
-    descricao: "Sorvete de morango com calda de amora, decoração de pasta americana em forma de unicórnio e MM's.",
-    observacao: "Serve até duas crianças.",
-    preco: 20.00,
-     imagem: "imagens/taca-unicornio.jpg"
-  },
-  {
-    nome: "🍫 Petit Gateau – Jutsu do Dragão Negro",
-    descricao: "Bolinhas de massa de chocolate quente com sorvete de creme ao lado e calda quente.",
-    observacao: "Serve uma pessoa.",
-    preco: 19.90,
-     imagem: "imagens/petitgateau.jpg"
-  },
-  {
-    nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito",
-    descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.",
-    observacao: "Serve uma pessoa.",
-    preco: 7.00,
-     imagem: "imagens/sonho.jpg"
-  },
-  {
-    nome: "☕ Café – Chakra da Madrugada",
-    descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.",
-    observacao: "Serve uma pessoa.",
-    preco: 7.50,
-     imagem: "imagens/cafe.jpg"
-  },
-  {
-    nome: "🍰 Bolo de Morango – Chakra do Amanhecer",
-    descricao: "Bolo de morango macio com cobertura de morangos frescos e creme chantilly.",
-    observacao: "Serve até quatro pessoas.",
-    preco: 22.00,
-     imagem: "imagens/bolo-morango.jpg"
-  }
+  { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/chococake.jpg" },
+  { nome: "🍨 Taça Colegial – Equipe 7", descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "Serve até duas pessoas.", preco: 15.90, imagem: "imagens/taca-colegial.jpg" },
+  { nome: "🍮 Pudim – Técnica Secreta do Clã Nara", descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.", observacao: "Serve até três pessoas.", preco: 12.50, imagem: "imagens/pudim.jpg" },
+  { nome: "🥤 Milk-Shake – Onda de Chakra Rosa", descricao: "Milk-shake cremoso de morango com essência natural e chantilly por cima.", observacao: "Serve uma pessoa.", preco: 18.00, imagem: "imagens/milkshake.jpg" },
+  { nome: "🧁 Cupcake – Estilo Sakura Blossom", descricao: "Cupcake de limão com cobertura de calda de morango e confetes coloridos.", observacao: "Serve uma pessoa.", preco: 10.90, imagem: "imagens/cupcake.jpg" },
+  { nome: "🥐 Croissant – Golpe Sombrio do Uchiha", descricao: "Croissant folhado recheado com chocolate ao leite derretido e pincelado com calda especial.", observacao: "Serve uma pessoa.", preco: 8.50, imagem: "imagens/croissant.jpg" },
+  { nome: "🦄 Taça Infantil Unicórnio – Invocação de Gamakichi", descricao: "Sorvete de morango com calda de amora, decoração de pasta americana em forma de unicórnio e MM's.", observacao: "Serve até duas crianças.", preco: 20.00, imagem: "imagens/taca-unicornio.jpg" },
+  { nome: "🍫 Petit Gateau – Jutsu do Dragão Negro", descricao: "Bolinhas de massa de chocolate quente com sorvete de creme ao lado e calda quente.", observacao: "Serve uma pessoa.", preco: 19.90, imagem: "imagens/petitgateau.jpg" },
+  { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito", descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.", observacao: "Serve uma pessoa.", preco: 7.00, imagem: "imagens/sonho.jpg" },
+  { nome: "☕ Café – Chakra da Madrugada", descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.", observacao: "Serve uma pessoa.", preco: 7.50, imagem: "imagens/cafe.jpg" },
+  { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos e creme chantilly.", observacao: "Serve até quatro pessoas.", preco: 22.00, imagem: "imagens/bolo-morango.jpg" }
 ];
 
+// Gera o cardápio dinamicamente
 menu.forEach((item, index) => {
-  const card = document.createElement("div");
-  card.classList.add("card");
-//linha 94 = >
+  const card = document.createElement('div');
+  card.classList.add('card');
+  card.dataset.index = index;
   card.innerHTML = `
-    <img src="${item.imagem}">
-    <h3>${item.nome}</h3>
-    <p>${item.descricao}</p>
-    <p>Preço: R$ ${item.preco.toFixed(2)}</p>
-
-    <label for="obs-${index}"></label>
-    <input type="text" id="obs-${index}" placeholder="Retirar Algo?">
-
-    <button class="add-btn" data-index="${index}">Adicionar</button>    
+    <img src="${item.imagem}" alt="${item.nome}" class="sobremesa-img">
+    <div class="card-content">
+      <h3>${item.nome}</h3>
+      <p class="desc">${item.descricao}</p>
+      <p><strong>Preço:</strong> R$ ${item.preco.toFixed(2)}</p>
+      <input type="text" id="obs-${index}" placeholder="Retirar algo?">
+      <button class="add-btn" data-index="${index}">Adicionar</button>
+    </div>
   `;
-
   container.appendChild(card);
-  //linha 96 tirei o remover algo?
 });
+
 const pedido = [];
 
-document.addEventListener("click", function(e) {
-  if (e.target.classList.contains("add-btn")) {
-    const index = e.target.dataset.index;
-    const item = menu[index];
-    const observacao = document.querySelector(`#obs-${index}`).value;
+// Atualiza rodapé com total e quantidade
+function atualizarRodape() {
+  const totalElem = document.getElementById('total');
+  const valorElem = document.getElementById('valor-total');
+  let qtd = pedido.length;
+  let valor = pedido.reduce((sum, p) => sum + p.preco, 0);
+  totalElem.textContent = `Total de sobremesas: ${qtd}`;
+  valorElem.textContent = `Total em dinheiro: R$ ${valor.toFixed(2)}`;
+}
 
-    pedido.push({
-      nome: item.nome,
-      preco: item.preco,
-      observacao: observacao
-      
-    });
-    e.target.disabled = true;
-    e.target.textContent = "Adicionado ✅";
-    document.querySelector(`#obs-${index}`).value = '';
-setTimeout(() => {
-  e.target.textContent = "Adicionar";
-  
-}, 1000);
-    e.target.disabled = false;
+// Mensagem de erro temporária
+function mostrarErro(msg) {
+  const msgEl = document.createElement('div');
+  msgEl.className = 'error-temp';
+  msgEl.textContent = msg;
+  container.prepend(msgEl);
+  setTimeout(() => msgEl.remove(), 2000);
+}
 
+// Clique global para botões, descrição e imagem
+document.addEventListener('click', e => {
+  const el = e.target;
 
+  // 1) Adicionar ou remover item
+  if (el.classList.contains('add-btn')) {
+    const idx = +el.dataset.index;
+    const item = menu[idx];
+    const obsInput = document.getElementById(`obs-${idx}`);
+    const obs = obsInput.value.trim();
 
-
-    console.log(pedido); // ou exibe no carrinho
-  }
-});
-
-function createDessertCounters() {
-  const leftContainer  = document.getElementById("left-desserts");
-  const rightContainer = document.getElementById("right-desserts");
-
-  menu.forEach((item, index) => {
-    dessertCounts[item.nome]     = 0;
-    precoPorSobremesa[item.nome] = item.preco;
-
-    const itemDiv = document.createElement("div");
-    itemDiv.classList.add("card");
-
-    const errorMessageDiv = document.createElement("div");
-    errorMessageDiv.id = `${item.nome}-error`;
-    errorMessageDiv.classList.add("error-message");
-
-    itemDiv.innerHTML = `
-      <div class="card-left">
-        <h4 class="item-name"><strong>${item.nome}</strong></h4>
-        <p class="desc"><strong>${item.descricao}<strong></p>
-        <p class="observacao">${item.observacao}</p>
-        <p class="price"><strong>R$ ${item.preco.toFixed(2)}</strong></p>
-        <div class="buttons">
-          <button class="decrement" onclick="updateCount('${item.nome}', -1)">-</button>
-          <span id="${item.nome}-count">0</span>
-          <button class="increment" onclick="updateCount('${item.nome}', 1)">+</button>
-        </div>
-      </div>
-      <div class="card-right">
-        
-      </div>
-    `;
-// <img src="${item.imagem}" alt="${item.nome}" /> -->  essa linha estava na 162,estava comentada em html
-    itemDiv.appendChild(errorMessageDiv);
-
-    if (index % 2 === 0) {
-      leftContainer.appendChild(itemDiv);
+    if (obs) {
+      // tentativa de remover
+      const removeIndex = pedido.findIndex(p => p.nome === item.nome);
+      if (removeIndex === -1) {
+        mostrarErro('Nenhum item adicionado para remover');
+      } else {
+        pedido.splice(removeIndex, 1);
+        atualizarRodape();
+      }
     } else {
-      rightContainer.appendChild(itemDiv);
+      // adicionar
+      pedido.push({ nome: item.nome, preco: item.preco });
+      el.disabled = true;
+      el.textContent = 'Adicionado ✅';
+      setTimeout(() => {
+        el.textContent = 'Adicionar';
+        el.disabled = false;
+      }, 1000);
+      atualizarRodape();
     }
-  });
-}
 
-function updateCount(sobremesa, change) {
-  const errorDiv = document.getElementById(`${sobremesa}-error`);
-  try {
-    let newValue = dessertCounts[sobremesa] + change;
-    if (newValue < 0) return;
-    if (newValue > 10) {
-      alert("Limite por mesa atingido!");
-      throw new Error("Limite atingido");
+    obsInput.value = '';
+    return;
+  }
+
+  // 2) Expandir/contrair descrição (até 1 linha ou total)
+  if (el.classList.contains('desc')) {
+    el.classList.toggle('expandida');
+  }
+
+  // 3) Expandir/contrair imagem
+  if (el.classList.contains('sobremesa-img')) {
+    if (el.style.width) {
+      el.style.width = '';
+      el.style.height = '';
+    } else {
+      el.style.width = '200px';
+      el.style.height = '200px';
     }
-    dessertCounts[sobremesa] = newValue;
-    document.getElementById(`${sobremesa}-count`).textContent = newValue;
-    updateTotal();
-    errorDiv.textContent = "";
-  } catch (err) {
-    console.error(err.message);
-  }
-}
-
-function updateTotal() {
-  let totalQty = 0, totalMoney = 0;
-  for (let nome in dessertCounts) {
-    totalQty += dessertCounts[nome];
-    totalMoney += dessertCounts[nome] * precoPorSobremesa[nome];
-  }
-  document.getElementById("total").textContent = `Total de sobremesas: ${totalQty}`;
-  document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalMoney.toFixed(2)}`;
-}
-
-document.addEventListener("DOMContentLoaded", createDessertCounters);
-//fazer isso com imagen tambem expandir img
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("desc")) {
-    e.target.classList.toggle("expandida");
   }
 });
-
-class Item { 
-  constructor ({descricao, preco, nome, observacao, imagem}) {
-  this.descricao = descricao;
-  this.preco = preco;
- this.nome = nome;
-  this.observacao = observacao;
-  this.imagem = imagem;
- }
-}

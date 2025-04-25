@@ -199,3 +199,11 @@ button:hover {
 #return-button:hover {
   background-color: #34495e;
 }
+/* ===== New Styles for Expanded Description ===== */
+.desc.expandida {
+  max-height: 500px; /* Expands the description */
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.9); /* Slight white background for readability */
+  padding: 10px;
+  transition: max-height 0.3s ease-in-out; /* Smooth transition */
+}
