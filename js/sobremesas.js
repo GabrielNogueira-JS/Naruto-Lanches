@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="desc">${item.descricao}</p>
         <div class="observacao"><span class="icon-users">👥</span><span>${item.observacao}</span></div>
         <p class="price">R$ ${item.preco.toFixed(2)}</p>
-        <button class="add-btn" data-index="${index}">Adicionar</button>
+       
         <!-- <label for="obs-${index}"></label>
         <input type="text" id="obs-${index}" placeholder="Retirar algo?"> -->
       </div>
@@ -102,3 +102,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+// <button class="add-btn" data-index="${index}">Adicionar</button>

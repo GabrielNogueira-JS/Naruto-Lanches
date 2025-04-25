@@ -187,7 +187,7 @@ button:hover {
 /* ===== Botão Retornar ===== */
 #return-button {
   background-color: #2c3e50;
-  color: #fff;
+  color: #160c0c;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
@@ -197,7 +197,7 @@ button:hover {
   transition: background 0.3s;
 }
 #return-button:hover {
-  background-color: #34495e;
+  background-color: #e685bd;
 }
 /* ===== New Styles for Expanded Description ===== */
 .desc.expandida {
