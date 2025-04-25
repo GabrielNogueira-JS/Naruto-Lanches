@@ -1,3 +1,5 @@
+const dessertCounts = {};
+const precoPorSobremesa = {};
 
 function createDessertCounters() {
   const leftContainer = document.getElementById("left-desserts");
@@ -41,31 +43,35 @@ function updateCount(sobremesa, change) {
   const errorDiv = document.getElementById(`${sobremesa}-error`);
   try {
     let newValue = dessertCounts[sobremesa] + change;
-    if (newValue < 0) return;
-    if (newValue > 10) {
-      alert("Limite por mesa atingido!");
-      throw new Error("Limite atingido");
+
+    if (newValue < 0) {
+      errorDiv.textContent = "Você não pode ter menos de 0 sobremesas!";
+      return;
     }
+
+    if (newValue > 10) {
+      errorDiv.textContent = "Limite por sobremesa atingido!";
+      alert("Limite por mesa atingido!");
+      return;
+    }
+
     dessertCounts[sobremesa] = newValue;
     document.getElementById(`${sobremesa}-count`).textContent = newValue;
     updateTotal();
-    errorDiv.textContent = "";
+    errorDiv.textContent = ""; // Limpa mensagem de erro
   } catch (err) {
     console.error(err.message);
   }
 }
 
 function updateTotal() {
-  let totalQty = 0,
-    totalMoney = 0;
+  let totalQty = 0, totalMoney = 0;
   for (let nome in dessertCounts) {
     totalQty += dessertCounts[nome];
     totalMoney += dessertCounts[nome] * precoPorSobremesa[nome];
   }
   document.getElementById("total").textContent = `Total de sobremesas: ${totalQty}`;
-  document.getElementById(
-    "valor-total"
-  ).textContent = `Total em dinheiro: R$ ${totalMoney.toFixed(2)}`;
+  document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalMoney.toFixed(2)}`;
 }
 
 document.addEventListener("DOMContentLoaded", createDessertCounters);
