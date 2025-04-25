@@ -120,7 +120,7 @@ header .borda {
 
 .observacao {
   font-size: 0.85rem;
-  color: #666;
+  color: #f51e1e;
   margin-bottom: 8px;
   background-color: #797979;
 }
@@ -172,7 +172,7 @@ button:hover {
   margin-top: 30px;
   text-align: center;
   width: 100%;
-  background-color: #ffe4f1;
+  background-color: #1b1515;
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
