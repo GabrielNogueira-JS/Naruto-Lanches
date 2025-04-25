@@ -91,7 +91,7 @@ menu.forEach((item, index) => {
   card.classList.add("card");
 //linha 94 = >
   card.innerHTML = `
-    <img src="${item.imagem}" 
+    <img src="${item.imagem}" alt="${item.nome}">
     <h3>${item.nome}</h3>
     <p>${item.descricao}</p>
     <p>Preço: R$ ${item.preco.toFixed(2)}</p>
@@ -149,7 +149,7 @@ function createDessertCounters() {
     itemDiv.innerHTML = `
       <div class="card-left">
         <h4 class="item-name"><strong>${item.nome}</strong></h4>
-        <p class="desc">${item.descricao}</p>
+        <p class="desc"><strong>${item.descricao}<strong></p>
         <p class="observacao">${item.observacao}</p>
         <p class="price"><strong>R$ ${item.preco.toFixed(2)}</strong></p>
         <div class="buttons">
@@ -159,10 +159,10 @@ function createDessertCounters() {
         </div>
       </div>
       <div class="card-right">
-        <!-- <img src="${item.imagem}" alt="${item.nome}" /> -->
+        
       </div>
     `;
-
+// <img src="${item.imagem}" alt="${item.nome}" /> -->  essa linha estava na 162,estava comentada em html
     itemDiv.appendChild(errorMessageDiv);
 
     if (index % 2 === 0) {
