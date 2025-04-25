@@ -121,7 +121,7 @@ document.addEventListener("click", function(e) {
     });
     e.target.disabled = true;
     e.target.textContent = "Adicionado ✅";
-    (`#obs-${index}`).value = '';
+    document.querySelector(`#obs-${index}`).value = '';
 setTimeout(() => {
   e.target.textContent = "Adicionar";
   
