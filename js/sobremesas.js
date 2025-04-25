@@ -91,7 +91,7 @@ menu.forEach((item, index) => {
   card.classList.add("card");
 //linha 94 = >
   card.innerHTML = `
-    <img src="${item.imagem}" alt="${item.nome}">
+    <img src="${item.imagem}">
     <h3>${item.nome}</h3>
     <p>${item.descricao}</p>
     <p>Preço: R$ ${item.preco.toFixed(2)}</p>
@@ -117,13 +117,17 @@ document.addEventListener("click", function(e) {
       nome: item.nome,
       preco: item.preco,
       observacao: observacao
+      
     });
     e.target.disabled = true;
     e.target.textContent = "Adicionado ✅";
+    (`#obs-${index}`).value = '';
 setTimeout(() => {
   e.target.textContent = "Adicionar";
+  
 }, 1000);
     e.target.disabled = false;
+
 
 
 
