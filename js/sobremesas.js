@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => msgEl.remove(), 2000);
   }
 
-  // Atualiza rodapé
+ 
   function atualizarRodape() {
     const totalElem = document.getElementById('total');
     const valorElem = document.getElementById('valor-total');
