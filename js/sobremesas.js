@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('menu');
   const pedido = [];
 
-  // Array completo de sobremesas
   const menu = [
     { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👥👥 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
     { nome: "🍨 Taça Colegial – Equipe 7", descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👥Serve até duas pessoas.", preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos e creme chantilly.", observacao: "👥👥Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
   ];
 
-  // Função para mostrar erro temporário
+  
   function mostrarErro(msg) {
     const msgEl = document.createElement('div');
     msgEl.className = 'error-temp';
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => msgEl.remove(), 2000);
   }
 
-  // Função para atualizar o rodapé com total e valor
+  
   function atualizarRodape() {
     const totalElem = document.getElementById('total');
     const valorElem = document.getElementById('valor-total');
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     valorElem.textContent = `Total em dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
-  // Renderiza os cards de sobremesas
+  
   menu.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -55,17 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     container.appendChild(card);
 
-    // Expande a imagem por padrão
+   
     const imgEl = card.querySelector('.sobremesa-img');
     imgEl.style.width = '200px';
     imgEl.style.height = '200px';
 
-    // Adiciona evento de clique na imagem para mostrar detalhes
+    
     imgEl.addEventListener('click', () => {
       const cardEl = imgEl.closest('.card');
       const idx = +cardEl.dataset.index;
 
-      // Exibe ou esconde o modal de detalhes
       if (detailView.classList.contains('hidden')) {
         showDetail(idx);
       } else {
