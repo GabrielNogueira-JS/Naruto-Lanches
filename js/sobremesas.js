@@ -90,18 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Clique na imagem ainda contrai/expande
-    if (el.classList.contains('sobremesa-img')) {
-      if (el.style.width) {
-        el.style.width = '';
-        el.style.height = '';
-      } else {
-        el.style.width = '200px';
-        el.style.height = '200px';
-      }
-    }
+    
+    
   });
-});
+;
 // <button class="add-btn" data-index="${index}">Adicionar</button>
   // --- Início do detalhe genérico ---
   const detailView = document.getElementById('detail-view');
