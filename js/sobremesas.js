@@ -103,3 +103,68 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 // <button class="add-btn" data-index="${index}">Adicionar</button>
+  // --- Início do detalhe genérico ---
+  const detailView = document.getElementById('detail-view');
+
+  // Função para montar e exibir o modal de detalhe
+  function showDetail(idx) {
+    const item = menu[idx];
+    detailView.innerHTML = `
+      <div class="box">
+        <span class="close-hint">✖</span>
+        <h2><em>${item.nome}</em></h2>
+        <img src="${item.imagem}" alt="${item.nome}">
+        <p>${item.descricao}</p>
+        <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
+        <label for="obs-detail">Observação:</label>
+        <input type="text" id="obs-detail" placeholder="Retirar algo?">
+        <div class="actions">
+          <button id="add-detail">Adicionar</button>
+          <button id="remove-detail">Remover</button>
+        </div>
+      </div>
+    `;
+    detailView.classList.remove('hidden');
+
+    // Eventos dos botões nesse modal
+    detailView.querySelector('.close-hint').onclick = () => hideDetail();
+    detailView.querySelector('#add-detail').onclick = () => {
+      pedido.push({ nome: item.nome, preco: item.preco });
+      atualizarRodape();
+      hideDetail();
+    };
+    detailView.querySelector('#remove-detail').onclick = () => {
+      // remove o **primeiro** item igual do pedido (se existir)
+      const removeIdx = pedido.findIndex(p => p.nome === item.nome);
+      if (removeIdx > -1) {
+        pedido.splice(removeIdx, 1);
+        atualizarRodape();
+      } else {
+        mostrarErro('Nada desse item no pedido!');
+      }
+      hideDetail();
+    };
+  }
+
+  function hideDetail() {
+    detailView.classList.add('hidden');
+    detailView.innerHTML = '';
+  }
+
+  // Intercepta clique na imagem para abrir/fechar detalhe
+  // (move isso pra cima ou ajuste sua delegação, mas garanta que venha após a definição de showDetail)
+  container.addEventListener('click', e => {
+    const el = e.target;
+    if (el.classList.contains('sobremesa-img')) {
+      const card = el.closest('.card');
+      const idx = +card.dataset.index;
+      // Se já estiver aberto, fecha. Se não, abre:
+      if (detailView.classList.contains('hidden')) {
+        showDetail(idx);
+      } else {
+        hideDetail();
+      }
+    }
+  });
+  // --- Fim do detalhe genérico ---
+
