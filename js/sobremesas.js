@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Array completo de sobremesas
   const menu = [
-    { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👥👥 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate" },
+    { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👥👥 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png" },
     { nome: "🍨 Taça Colegial – Equipe 7", descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👥Serve até duas pessoas.", preco: 15.90, imagem: "../imagens/tacacolegial.png" },
     { nome: "🍮 Pudim – Técnica Secreta do Clã Nara", descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.", observacao: "👤👥Serve até três pessoas.", preco: 12.50, imagem: "../imagens/pudim.png" },
     { nome: "🥤 Milk-Shake – Onda de Chakra Rosa", descricao: "Milk-shake cremoso de morango com essência natural e chantilly por cima.", observacao: "👤Serve uma pessoa.", preco: 18.00, imagem: "../imagens/milkshake.png" },
