@@ -4,20 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Array completo de sobremesas
   const menu = [
-    { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👥👥 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
-    { nome: "🍨 Taça Colegial – Equipe 7", descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👥Serve até duas pessoas.", preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
-    { nome: "🍮 Pudim – Técnica Secreta do Clã Nara", descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.", observacao: "👤👥Serve até três pessoas.", preco: 12.50, imagem: "../imagens/pudim.png.png" },
+    { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👥👥 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png" },
+    { nome: "🍨 Taça Colegial – Equipe 7", descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👥Serve até duas pessoas.", preco: 15.90, imagem: "../imagens/tacacolegial.png" },
+    { nome: "🍮 Pudim – Técnica Secreta do Clã Nara", descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.", observacao: "👤👥Serve até três pessoas.", preco: 12.50, imagem: "../imagens/pudim.png" },
     { nome: "🥤 Milk-Shake – Onda de Chakra Rosa", descricao: "Milk-shake cremoso de morango com essência natural e chantilly por cima.", observacao: "👤Serve uma pessoa.", preco: 18.00, imagem: "../imagens/milkshake.png" },
     { nome: "🧁 Cupcake – Estilo Sakura Blossom", descricao: "Cupcake de limão com cobertura de calda de morango e confetes coloridos.", observacao: "👤Serve uma pessoa.", preco: 10.90, imagem: "../imagens/cupcake.png" },
     { nome: "🥐 Croissant – Golpe Sombrio do Uchiha", descricao: "Croissant folhado recheado com chocolate ao leite derretido e pincelado com calda especial.", observacao: "👤Serve uma pessoa.", preco: 8.50, imagem: "../imagens/croissant.png" },
-    { nome: "🦄 Taça Infantil Unicórnio – Invocação de Gamakichi", descricao: "Sorvete de morango com calda de amora, decoração de pasta americana em forma de unicórnio e MM's.", observacao: "Serve até duas crianças.", preco: 20.00, imagem: "../imagens/tacaunicornio.png.png" },
-    { nome: "🍫 Petit Gateau – Jutsu do Dragão Negro", descricao: "Bolinhas de massa de chocolate quente com sorvete de creme ao lado e calda quente.", observacao: "👤Serve uma pessoa.", preco: 19.90, imagem: "../imagens/petitgateau.png.png" },
-    { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito", descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.", observacao: "👤Serve uma pessoa.", preco: 7.00, imagem: "../imagens/doce.png.png" },
-    { nome: "☕ Café – Chakra da Madrugada", descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.", observacao: "👤Serve uma pessoa.", preco: 7.50, imagem: "../imagens/cafe.png.png" },
-    { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos e creme chantilly.", observacao: " 👥👥Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
+    { nome: "🦄 Taça Infantil Unicórnio – Invocação de Gamakichi", descricao: "Sorvete de morango com calda de amora, decoração de pasta americana em forma de unicórnio e MM's.", observacao: "Serve até duas crianças.", preco: 20.00, imagem: "../imagens/tacaunicornio.png" },
+    { nome: "🍫 Petit Gateau – Jutsu do Dragão Negro", descricao: "Bolinhas de massa de chocolate quente com sorvete de creme ao lado e calda quente.", observacao: "👤Serve uma pessoa.", preco: 19.90, imagem: "../imagens/petitgateau.png" },
+    { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito", descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.", observacao: "👤Serve uma pessoa.", preco: 7.00, imagem: "../imagens/doce.png" },
+    { nome: "☕ Café – Chakra da Madrugada", descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.", observacao: "👤Serve uma pessoa.", preco: 7.50, imagem: "../imagens/cafe.png" },
+    { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos e creme chantilly.", observacao: "👥👥Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png" }
   ];
 
-  // Mostra erro temporário
+  // Função para mostrar erro temporário
   function mostrarErro(msg) {
     const msgEl = document.createElement('div');
     msgEl.className = 'error-temp';
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => msgEl.remove(), 2000);
   }
 
+  // Função para atualizar o rodapé com total e valor
   function atualizarRodape() {
     const totalElem = document.getElementById('total');
     const valorElem = document.getElementById('valor-total');
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     valorElem.textContent = `Total em dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
-  // Renderiza cards com imagem expandida por padrão
+  // Renderiza os cards de sobremesas
   menu.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -54,16 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     container.appendChild(card);
 
-    // Expande imagem por padrão
+    // Expande a imagem por padrão
     const imgEl = card.querySelector('.sobremesa-img');
     imgEl.style.width = '200px';
     imgEl.style.height = '200px';
 
-    // Intercepta clique na imagem para abrir o detalhe
+    // Adiciona evento de clique na imagem para mostrar detalhes
     imgEl.addEventListener('click', () => {
-      const card = imgEl.closest('.card');
-      const idx = +card.dataset.index;
-      // Se a imagem for clicada, abre o modal com o detalhe
+      const cardEl = imgEl.closest('.card');
+      const idx = +cardEl.dataset.index;
+
+      // Exibe ou esconde o modal de detalhes
       if (detailView.classList.contains('hidden')) {
         showDetail(idx);
       } else {
@@ -72,36 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Delegação de clique
-  container.addEventListener('click', (e) => {
-    const el = e.target;
-
-    // Adicionar item
-    if (el.classList.contains('add-btn')) {
-      const idx = +el.dataset.index;
-      const item = menu[idx];
-      pedido.push({ nome: item.nome, preco: item.preco });
-      el.disabled = true;
-      el.textContent = 'Adicionado ✅';
-      setTimeout(() => {
-        el.textContent = 'Adicionar';
-        el.disabled = false;
-      }, 1000);
-      atualizarRodape();
-      return;
-    }
-
-    // Expandir/contrair descrição
-    if (el.classList.contains('desc')) {
-      el.classList.toggle('expandida');
-      return;
-    }
-  });
-
-  // --- Início do detalhe genérico ---
+  // Função para mostrar os detalhes da sobremesa no modal
   const detailView = document.getElementById('detail-view');
 
-  // Função para montar e exibir o modal de detalhe
   function showDetail(idx) {
     const item = menu[idx];
     detailView.innerHTML = `
@@ -121,15 +96,18 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     detailView.classList.remove('hidden');
 
-    // Eventos dos botões nesse modal
-    detailView.querySelector('.close-hint').onclick = () => hideDetail();
+    // Evento de fechar no "X"
+    detailView.querySelector('.close-hint').onclick = hideDetail;
+
+    // Evento de adicionar item ao pedido
     detailView.querySelector('#add-detail').onclick = () => {
       pedido.push({ nome: item.nome, preco: item.preco });
       atualizarRodape();
       hideDetail();
     };
+
+    // Evento de remover item do pedido
     detailView.querySelector('#remove-detail').onclick = () => {
-      // remove o **primeiro** item igual do pedido (se existir)
       const removeIdx = pedido.findIndex(p => p.nome === item.nome);
       if (removeIdx > -1) {
         pedido.splice(removeIdx, 1);
@@ -141,23 +119,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
+  // Função para esconder o modal de detalhes
   function hideDetail() {
     detailView.classList.add('hidden');
     detailView.innerHTML = '';
   }
 
-  // Intercepta clique na imagem para abrir/fechar detalhe
-  container.addEventListener('click', e => {
+  // Delegação de clique para adicionar item ao pedido
+  container.addEventListener('click', (e) => {
     const el = e.target;
-    if (el.classList.contains('sobremesa-img')) {
-      const card = el.closest('.card');
-      const idx = +card.dataset.index;
-      // Se já estiver aberto, fecha. Se não, abre:
-      if (detailView.classList.contains('hidden')) {
-        showDetail(idx);
-      } else {
-        hideDetail();
-      }
+
+    if (el.classList.contains('add-btn')) {
+      const idx = +el.dataset.index;
+      const item = menu[idx];
+      pedido.push({ nome: item.nome, preco: item.preco });
+      el.disabled = true;
+      el.textContent = 'Adicionado ✅';
+      setTimeout(() => {
+        el.textContent = 'Adicionar';
+        el.disabled = false;
+      }, 1000);
+      atualizarRodape();
+      return;
+    }
+
+    // Expandir/contrair descrição
+    if (el.classList.contains('desc')) {
+      el.classList.toggle('expandida');
+      return;
     }
   });
 });
