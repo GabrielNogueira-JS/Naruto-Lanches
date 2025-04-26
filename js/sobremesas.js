@@ -1,5 +1,3 @@
-// sobremesas.js - Atualizado: imagem já expandida por padrão e interações
-
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('menu');
   const pedido = [];
@@ -28,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => msgEl.remove(), 2000);
   }
 
- 
   function atualizarRodape() {
     const totalElem = document.getElementById('total');
     const valorElem = document.getElementById('valor-total');
@@ -50,8 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="observacao"><span class="icon-users">👥</span><span>${item.observacao}</span></div>
         <p class="price">R$ ${item.preco.toFixed(2)}</p>
         <button class="add-btn" data-index="${index}">Adicionar</button>       
-        <!-- <label for="obs-${index}"></label>
-        <input type="text" id="obs-${index}" placeholder="Retirar algo?"> -->
       </div>
       <div class="card-right">
         <img src="${item.imagem}" class="sobremesa-img" alt="${item.nome}">
@@ -63,6 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgEl = card.querySelector('.sobremesa-img');
     imgEl.style.width = '200px';
     imgEl.style.height = '200px';
+
+    // Intercepta clique na imagem para abrir o detalhe
+    imgEl.addEventListener('click', () => {
+      const card = imgEl.closest('.card');
+      const idx = +card.dataset.index;
+      // Se a imagem for clicada, abre o modal com o detalhe
+      if (detailView.classList.contains('hidden')) {
+        showDetail(idx);
+      } else {
+        hideDetail();
+      }
+    });
   });
 
   // Delegação de clique
@@ -89,12 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
       el.classList.toggle('expandida');
       return;
     }
-
-    
-    
   });
-;
- <button class="add-btn" data-index="${index}">Adicionar</button>
+
   // --- Início do detalhe genérico ---
   const detailView = document.getElementById('detail-view');
 
@@ -144,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Intercepta clique na imagem para abrir/fechar detalhe
-  // (move isso pra cima ou ajuste sua delegação, mas garanta que venha após a definição de showDetail)
   container.addEventListener('click', e => {
     const el = e.target;
     if (el.classList.contains('sobremesa-img')) {
@@ -158,4 +160,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
- 
+});
