@@ -7,17 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const pedido = [];
 
-  const menu = [ 
-    { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👤👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
-    { nome: "🍨 Taça Colegial – Equipe 7", descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👤👤Serve até duas pessoas.", preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
-    { nome: "🍮 Pudim – Técnica Secreta do Clã Nara", descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.", observacao: "👤👤👤Serve até três pessoas.", preco: 12.50, imagem: "../imagens/pudim.png.png" },
-    { nome: "🥤 Milk-Shake – Onda de Chakra Rosa", descricao: "Milk-shake cremoso de morango com essência natural e chantilly por cima.", observacao: "👤Serve uma pessoa.", preco: 18.00, imagem: "../imagens/milkshake.png" },
-    { nome: "🧁 Cupcake – Estilo Sakura Blossom", descricao: "Cupcake de limão com cobertura de calda de morango e confetes coloridos.", observacao: "👤Serve uma pessoa.", preco: 10.90, imagem: "../imagens/cupcake.png" },
-    { nome: "🥐 Croissant – Golpe Sombrio do Uchiha", descricao: "Croissant folhado recheado com chocolate ao leite derretido e pincelado com calda especial.", observacao: "👤Serve uma pessoa.", preco: 8.50, imagem: "../imagens/croissant.png" },
-    { nome: "🦄 Taça Infantil Unicórnio – Invocação de Gamakichi", descricao: "Sorvete de morango com calda de amora, decoração de pasta americana em forma de unicórnio e MM's.", observacao: "👤👤Serve até duas crianças.", preco: 20.00, imagem: "../imagens/tacaunicornio.png.png" },
-    { nome: "🍫 Petit Gateau – Jutsu do Dragão Negro", descricao: "Bolinhas de massa de chocolate quente com sorvete de creme ao lado e calda quente.", observacao: "👤Serve uma pessoa.", preco: 19.90, imagem: "../imagens/petitgateau.png.png" },
-    { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito", descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.", observacao: "👤Serve uma pessoa.", preco: 7.00, imagem: "../imagens/doce.png.png" },
-    { nome: "☕ Café – Chakra da Madrugada", descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.", observacao: "👤Serve uma pessoa.", preco: 7.50, imagem: "../imagens/cafe.png.png" },
+  const menu = [
+    { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro...", observacao: "👤👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
+    { nome: "🍨 Taça Colegial – Equipe 7", descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango...", observacao: "👤👤Serve até duas pessoas.", preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
+    { nome: "🍮 Pudim – Técnica Secreta do Clã Nara", descricao: "Pudim cremoso de doce de leite com calda de caramelo...", observacao: "👤👤👤Serve até três pessoas.", preco: 12.50, imagem: "../imagens/pudim.png.png" },
+    { nome: "🥤 Milk-Shake – Onda de Chakra Rosa", descricao: "Milk-shake cremoso de morango com essência natural...", observacao: "👤Serve uma pessoa.", preco: 18.00, imagem: "../imagens/milkshake.png" },
+    { nome: "🧁 Cupcake – Estilo Sakura Blossom", descricao: "Cupcake de limão com cobertura de calda de morango...", observacao: "👤Serve uma pessoa.", preco: 10.90, imagem: "../imagens/cupcake.png" },
+    { nome: "🥐 Croissant – Golpe Sombrio do Uchiha", descricao: "Croissant folhado recheado com chocolate ao leite...", observacao: "👤Serve uma pessoa.", preco: 8.50, imagem: "../imagens/croissant.png" },
+    { nome: "🦄 Taça Infantil Unicórnio – Invocação de Gamakichi", descricao: "Sorvete de morango com calda de amora...", observacao: "👤👤Serve até duas crianças.", preco: 20.00, imagem: "../imagens/tacaunicornio.png.png" },
+    { nome: "🍫 Petit Gateau – Jutsu do Dragão Negro", descricao: "Bolinhas de massa de chocolate quente com sorvete...", observacao: "👤Serve uma pessoa.", preco: 19.90, imagem: "../imagens/petitgateau.png.png" },
+    { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito", descricao: "Sonho frito recheado com leite condensado...", observacao: "👤Serve uma pessoa.", preco: 7.00, imagem: "../imagens/doce.png.png" },
+    { nome: "☕ Café – Chakra da Madrugada", descricao: "Café Jamaica Blue Mountain, adoçado na medida...", observacao: "👤Serve uma pessoa.", preco: 7.50, imagem: "../imagens/cafe.png.png" },
     { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos...", observacao: "👤👤👤👤Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
   ];
 
@@ -36,47 +36,24 @@ document.addEventListener('DOMContentLoaded', () => {
     valEl.textContent = `R$ ${totalValor.toFixed(2)}`;
   }
 
-  function detalheItem(idx) {
-    const item = menu[idx];
-    detailView.innerHTML = `
-      <div class="box">
-        <span class="close-hint">✖</span>
-        <h2><em>${item.nome}</em></h2>
-        <img src="${item.imagem}" alt="${item.nome}">
-        <p>${item.descricao}</p>
-        <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
-        <textarea id="obs-detail" rows="5" maxlength="50" placeholder="Obs (Opcional)" style="width:100%"></textarea>
-        <div class="actions">
-          <button id="add-detail" class="botao-padrao">Adicionar</button>
-          <button id="remove-detail" class="botao-padrao">Remover</button>
-        </div>
-      </div>
-    `;
-    detailView.classList.remove('hidden');
-    detailView.querySelector('.close-hint').onclick = () => detailView.classList.add('hidden');
+  function adicionarItem(item) {
+    const existe = pedido.find(p => p.nome === item.nome && p.observacao === '');
+    if (!existe && pedido.length < 10) {
+      pedido.push({ nome: item.nome, preco: item.preco, observacao: '' });
+      atualizarResumoRodape();
+    } else if (existe) {
+      mostrarErro('Esse item já está no pedido!');
+    }
+  }
 
-    detailView.querySelector('#add-detail').onclick = () => {
-      const obs = detailView.querySelector('#obs-detail').value.trim();
-      const exists = pedido.find(p => p.nome === item.nome && p.observacao === obs);
-      if (!exists && pedido.length < 10) {
-        pedido.push({ nome: item.nome, preco: item.preco, observacao: obs });
-        atualizarResumoRodape();
-      } else if (exists) {
-        mostrarErro('Este item já foi adicionado com essa observação!');
-      }
-      detailView.classList.add('hidden');
-    };
-
-    detailView.querySelector('#remove-detail').onclick = () => {
-      const idxRem = pedido.findIndex(p => p.nome === item.nome);
-      if (idxRem > -1) {
-        pedido.splice(idxRem, 1);
-        atualizarResumoRodape();
-      } else {
-        mostrarErro('Nada desse item no pedido!');
-      }
-      detailView.classList.add('hidden');
-    };
+  function removerItem(item) {
+    const idx = pedido.findIndex(p => p.nome === item.nome && p.observacao === '');
+    if (idx > -1) {
+      pedido.splice(idx, 1);
+      atualizarResumoRodape();
+    } else {
+      mostrarErro('Esse item não está no pedido!');
+    }
   }
 
   menu.forEach((item, i) => {
@@ -89,30 +66,31 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="desc">${item.descricao}</p>
         <div class="observacao">${item.observacao}</div>
         <p class="price">R$ ${item.preco.toFixed(2)}</p>
+        <div class="card-actions">
+          <button class="mini-btn add-btn">Adicionar</button>
+          <button class="mini-btn remove-btn">Remover</button>
+        </div>
       </div>
       <div class="card-right">
-        <img src="${item.imagem}" alt="${item.nome}">
+        <img src="${item.imagem}" alt="${item.nome}" width="80" height="80"/>
       </div>
     `;
     container.appendChild(card);
-    card.addEventListener('click', () => detalheItem(i));
+
+    card.querySelector('.add-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      adicionarItem(item);
+    });
+
+    card.querySelector('.remove-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      removerItem(item);
+    });
+
+    card.addEventListener('click', () => {
+      // Aqui você pode abrir o detalhe completo como antes, se quiser
+    });
   });
 
   atualizarResumoRodape();
-
-  finalizarBtn.addEventListener('click', () => {
-    if (pedido.length === 0) {
-      mostrarErro('Você ainda não adicionou nenhum doce!');
-      return;
-    }
-
-    let resumo = `<h2>Resumo do Pedido</h2><ul>`;
-    pedido.forEach(p => {
-      resumo += `<li><strong>${p.nome}</strong> — R$ ${p.preco.toFixed(2)}${p.observacao ? ' (Obs: ' + p.observacao + ')' : ''}</li>`;
-    });
-    resumo += `</ul><p><strong>Total: R$ ${pedido.reduce((sum, p) => sum + p.preco, 0).toFixed(2)}</strong></p>`;
-    
-    detailView.innerHTML = `<div class="box">${resumo}<br><button class="botao-padrao" onclick="location.reload()">Novo Pedido</button></div>`;
-    detailView.classList.remove('hidden');
-  });
 });
