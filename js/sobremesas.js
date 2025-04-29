@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const valorElem = document.getElementById('valor-total');
     const qtd = pedido.length;
     const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
-    totalElem.textContent = `Total de sobremesas: ${qtd}`;
-    valorElem.textContent = `Total em dinheiro: R$ ${valor.toFixed(2)}`;
+    totalElem.textContent = `Total de Itens: ${qtd}`;
+    valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
   
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>${item.descricao}</p>
         <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
         <label for="obs-detail">Observação:</label>
-        <input type="text" id="obs-detail" placeholder="Retirar algo?">
+       <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?"></textarea>
         <div class="actions">
           <button id="add-detail">Adicionar</button>
           <button id="remove-detail">Remover</button>
