@@ -167,7 +167,7 @@ button {
   color: white;
   cursor: pointer;
   transition: border-color 0.3s ease, transform 0.2s ease, background 0.2s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(245, 215, 215, 0.2);
 }
 button:hover {
   border-color: #cc3f5a;
@@ -180,7 +180,7 @@ button:hover {
   margin-top: 30px;
   text-align: center;
   width: 100%;
-  background-color: #1b1515;
+  background-color: #fab6b6;
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
