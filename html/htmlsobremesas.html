@@ -24,11 +24,27 @@
       </div>
 
       <div class="footer-box">
-        <button id="finalizar-pedido" class="botao-padrao">Finalizar Pedido</button>
-        <div id="resumo-pedido"></div>
+        <div class="resumo-pedido-rodape">
+          <span id="quantidade-itens">0 itens</span> |
+          <span id="valor-total">R$ 0,00</span>
+          <button id="finalizar-pedido" class="botao-padrao">Finalizar Pedido</button>
+        </div>
       </div>
     </div>
   </main>
+
+  <!-- Subpágina de Resumo do Pedido -->
+  <div id="subpagina-pedido" class="subpagina hidden">
+    <div class="cabecalho-subpagina">
+      <h2>Resumo do Pedido</h2>
+      <button class="close-hint" onclick="fecharResumoPedido()">✖</button>
+    </div>
+    <div id="detalhes-pedido"></div>
+    <div class="rodape-subpagina">
+      <strong>Total: <span id="total-pedido-subpagina">R$ 0,00</span></strong>
+      <button onclick="confirmarPedido()" class="botao-padrao">Confirmar Pedido</button>
+    </div>
+  </div>
 
   <footer>
     <div style="text-align: center;">
