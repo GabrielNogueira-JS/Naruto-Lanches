@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="${item.imagem}" alt="${item.nome}">
         <p>${item.descricao}</p>
         <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
-        <textarea id="obs-detail" rows="2" maxlength="50" placeholder="Observação (opcional)" style="width:100%"></textarea>
+        <textarea id="obs-detail" rows="5" maxlength="50" placeholder="Observação (opcional)" style="width:100%"></textarea>
         <div class="actions">
           <button id="add-detail" class="botao-padrao">Adicionar</button>
           <button id="remove-detail" class="botao-padrao">Remover</button>
