@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const container   = document.getElementById('menu');
-  const detailView  = document.getElementById('detail-view');
-  const finalizarBtn= document.getElementById('finalizar-pedido');
-  const resumoBox   = document.getElementById('resumo-pedido');
-  const pedido      = [];
+  const container    = document.getElementById('menu');
+  const detailView   = document.getElementById('detail-view');
+  const finalizarBtn = document.getElementById('finalizar-pedido');
+  const resumoBox    = document.getElementById('resumo-pedido');
+  const pedido       = [];
 
   const menu = [
     { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
@@ -28,13 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function atualizarRodape() {
-    // agora comentado, pois não usamos mais total estático
-    // const totalElem = document.getElementById('total');
-    // const valorElem = document.getElementById('valor-total');
-    // const qtd = pedido.length;
-    // const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
-    // totalElem.textContent = `Total de Itens: ${qtd}`;
-    // valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
+    // totais estáticos removidos
   }
 
   menu.forEach((item, index) => {
@@ -70,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>${item.descricao}</p>
         <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
         <label for="obs-detail">Observação:</label>
-        <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?" style="width: 100%;"></textarea>
+        <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?" style="width:100%;"></textarea>
         <div class="actions">
           <button id="add-detail" class="botao-padrao">Adicionar</button>
           <button id="remove-detail" class="botao-padrao">Remover</button>
@@ -79,11 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     detailView.classList.remove('hidden');
     detailView.querySelector('.close-hint').onclick = hideDetail;
+
     detailView.querySelector('#add-detail').onclick = () => {
-      pedido.push({ nome: item.nome, preco: item.preco });
+      const obsText = detailView.querySelector('#obs-detail').value.trim();
+      pedido.push({ nome: item.nome, preco: item.preco, observacao: obsText });
       atualizarRodape();
       hideDetail();
     };
+
     detailView.querySelector('#remove-detail').onclick = () => {
       const i = pedido.findIndex(p => p.nome === item.nome);
       if (i > -1) pedido.splice(i, 1), atualizarRodape();
@@ -97,12 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
     detailView.innerHTML = '';
   }
 
-  // === NOVA PARTE: FINALIZAR PEDIDO E RESUMO DINÂMICO ===
+  // === FINALIZAR PEDIDO E RESUMO DINÂMICO ===
 
   function agruparPedido() {
     const mapa = {};
-    pedido.forEach(({ nome, preco }) => {
-      if (!mapa[nome]) mapa[nome] = { nome, preco, qtd: 0 };
+    pedido.forEach(({ nome, preco, observacao }) => {
+      if (!mapa[nome]) mapa[nome] = { nome, preco, observacao, qtd: 0 };
       mapa[nome].qtd++;
     });
     return Object.values(mapa);
@@ -114,9 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
       mostrarErro('Nenhuma sobremesa adicionada!');
       return;
     }
-    // salva na sessão
+    // salva na sessionStorage
     sessionStorage.setItem('pedidoShinobi', JSON.stringify(lista));
-    resumoBox.innerHTML = ''; // limpa antes
+    resumoBox.innerHTML = '';
 
     lista.forEach((item, idx) => {
       const div = document.createElement('div');
@@ -125,26 +122,25 @@ document.addEventListener('DOMContentLoaded', () => {
         <span>${item.nome} — Quant: <span id="qtd-${idx}">${item.qtd}</span></span>
         <button class="botao-padrao" data-idx="${idx}" data-delta="1">+</button>
         <button class="botao-padrao" data-idx="${idx}" data-delta="-1">−</button>
+        <p class="obs-resumo">${item.observacao || ''}</p>
       `;
       resumoBox.appendChild(div);
     });
 
-    // listeners dos botões +/−
     resumoBox.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', () => {
         const idx   = +btn.dataset.idx;
         const delta = +btn.dataset.delta;
         const lista = JSON.parse(sessionStorage.getItem('pedidoShinobi'));
-        
-        // calcula nova quantidade e confere o limite de 1 a 10
         const novaQtd = lista[idx].qtd + delta;
         if (novaQtd >= 1 && novaQtd <= 10) {
           lista[idx].qtd = novaQtd;
           sessionStorage.setItem('pedidoShinobi', JSON.stringify(lista));
           document.getElementById(`qtd-${idx}`).textContent = novaQtd;
         }
-        // se sair do intervalo 1–10, não faz nada
       });
     });
   }
+
+  finalizarBtn.addEventListener('click', mostrarResumo);
 });
