@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const valEl        = document.getElementById('valor-total');
   const pedido       = [];
 
-  // seu array menu permanece inalterado
   const menu = [ 
     { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
     { nome: "🍨 Taça Colegial – Equipe 7", descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👤Serve até duas pessoas.", preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito", descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.", observacao: "Serve uma pessoa.", preco: 7.00, imagem: "../imagens/doce.png.png" },
     { nome: "☕ Café – Chakra da Madrugada", descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.", observacao: "Serve uma pessoa.", preco: 7.50, imagem: "../imagens/cafe.png.png" },
     { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos...", observacao: "👤👤👤Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
-   ];
+  ];
 
   function mostrarErro(msg) {
     const msgEl = document.createElement('div');
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     valEl.textContent = `R$ ${totalValor.toFixed(2)}`;
   }
 
-  // cria os cards do menu
+  // Renderiza os cards
   menu.forEach((item, i) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -53,13 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
     container.appendChild(card);
-
-    card.addEventListener('click', () => {
-      detalheItem(i);
-    });
+    card.addEventListener('click', () => detalheItem(i));
   });
 
-  // exibe modal de detalhe individual
+  // Inicializa rodapé
+  atualizarResumoRodape();
+
   function detalheItem(idx) {
     const item = menu[idx];
     detailView.innerHTML = `
@@ -69,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="${item.imagem}" alt="${item.nome}">
         <p>${item.descricao}</p>
         <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
-        <textarea id="obs-detail" rows="5" maxlength="50" placeholder="Observação (opcional)" style="width:100%"></textarea>
+        <textarea id="obs-detail" rows="3" maxlength="50" placeholder="Observação (opcional)" style="width:100%"></textarea>
         <div class="actions">
           <button id="add-detail" class="botao-padrao">Adicionar</button>
           <button id="remove-detail" class="botao-padrao">Remover</button>
@@ -81,8 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     detailView.querySelector('#add-detail').onclick = () => {
       const obs = detailView.querySelector('#obs-detail').value.trim();
-      if (pedido.length < 10) {
-        pedido.push({ ...item, observacao: obs });
+      const exists = pedido.find(p => p.nome === item.nome && p.observacao === obs);
+      if (!exists && pedido.length < 10) {
+        pedido.push({ nome: item.nome, preco: item.preco, observacao: obs });
         atualizarResumoRodape();
       }
       detailView.classList.add('hidden');
@@ -93,20 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (idxRem > -1) {
         pedido.splice(idxRem, 1);
         atualizarResumoRodape();
-      } else {
-        mostrarErro('Nada desse item no pedido!');
-      }
+      } else mostrarErro('Nada desse item no pedido!');
       detailView.classList.add('hidden');
     };
   }
 
-  // ao clicar em Finalizar Pedido: exibe resumo dentro do mesmo modal
   finalizarBtn.onclick = () => {
-    if (pedido.length === 0) {
+    if (!pedido.length) {
       mostrarErro('Nenhuma sobremesa adicionada...');
       return;
     }
-    // monta lista com + e − para cada item
     let html = `<div class="box"><span class="close-hint">✖</span><h2>Resumo do Pedido</h2>`;
     pedido.forEach((item, i) => {
       html += `
@@ -123,24 +118,23 @@ document.addEventListener('DOMContentLoaded', () => {
     html += `</div>`;
     detailView.innerHTML = html;
     detailView.classList.remove('hidden');
-
-    // fecha
     detailView.querySelector('.close-hint').onclick = () => detailView.classList.add('hidden');
 
-    // + e − no resumo
     detailView.querySelectorAll('.actions button').forEach(btn => {
       btn.onclick = () => {
         const i = +btn.dataset.idx;
         const delta = +btn.dataset.delta;
-        const novaQtd = pedido.filter(p => p.nome === pedido[i].nome).length + delta;
-        if (novaQtd >= 1 && novaQtd <= 10) {
-          if (delta > 0) pedido.push({ ...pedido[i] });
-          else {
+        const count = pedido.filter(p => p.nome === pedido[i].nome).length;
+        if (count + delta >= 1 && count + delta <= 10) {
+          if (delta > 0) {
+            const obs = pedido[i].observacao;
+            pedido.push({ nome: pedido[i].nome, preco: pedido[i].preco, observacao: obs });
+          } else {
             const rem = pedido.findIndex(p => p.nome === pedido[i].nome);
             pedido.splice(rem, 1);
           }
           atualizarResumoRodape();
-          // reabrir resumo para atualizar quantidades
+          // Reabre resumo
           finalizarBtn.onclick();
         }
       };

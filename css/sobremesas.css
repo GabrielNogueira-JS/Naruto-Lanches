@@ -72,17 +72,7 @@ header .borda {
 }
 
 /* ===== Card ===== */
-.card {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 12px;
-  margin-bottom: 16px;
-  width: 100%;
-}
+
 .card-left { flex: 1; padding-right: 10px; }
 .card-right img {
   width: 100px;
@@ -118,12 +108,30 @@ header .borda {
 }
 
 
+/* ===== Observação (Atualizado) ===== */
 .observacao {
   font-size: 0.85rem;
-  color: #ff078f;
+  color: #000; /* preto no texto */
+  background-color: #000; /* fundo preto */
   margin-bottom: 8px;
-  background-color: #797979;
+  padding: 4px 8px;
+  border-radius: 6px;
 }
+
+/* ===== Card (Levemente esbranquiçado para contraste com observação) ===== */
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #fefefe; /* antes era #ffffff, agora um tom levemente mais claro */
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 12px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+
 .price {
   font-size: 1.05rem;
   color: #222;
