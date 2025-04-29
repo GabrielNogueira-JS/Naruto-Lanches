@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contador de Sobremesas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../css/sobremesas.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/sobremesas.css">
 </head>
 <body>
   <header>
@@ -17,21 +17,19 @@
   <main class="layout">
     <div class="container">
       <h2>Um bom ninja precisa adoçar sua amargura...</h2>
-
+  
       <div id="menu-container">
         <div id="menu"></div>
         <div id="detail-view" class="hidden"></div>
-      </div>
-
+      </div> <!-- fecha #menu-container -->
+  
       <div class="footer-box">
-        <div class="resumo-pedido-rodape">
-          <button id="finalizar-pedido" class="botao-padrao">Finalizar Pedido</button>
-        </div>
-        <span id="quantidade-itens">0 itens</span> |
-        <span id="valor-total">R$ 0,00</span>
+        <p id="total">Total de sobremesas: 0</p>
+        <p id="valor-total">Total em dinheiro: R$ 0,00</p>
       </div>
-    </div>
+    </div> <!-- fecha .container -->
   </main>
+  
 
   <footer>
     <div style="text-align: center;">
