@@ -135,12 +135,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const idx   = +btn.dataset.idx;
         const delta = +btn.dataset.delta;
         const lista = JSON.parse(sessionStorage.getItem('pedidoShinobi'));
-        lista[idx].qtd = Math.max(1, lista[idx].qtd + delta);
-        sessionStorage.setItem('pedidoShinobi', JSON.stringify(lista));
-        document.getElementById(`qtd-${idx}`).textContent = lista[idx].qtd;
+        
+        // calcula nova quantidade e confere o limite de 1 a 10
+        const novaQtd = lista[idx].qtd + delta;
+        if (novaQtd >= 1 && novaQtd <= 10) {
+          lista[idx].qtd = novaQtd;
+          sessionStorage.setItem('pedidoShinobi', JSON.stringify(lista));
+          document.getElementById(`qtd-${idx}`).textContent = novaQtd;
+        }
+        // se sair do intervalo 1–10, não faz nada
       });
     });
   }
-
-  finalizarBtn.addEventListener('click', mostrarResumo);
 });
