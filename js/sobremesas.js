@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="desc">${item.descricao}</p>
         <div class="observacao"><span class="icon-users">👤</span><span>${item.observacao}</span></div>
         <p class="price">R$ ${item.preco.toFixed(2)}</p>
-            
       </div>
       <div class="card-right">
         <img src="${item.imagem}" class="sobremesa-img" alt="${item.nome}">
@@ -54,21 +53,20 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     container.appendChild(card);
 
-   
     const imgEl = card.querySelector('.sobremesa-img');
     imgEl.style.width = '200px';
     imgEl.style.height = '200px';
 
-    
-    imgEl.addEventListener('click', () => {
-      const cardEl = imgEl.closest('.card');
-      const idx = +cardEl.dataset.index;
+    card.addEventListener('click', () => {
+      const idx = +card.dataset.index;
 
-      if (detailView.classList.contains('hidden')) {
-        showDetail(idx);
-      } else {
-        hideDetail();
+      // Verificar se o modal está visível, se estiver, esconder antes de mostrar os novos detalhes
+      if (!detailView.classList.contains('hidden')) {
+        hideDetail(); // Esconde o modal de detalhes
       }
+
+      // Chama a função para mostrar os detalhes da sobremesa no modal
+      showDetail(idx);
     });
   });
 
@@ -85,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>${item.descricao}</p>
         <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
         <label for="obs-detail">Observação:</label>
-       <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?" style="width: 100%"; ></textarea>
+        <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?" style="width: 100%"; ></textarea>
         <div class="actions">
           <button id="add-detail">Adicionar</button>
           <button id="remove-detail">Remover</button>
@@ -122,29 +120,4 @@ document.addEventListener('DOMContentLoaded', () => {
     detailView.classList.add('hidden');
     detailView.innerHTML = '';
   }
-
-  // Delegação de clique para adicionar item ao pedido
-  container.addEventListener('click', (e) => {
-    const el = e.target;
-
-    if (el.classList.contains('add-btn')) {
-      const idx = +el.dataset.index;
-      const item = menu[idx];
-      pedido.push({ nome: item.nome, preco: item.preco });
-      el.disabled = true;
-      el.textContent = 'Adicionado ✅';
-      setTimeout(() => {
-        el.textContent = 'Adicionar';
-        el.disabled = false;
-      }, 1000);
-      atualizarRodape();
-      return;
-    }
-
-    // Expandir/contrair descrição
-    if (el.classList.contains('desc')) {
-      el.classList.toggle('expandida');
-      return;
-    }
-  });
 });
