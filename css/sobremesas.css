@@ -220,12 +220,12 @@ button:hover {
   z-index: 100;
 }
 #detail-view .box {
-  background: #fff;
+  background: #3b3b3b;
   border-radius: 12px;
   max-width: 500px;
   width: 100%;
   padding: 20px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 16px rgba(243, 240, 240, 0.3);
   position: relative;
 }
 #detail-view.hidden { display: none; }
@@ -248,4 +248,3 @@ button:hover {
   width: 100%;
   margin: 6px 0;
 }
-
