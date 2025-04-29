@@ -28,7 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function atualizarRodape() {
-    // totais estáticos removidos
+    const totalItens = pedido.length;
+    const totalValor = pedido.reduce((soma, item) => soma + item.preco, 0);
+    resumoBox.innerHTML = `
+      <p><strong>Total de itens:</strong> ${totalItens}</p>
+      <p><strong>Valor total:</strong> R$ ${totalValor.toFixed(2)}</p>
+    `;
   }
 
   menu.forEach((item, index) => {
@@ -94,53 +99,28 @@ document.addEventListener('DOMContentLoaded', () => {
     detailView.innerHTML = '';
   }
 
-  // === FINALIZAR PEDIDO E RESUMO DINÂMICO ===
-
   function agruparPedido() {
     const mapa = {};
     pedido.forEach(({ nome, preco, observacao }) => {
-      if (!mapa[nome]) mapa[nome] = { nome, preco, observacao, qtd: 0 };
+      if (!mapa[nome]) mapa[nome] = { nome, preco, observacoes: [], qtd: 0 };
       mapa[nome].qtd++;
+      if (observacao) mapa[nome].observacoes.push(observacao);
     });
     return Object.values(mapa);
   }
 
-  function mostrarResumo() {
+  finalizarBtn.onclick = () => {
     const lista = agruparPedido();
-    if (lista.length === 0) {
-      mostrarErro('Nenhuma sobremesa adicionada!');
-      return;
-    }
-    // salva na sessionStorage
-    sessionStorage.setItem('pedidoShinobi', JSON.stringify(lista));
-    resumoBox.innerHTML = '';
-
-    lista.forEach((item, idx) => {
-      const div = document.createElement('div');
-      div.className = 'resumo-item';
-      div.innerHTML = `
-        <span>${item.nome} — Quant: <span id="qtd-${idx}">${item.qtd}</span></span>
-        <button class="botao-padrao" data-idx="${idx}" data-delta="1">+</button>
-        <button class="botao-padrao" data-idx="${idx}" data-delta="-1">−</button>
-        <p class="obs-resumo">${item.observacao || ''}</p>
-      `;
-      resumoBox.appendChild(div);
+    if (lista.length === 0) return mostrarErro('Nenhuma sobremesa adicionada...');
+    let html = '<h3>Resumo do Pedido:</h3><ul>';
+    lista.forEach(item => {
+      html += `<li><strong>${item.nome}</strong> x${item.qtd} - R$ ${(item.qtd * item.preco).toFixed(2)}`;
+      if (item.observacoes.length) {
+        html += `<br><em>Observações:</em><ul>${item.observacoes.map(o => `<li>${o}</li>`).join('')}</ul>`;
+      }
+      html += '</li>';
     });
-
-    resumoBox.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx   = +btn.dataset.idx;
-        const delta = +btn.dataset.delta;
-        const lista = JSON.parse(sessionStorage.getItem('pedidoShinobi'));
-        const novaQtd = lista[idx].qtd + delta;
-        if (novaQtd >= 1 && novaQtd <= 10) {
-          lista[idx].qtd = novaQtd;
-          sessionStorage.setItem('pedidoShinobi', JSON.stringify(lista));
-          document.getElementById(`qtd-${idx}`).textContent = novaQtd;
-        }
-      });
-    });
-  }
-
-  finalizarBtn.addEventListener('click', mostrarResumo);
+    html += '</ul>';
+    resumoBox.innerHTML = html;
+  };
 });
