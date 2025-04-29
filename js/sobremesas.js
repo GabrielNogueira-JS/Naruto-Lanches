@@ -66,10 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="desc">${item.descricao}</p>
         <div class="observacao">${item.observacao}</div>
         <p class="price">R$ ${item.preco.toFixed(2)}</p>
-        <div class="card-actions">
-          <button class="mini-btn add-btn">Adicionar</button>
-          <button class="mini-btn remove-btn">Remover</button>
-        </div>
       </div>
       <div class="card-right">
         <img src="${item.imagem}" alt="${item.nome}" width="80" height="80"/>
@@ -77,19 +73,25 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     container.appendChild(card);
 
-    card.querySelector('.add-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      adicionarItem(item);
-    });
-
-    card.querySelector('.remove-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      removerItem(item);
-    });
-
     card.addEventListener('click', () => {
-      // Aqui você pode abrir o detalhe completo como antes, se quiser
+      // Mostrar detalhes ao tocar no card
+      if (detailView.classList.contains('hidden')) {
+        detailView.classList.remove('hidden');
+        detailView.innerHTML = `
+          <h3>${item.nome}</h3>
+          <p>${item.descricao}</p>
+          <p>Preço: R$ ${item.preco.toFixed(2)}</p>
+          <p>${item.observacao}</p>
+        `;
+      } else {
+        detailView.classList.add('hidden');
+      }
     });
+  });
+
+  finalizarBtn.addEventListener('click', () => {
+    // Finalizar pedido e talvez mostrar alguma tela de confirmação
+    alert('Pedido finalizado!');
   });
 
   atualizarResumoRodape();
