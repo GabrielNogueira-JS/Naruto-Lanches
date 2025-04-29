@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function atualizarResumoRodape() {
     const totalItens = pedido.length;
-    const totalValor = pedido.reduce((s, i) => s + i.preco, 0);
+    const totalValor = pedido.reduce((sum, i) => sum + i.preco, 0);
     qtdEl.textContent = `${totalItens} item${totalItens !== 1 ? 's' : ''}`;
     valEl.textContent = `R$ ${totalValor.toFixed(2)}`;
   }
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', () => detalheItem(i));
   });
 
-  // Inicializa rodapé
+  // Inicializa o rodapé
   atualizarResumoRodape();
 
   function detalheItem(idx) {
@@ -83,6 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!exists && pedido.length < 10) {
         pedido.push({ nome: item.nome, preco: item.preco, observacao: obs });
         atualizarResumoRodape();
+      } else if (exists) {
+        mostrarErro('Este item já foi adicionado com essa observação!');
       }
       detailView.classList.add('hidden');
     };
@@ -92,16 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (idxRem > -1) {
         pedido.splice(idxRem, 1);
         atualizarResumoRodape();
-      } else mostrarErro('Nada desse item no pedido!');
+      } else {
+        mostrarErro('Nada desse item no pedido!');
+      }
       detailView.classList.add('hidden');
     };
   }
 
+  // Finalizar pedido — exibe resumo no mesmo modal
   finalizarBtn.onclick = () => {
     if (!pedido.length) {
       mostrarErro('Nenhuma sobremesa adicionada...');
       return;
     }
+
     let html = `<div class="box"><span class="close-hint">✖</span><h2>Resumo do Pedido</h2>`;
     pedido.forEach((item, i) => {
       html += `
@@ -115,7 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
     });
-    html += `</div>`;
+    html += '</div>';
+
     detailView.innerHTML = html;
     detailView.classList.remove('hidden');
     detailView.querySelector('.close-hint').onclick = () => detailView.classList.add('hidden');
@@ -134,8 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pedido.splice(rem, 1);
           }
           atualizarResumoRodape();
-          // Reabre resumo
-          finalizarBtn.onclick();
+          finalizarBtn.onclick();  // reabre o resumo atualizado
         }
       };
     });
