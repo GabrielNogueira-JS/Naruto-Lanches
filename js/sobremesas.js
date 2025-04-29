@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>${item.descricao}</p>
         <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
         <label for="obs-detail">Observação:</label>
-       <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?"></textarea>
+       <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?" style="width: 100%; ></textarea>
         <div class="actions">
           <button id="add-detail">Adicionar</button>
           <button id="remove-detail">Remover</button>
