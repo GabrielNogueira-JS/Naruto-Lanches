@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeSummary  = document.getElementById('close-summary');
   const pedido        = [];
 
+  // Menu com .png.png mantido
   const menu = [
     { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
     { nome: "🍨 Taça Colegial – Equipe 7",              descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👤Serve até duas pessoas.",          preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos...", observacao: "👤👤👤Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
   ];
 
-  // Mantém modais ocultos ao iniciar
+  // Esconde modais inicialmente
   detailView.classList.add('hidden');
   summaryView.classList.add('hidden');
 
@@ -33,12 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function atualizarRodape() {
-    document.getElementById('total').textContent = `Total de Sobremesas: ${pedido.length}`;
+    const totalElem = document.getElementById('total');
+    const valorElem = document.getElementById('valor-total');
+    totalElem.textContent = `Total de Sobremesas: ${pedido.length}`;
     const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
-    document.getElementById('valor-total').textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
+    valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
-  // Renderiza cards
+  // Renderiza os cards do menu
   menu.forEach((item, idx) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -65,42 +68,35 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>${item.descricao}</p>
           <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
           <label>Observação:</label>
-          <textarea id="obs-detail" rows="5" placeholder="Retirar algo?"></textarea>
+          <textarea id="obs-detail" rows="3" placeholder="Retirar algo?"></textarea>
           <div class="actions">
-            <button id="add-detail">Adicionar</button>
-            <button id="remove-detail">Remover</button>
+            <button id="add-detail" class="botao-padrao">Adicionar</button>
+            <button id="remove-detail" class="botao-padrao">Remover</button>
           </div>
         </div>
       `;
       detailView.classList.remove('hidden');
 
-      // fechar detalhe
-      detailView.querySelector('.close-hint').onclick = () => {
-        detailView.classList.add('hidden');
-        detailView.innerHTML = '';
-      };
+      detailView.querySelector('.close-hint').onclick = () => detailView.classList.add('hidden');
 
-      // adicionar
       detailView.querySelector('#add-detail').onclick = () => {
         const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
         pedido.push({ nome: item.nome, preco: item.preco, obs });
         atualizarRodape();
         detailView.classList.add('hidden');
-        detailView.innerHTML = '';
       };
 
-      // remover
       detailView.querySelector('#remove-detail').onclick = () => {
         const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
         const i = pedido.findIndex(p => p.nome === item.nome && p.obs === obs);
         if (i > -1) pedido.splice(i, 1), atualizarRodape();
         else mostrarErro('Nada desse item+obs no pedido!');
         detailView.classList.add('hidden');
-        detailView.innerHTML = '';
       };
     });
   });
 
+  // Agrupa por nome+obs
   function agruparPedido() {
     const mapa = {};
     pedido.forEach(p => {
@@ -111,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return Object.values(mapa);
   }
 
+  // Render do resumo no modal
   function renderizarResumo() {
     const lista = document.getElementById('lista-pedido');
     const totalE = document.getElementById('total-pedido');
@@ -153,15 +150,28 @@ document.addEventListener('DOMContentLoaded', () => {
     totalE.textContent = soma.toFixed(2);
   }
 
-  // resumo só aparece após click
-  finalizarBtn.addEventListener('click', () => {
-    renderizarResumo();
-    summaryView.classList.remove('hidden');
-  });
+  // Finalizar → abre o modal de resumo
+finalizarBtn.addEventListener('click', () => {
+  renderizarResumo(); // renderiza os itens
+  summaryView.classList.remove('hidden'); // exibe o modal
+});
 
-  closeSummary.addEventListener('click', () => {
-    summaryView.classList.add('hidden');
-  });
-
+// Fecha o modal de resumo
+closeSummary.addEventListener('click', () => {
+  summaryView.classList.add('hidden'); // esconde o modal
+});
+// Sem alterações 
+  // Inicializa rodapé
   atualizarRodape();
+});
+const summaryView = document.getElementById("summaryView");
+const finalizarPedidoBtn = document.getElementById("finalizar-pedido");
+const fecharResumoBtn = document.getElementById("close-summary");
+
+finalizarPedidoBtn.addEventListener("click", () => {
+  summaryView.classList.remove("hidden");
+});
+
+fecharResumoBtn.addEventListener("click", () => {
+  summaryView.classList.add("hidden");
 });
