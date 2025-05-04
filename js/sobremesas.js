@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     detailView.classList.remove('hidden');
     detailView.querySelector('.close-hint').onclick = hideDetail;
     detailView.querySelector('#add-detail').onclick = () => {
-      pedido.push({ nome: item.nome, preco: item.preco });
+      pedido.push({ nome: item.nome, preco: item.preco, obs: item.observacao });
       atualizarRodape();
       hideDetail();
     };
