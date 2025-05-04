@@ -107,22 +107,67 @@ document.addEventListener('DOMContentLoaded', () => {
   finalizarBtn.addEventListener('click', () => {
     const listaPedido = document.getElementById('lista-pedido');
     const totalPedido = document.getElementById('total-pedido');
-    const itensAgrupados = agruparPedido();
-  
+    const itensAgrupados = agruparPedido(); // [{ nome, qtd, preco, obs }]
+    
     listaPedido.innerHTML = '';
-    let total = 0;
-    itensAgrupados.forEach(item => {
-      const itemPedido = document.createElement('li');
-      itemPedido.textContent = `${item.nome} (x${item.qtd}) - R$ ${(item.preco * item.qtd).toFixed(2)}`;
-      listaPedido.appendChild(itemPedido);
-      total += item.preco * item.qtd;
-    });
-  
-    totalPedido.textContent = total.toFixed(2);
     resumoBox.classList.remove('hidden');
+  
+    function atualizarResumo() {
+      listaPedido.innerHTML = '';
+      let total = 0;
+  
+      itensAgrupados.forEach((item) => {
+        const itemPedido = document.createElement('li');
+  
+        const nomeSpan = document.createElement('span');
+        nomeSpan.textContent = `${item.nome} `;
+  
+        const qtdSpan = document.createElement('span');
+        qtdSpan.textContent = `x${item.qtd}`;
+  
+        const precoSpan = document.createElement('span');
+        precoSpan.textContent = ` - R$ ${(item.preco * item.qtd).toFixed(2)}`;
+  
+        const btnMais = document.createElement('button');
+        btnMais.textContent = '+';
+        btnMais.style.margin = '0 5px';
+        btnMais.addEventListener('click', () => {
+          item.qtd++;
+          atualizarResumo();
+        });
+  
+        const btnMenos = document.createElement('button');
+        btnMenos.textContent = '-';
+        btnMenos.style.margin = '0 5px';
+        btnMenos.addEventListener('click', () => {
+          if (item.qtd > 0) {
+            item.qtd--;
+            atualizarResumo();
+          }
+        });
+  
+        // Exibir observação, se houver
+        if (item.obs && item.obs.trim() !== '') {
+          const obsSpan = document.createElement('span');
+          obsSpan.textContent = ` - Obs: ${item.obs}`;
+          obsSpan.style.fontStyle = 'italic';
+          obsSpan.style.marginLeft = '10px';
+          itemPedido.appendChild(obsSpan);
+        }
+  
+        itemPedido.appendChild(nomeSpan);
+        itemPedido.appendChild(btnMenos);
+        itemPedido.appendChild(qtdSpan);
+        itemPedido.appendChild(btnMais);
+        itemPedido.appendChild(precoSpan);
+  
+        listaPedido.appendChild(itemPedido);
+        total += item.preco * item.qtd;
+      });
+  
+      totalPedido.textContent = total.toFixed(2);
+    }
+  
+    atualizarResumo();
   });
   
-  });
-;
-resumoBox.classList.remove('hidden');
-
