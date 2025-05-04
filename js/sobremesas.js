@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const container   = document.getElementById('menu');
-  const detailView  = document.getElementById('detail-view');
-  const finalizarBtn= document.getElementById('finalizar-pedido');
-  const resumoBox   = document.getElementById('resumo-pedido');
-  const pedido      = [];
+  const container    = document.getElementById('menu');
+  const detailView   = document.getElementById('detail-view');
+  const finalizarBtn = document.getElementById('finalizar-pedido');
+  const resumoBox    = document.getElementById('resumo-pedido');
+  const pedido       = [];
 
   const menu = [
     { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function atualizarRodape() {
     const totalElem = document.getElementById('total');
     const valorElem = document.getElementById('valor-total');
-    const qtd = pedido.length;
+    const qtd   = pedido.length;
     const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
     totalElem.textContent = `Total de Sobremesas: ${qtd}`;
     valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>${item.descricao}</p>
         <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
         <label for="obs-detail">Observação:</label>
-        <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?" style="width: 100%;"></textarea>
+        <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?" style="width:100%;"></textarea>
         <div class="actions">
           <button id="add-detail" class="botao-padrao">Adicionar</button>
           <button id="remove-detail" class="botao-padrao">Remover</button>
@@ -77,16 +77,29 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
     detailView.classList.remove('hidden');
+
     detailView.querySelector('.close-hint').onclick = hideDetail;
+
     detailView.querySelector('#add-detail').onclick = () => {
-      pedido.push({ nome: item.nome, preco: item.preco, obs: item.observacao });
+      const obsText = detailView.querySelector('#obs-detail').value.trim();
+      pedido.push({
+        nome: item.nome,
+        preco: item.preco,
+        obs: obsText || item.observacao
+      });
       atualizarRodape();
       hideDetail();
     };
+
     detailView.querySelector('#remove-detail').onclick = () => {
-      const i = pedido.findIndex(p => p.nome === item.nome);
-      if (i > -1) pedido.splice(i, 1), atualizarRodape();
-      else mostrarErro('Nada desse item no pedido!');
+      const obsText = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
+      const idx = pedido.findIndex(p => p.nome === item.nome && p.obs === obsText);
+      if (idx > -1) {
+        pedido.splice(idx, 1);
+        atualizarRodape();
+      } else {
+        mostrarErro('Nada desse item+obs no pedido!');
+      }
       hideDetail();
     };
   }
@@ -96,78 +109,89 @@ document.addEventListener('DOMContentLoaded', () => {
     detailView.innerHTML = '';
   }
 
+  // Agora consideramos `obs` na hora de agrupar:
   function agruparPedido() {
     const mapa = {};
-    pedido.forEach(({ nome, preco }) => {
-      mapa[nome] = (mapa[nome] || 0) + 1;
+    pedido.forEach(({ nome, preco, obs }) => {
+      const key = `${nome}||${obs}`;
+      if (!mapa[key]) {
+        mapa[key] = { nome, preco, obs, qtd: 0 };
+      }
+      mapa[key].qtd++;
     });
-    return Object.entries(mapa).map(([nome, qtd]) => ({ nome, qtd, preco: menu.find(i => i.nome === nome).preco }));
+    return Object.values(mapa);
   }
 
   finalizarBtn.addEventListener('click', () => {
-    const listaPedido = document.getElementById('lista-pedido');
-    const totalPedido = document.getElementById('total-pedido');
-    const itensAgrupados = agruparPedido(); // [{ nome, qtd, preco, obs }]
-    
-    listaPedido.innerHTML = '';
+    const lista = document.getElementById('lista-pedido');
+    const totalE = document.getElementById('total-pedido');
+    const itens  = agruparPedido();
+
+    lista.innerHTML = '';
     resumoBox.classList.remove('hidden');
-  
+
     function atualizarResumo() {
-      listaPedido.innerHTML = '';
-      let total = 0;
-  
-      itensAgrupados.forEach((item) => {
-        const itemPedido = document.createElement('li');
-  
-        const nomeSpan = document.createElement('span');
-        nomeSpan.textContent = `${item.nome} `;
-  
-        const qtdSpan = document.createElement('span');
-        qtdSpan.textContent = `x${item.qtd}`;
-  
-        const precoSpan = document.createElement('span');
-        precoSpan.textContent = ` - R$ ${(item.preco * item.qtd).toFixed(2)}`;
-  
+      lista.innerHTML = '';
+      let soma = 0;
+
+      itens.forEach(item => {
+        const li = document.createElement('li');
+
+        const spanNome = document.createElement('span');
+        spanNome.textContent = item.nome;
+
+        const spanQtd = document.createElement('span');
+        spanQtd.textContent = `x${item.qtd}`;
+
+        const spanPreco = document.createElement('span');
+        spanPreco.textContent = ` - R$ ${(item.preco * item.qtd).toFixed(2)}`;
+
+        // + e – dinâmicos
         const btnMais = document.createElement('button');
         btnMais.textContent = '+';
         btnMais.style.margin = '0 5px';
-        btnMais.addEventListener('click', () => {
+        btnMais.onclick = () => {
           item.qtd++;
           atualizarResumo();
-        });
-  
+          atualizarRodape();
+        };
+
         const btnMenos = document.createElement('button');
         btnMenos.textContent = '-';
         btnMenos.style.margin = '0 5px';
-        btnMenos.addEventListener('click', () => {
-          if (item.qtd > 0) {
+        btnMenos.onclick = () => {
+          if (item.qtd > 1) {
             item.qtd--;
-            atualizarResumo();
+          } else {
+            // deixa em zero, mas não remove da lista
+            item.qtd = 0;
           }
-        });
-  
-        // Exibir observação, se houver
-        if (item.obs && item.obs.trim() !== '') {
-          const obsSpan = document.createElement('span');
-          obsSpan.textContent = ` - Obs: ${item.obs}`;
-          obsSpan.style.fontStyle = 'italic';
-          obsSpan.style.marginLeft = '10px';
-          itemPedido.appendChild(obsSpan);
+          atualizarResumo();
+          atualizarRodape();
+        };
+
+        li.appendChild(spanNome);
+        li.appendChild(btnMenos);
+        li.appendChild(spanQtd);
+        li.appendChild(btnMais);
+        li.appendChild(spanPreco);
+
+        // obs abaixo do nome
+        if (item.obs) {
+          const obsEl = document.createElement('div');
+          obsEl.textContent = `Obs: ${item.obs}`;
+          obsEl.style.fontStyle = 'italic';
+          obsEl.style.marginLeft = '20px';
+          li.appendChild(obsEl);
         }
-  
-        itemPedido.appendChild(nomeSpan);
-        itemPedido.appendChild(btnMenos);
-        itemPedido.appendChild(qtdSpan);
-        itemPedido.appendChild(btnMais);
-        itemPedido.appendChild(precoSpan);
-  
-        listaPedido.appendChild(itemPedido);
-        total += item.preco * item.qtd;
+
+        lista.appendChild(li);
+        soma += item.preco * item.qtd;
       });
-  
-      totalPedido.textContent = total.toFixed(2);
+
+      totalE.textContent = soma.toFixed(2);
     }
-  
+
     atualizarResumo();
   });
-  
+});
