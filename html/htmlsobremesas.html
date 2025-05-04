@@ -20,12 +20,7 @@
   
       <div id="menu-container">
         <div id="menu"></div>
-        <div id="detail-view" class="hidden">
-          <div class="box">
-            <span class="close-hint" onclick="document.getElementById('detail-view').classList.add('hidden')">X</span>
-            <div id="detail-content"></div>
-          </div>
-        </div>
+        <div id="detail-view" class="hidden"></div>
       </div> 
   
       <div class="footer-box">
@@ -33,15 +28,15 @@
         <p id="total">Total de sobremesas: 0</p>
         <p id="valor-total">Total em dinheiro: R$ 0,00</p>
       </div>
-    </div>
-    
-    <div id="resumo-pedido" class="hidden">
-      <h2>Resumo do Pedido</h2>
-      <ul id="lista-pedido"></ul>
-      <p>Total: R$ <span id="total-pedido">0.00</span></p>
+
+      <!-- Resumo do Pedido dentro da container -->
+      <div id="resumo-pedido" class="hidden">
+        <h2>Resumo do Pedido</h2>
+        <ul id="lista-pedido"></ul>
+        <p>Total: R$ <span id="total-pedido">0.00</span></p>
+      </div>
     </div>
   </main>
-  
 
   <footer>
     <div style="text-align: center;">
@@ -55,4 +50,3 @@
   <script src="../js/sobremesas.js"></script>
 </body>
 </html>
-
