@@ -297,4 +297,6 @@ button:hover {
   background-color: rgba(255, 102, 139, 0.1);
   transition: background-color 0.2s ease-in-out;
 }
-
+.hidden {
+  display: none;
+}
