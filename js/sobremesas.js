@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>${item.descricao}</p>
           <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
           <label>Observação:</label>
-          <textarea id="obs-detail" rows="3" placeholder="Retirar algo?"></textarea>
+         <textarea id="obs-detail" rows="5" placeholder="Retirar algo?"></textarea>
           <div class="actions">
             <button id="add-detail" class="botao-padrao">Adicionar</button>
             <button id="remove-detail" class="botao-padrao">Remover</button>
@@ -168,10 +168,17 @@ const summaryView = document.getElementById("summaryView");
 const finalizarPedidoBtn = document.getElementById("finalizar-pedido");
 const fecharResumoBtn = document.getElementById("close-summary");
 
-finalizarPedidoBtn.addEventListener("click", () => {
-  summaryView.classList.remove("hidden");
+// Exibe o resumo do pedido ao clicar no botão "Finalizar Pedido"
+finalizarPedidoBtn?.addEventListener("click", () => {
+  renderizarResumo(); // renderiza os itens do pedido
+  summaryView?.classList.remove("hidden"); // exibe o modal
 });
 
-fecharResumoBtn.addEventListener("click", () => {
-  summaryView.classList.add("hidden");
+// Oculta o resumo ao clicar no botão "Fechar"
+fecharResumoBtn?.addEventListener("click", () => {
+  summaryView?.classList.add("hidden"); // esconde o modal
 });
+
+// Inicializa rodapé
+atualizarRodape();
+

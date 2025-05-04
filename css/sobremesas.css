@@ -108,15 +108,23 @@ header .borda {
 }
 
 
-/* ===== Observação (Atualizado) ===== */
-.observacao {
-  font-size: 0.85rem;
-  color: #000; /* preto no texto */
-  background-color: #fcf5f5; /* fundo preto */
-  margin-bottom: 8px;
-  padding: 4px 8px;
-  border-radius: 6px;
+#obs-detail {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
 }
+
+#obs-detail:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
 
 /* ===== Card (Levemente esbranquiçado para contraste com observação) ===== */
 .card {
