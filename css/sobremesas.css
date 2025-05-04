@@ -256,3 +256,45 @@ button:hover {
   width: 100%;
   margin: 6px 0;
 }
+/* ===== Centered Text Styles ===== */
+.text-center {
+  text-align: center;
+  color: #4a3a39;  /* Cor suave para contraste */
+  font-size: 1.5rem;  /* Tamanho de fonte que se destaca sem exagero */
+  font-weight: 600; /* Tornar o texto levemente mais ousado */
+  text-transform: uppercase; /* Tornar o texto mais impactante */
+  letter-spacing: 2px; /* Aumenta o espaçamento entre as letras */
+  position: relative;
+  padding: 20px;
+}
+
+/* Adicionando uma borda sutil ao redor do texto */
+.text-center::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #ff8c94, #ffaaa5);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* Efeito de sombra suave */
+.text-center {
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Animação suave de cor quando o texto é tocado ou passa o mouse */
+.text-center:hover {
+  color: #ff4d88;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Efeito de fundo sutil com transição */
+.text-center:active {
+  background-color: rgba(255, 102, 139, 0.1);
+  transition: background-color 0.2s ease-in-out;
+}
+

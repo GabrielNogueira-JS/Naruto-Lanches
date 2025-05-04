@@ -131,52 +131,57 @@ document.addEventListener('DOMContentLoaded', () => {
     resumoBox.classList.remove('hidden');
 
     function atualizarResumo() {
-      lista.innerHTML = '';
+      const lista = document.getElementById('lista-pedido');
+      const totalE = document.getElementById('total-pedido');
       let soma = 0;
-
+      
+      lista.innerHTML = ''; // Limpar a lista antes de atualizá-la
+    
       itens.forEach(item => {
         const li = document.createElement('li');
-
+    
         const spanNome = document.createElement('span');
         spanNome.textContent = item.nome;
-
+    
         const spanQtd = document.createElement('span');
         spanQtd.textContent = `x${item.qtd}`;
-
+    
         const spanPreco = document.createElement('span');
         spanPreco.textContent = ` - R$ ${(item.preco * item.qtd).toFixed(2)}`;
-
-        // + e – dinâmicos
+    
+        // Botão de aumento de quantidade
         const btnMais = document.createElement('button');
         btnMais.textContent = '+';
         btnMais.style.margin = '0 5px';
         btnMais.onclick = () => {
-          item.qtd++;
-          atualizarResumo();
-          atualizarRodape();
+          item.qtd++; // Aumentar a quantidade
+          atualizarResumo(); // Atualizar o resumo
+          atualizarRodape(); // Atualizar o rodapé
         };
-
+    
+        // Botão de diminuição de quantidade
         const btnMenos = document.createElement('button');
         btnMenos.textContent = '-';
         btnMenos.style.margin = '0 5px';
         btnMenos.onclick = () => {
           if (item.qtd > 1) {
-            item.qtd--;
+            item.qtd--; // Diminuir a quantidade
           } else {
-            // deixa em zero, mas não remove da lista
+            // Caso a quantidade seja 1, deixa o item como 0 (mas não o remove)
             item.qtd = 0;
           }
-          atualizarResumo();
-          atualizarRodape();
+          atualizarResumo(); // Atualizar o resumo
+          atualizarRodape(); // Atualizar o rodapé
         };
-
+    
+        // Adiciona os elementos ao item
         li.appendChild(spanNome);
         li.appendChild(btnMenos);
         li.appendChild(spanQtd);
         li.appendChild(btnMais);
         li.appendChild(spanPreco);
-
-        // obs abaixo do nome
+    
+        // Se houver observação, adiciona abaixo do nome do item
         if (item.obs) {
           const obsEl = document.createElement('div');
           obsEl.textContent = `Obs: ${item.obs}`;
@@ -184,13 +189,18 @@ document.addEventListener('DOMContentLoaded', () => {
           obsEl.style.marginLeft = '20px';
           li.appendChild(obsEl);
         }
-
+    
+        // Adiciona o item à lista de pedidos
         lista.appendChild(li);
+    
+        // Soma o preço total
         soma += item.preco * item.qtd;
       });
-
+    
+      // Atualiza o valor total no rodapé
       totalE.textContent = soma.toFixed(2);
     }
+    
 
     atualizarResumo();
   });
