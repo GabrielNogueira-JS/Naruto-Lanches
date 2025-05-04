@@ -151,11 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Finalizar → abre o modal de resumo
-  finalizarBtn.addEventListener('click', () => {
-    renderizarResumo();
-    summaryView.classList.remove('hidden');
-  });
-  closeSummary.onclick = () => summaryView.classList.add('hidden');
+finalizarBtn.addEventListener('click', () => {
+  renderizarResumo(); // renderiza os itens
+  summaryView.classList.remove('hidden'); // exibe o modal
+});
+
+// Fecha o modal de resumo
+closeSummary.addEventListener('click', () => {
+  summaryView.classList.add('hidden'); // esconde o modal
+});
 
   // Inicializa rodapé
   atualizarRodape();
