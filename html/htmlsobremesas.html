@@ -20,7 +20,12 @@
   
       <div id="menu-container">
         <div id="menu"></div>
-        <div id="detail-view" class="hidden"></div>
+        <div id="detail-view" class="hidden">
+          <div class="box">
+            <span class="close-hint" onclick="document.getElementById('detail-view').classList.add('hidden')">X</span>
+            <div id="detail-content"></div>
+          </div>
+        </div>
       </div> 
   
       <div class="footer-box">
@@ -31,7 +36,6 @@
     </div>
     
     <div id="resumo-pedido" class="hidden">
-
       <h2>Resumo do Pedido</h2>
       <ul id="lista-pedido"></ul>
       <p>Total: R$ <span id="total-pedido">0.00</span></p>
@@ -51,3 +55,4 @@
   <script src="../js/sobremesas.js"></script>
 </body>
 </html>
+

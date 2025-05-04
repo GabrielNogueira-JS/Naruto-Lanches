@@ -7,15 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const menu = [
     { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
-    { nome: "🍨 Taça Colegial – Equipe 7", descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👤Serve até duas pessoas.", preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
-    { nome: "🍮 Pudim – Técnica Secreta do Clã Nara", descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.", observacao: "👤👤Serve até três pessoas.", preco: 12.50, imagem: "../imagens/pudim.png.png" },
-    { nome: "🥤 Milk-Shake – Onda de Chakra Rosa", descricao: "Milk-shake cremoso de morango com essência natural e chantilly por cima.", observacao: "Serve uma pessoa.", preco: 18.00, imagem: "../imagens/milkshake.png" },
-    { nome: "🧁 Cupcake – Estilo Sakura Blossom", descricao: "Cupcake de limão com cobertura de calda de morango e confetes coloridos.", observacao: "Serve uma pessoa.", preco: 10.90, imagem: "../imagens/cupcake.png" },
-    { nome: "🥐 Croissant – Golpe Sombrio do Uchiha", descricao: "Croissant folhado recheado com chocolate ao leite derretido e pincelado com calda especial.", observacao: "Serve uma pessoa.", preco: 8.50, imagem: "../imagens/croissant.png" },
+    { nome: "🍨 Taça Colegial – Equipe 7",              descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👤Serve até duas pessoas.",          preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
+    { nome: "🍮 Pudim – Técnica Secreta do Clã Nara",   descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.", observacao: "👤👤Serve até três pessoas.",         preco: 12.50, imagem: "../imagens/pudim.png.png" },
+    { nome: "🥤 Milk-Shake – Onda de Chakra Rosa",      descricao: "Milk-shake cremoso de morango com essência natural e chantilly por cima.", observacao: "Serve uma pessoa.",               preco: 18.00, imagem: "../imagens/milkshake.png" },
+    { nome: "🧁 Cupcake – Estilo Sakura Blossom",      descricao: "Cupcake de limão com cobertura de calda de morango e confetes coloridos.", observacao: "Serve uma pessoa.",               preco: 10.90, imagem: "../imagens/cupcake.png" },
+    { nome: "🥐 Croissant – Golpe Sombrio do Uchiha",   descricao: "Croissant folhado recheado com chocolate ao leite derretido e pincelado com calda especial.", observacao: "Serve uma pessoa.", preco: 8.50,  imagem: "../imagens/croissant.png" },
     { nome: "🦄 Taça Infantil Unicórnio – Invocação de Gamakichi", descricao: "Sorvete de morango com calda de amora, decoração de pasta americana em forma de unicórnio e MM's.", observacao: "👤Serve até duas crianças.", preco: 20.00, imagem: "../imagens/tacaunicornio.png.png" },
     { nome: "🍫 Petit Gateau – Jutsu do Dragão Negro", descricao: "Bolinhas de massa de chocolate quente com sorvete de creme ao lado e calda quente.", observacao: "Serve uma pessoa.", preco: 19.90, imagem: "../imagens/petitgateau.png.png" },
-    { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito", descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.", observacao: "Serve uma pessoa.", preco: 7.00, imagem: "../imagens/doce.png.png" },
-    { nome: "☕ Café – Chakra da Madrugada", descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.", observacao: "Serve uma pessoa.", preco: 7.50, imagem: "../imagens/cafe.png.png" },
+    { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito",  descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.", observacao: "Serve uma pessoa.", preco: 7.00,  imagem: "../imagens/doce.png.png" },
+    { nome: "☕ Café – Chakra da Madrugada",           descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.", observacao: "Serve uma pessoa.", preco: 7.50,  imagem: "../imagens/cafe.png.png" },
     { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos...", observacao: "👤👤👤Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
   ];
 
@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     detailView.innerHTML = '';
   }
 
-  // Agora consideramos `obs` na hora de agrupar:
   function agruparPedido() {
     const mapa = {};
     pedido.forEach(({ nome, preco, obs }) => {
@@ -131,57 +130,50 @@ document.addEventListener('DOMContentLoaded', () => {
     resumoBox.classList.remove('hidden');
 
     function atualizarResumo() {
-      const lista = document.getElementById('lista-pedido');
-      const totalE = document.getElementById('total-pedido');
+      lista.innerHTML = '';
       let soma = 0;
-      
-      lista.innerHTML = ''; // Limpar a lista antes de atualizá-la
-    
+      let totalItens = 0;
+
       itens.forEach(item => {
         const li = document.createElement('li');
-    
+
         const spanNome = document.createElement('span');
         spanNome.textContent = item.nome;
-    
+
         const spanQtd = document.createElement('span');
         spanQtd.textContent = `x${item.qtd}`;
-    
+
         const spanPreco = document.createElement('span');
         spanPreco.textContent = ` - R$ ${(item.preco * item.qtd).toFixed(2)}`;
-    
-        // Botão de aumento de quantidade
+
         const btnMais = document.createElement('button');
         btnMais.textContent = '+';
         btnMais.style.margin = '0 5px';
         btnMais.onclick = () => {
-          item.qtd++; // Aumentar a quantidade
-          atualizarResumo(); // Atualizar o resumo
-          atualizarRodape(); // Atualizar o rodapé
+          item.qtd++;
+          atualizarResumo();
+          atualizarRodape();
         };
-    
-        // Botão de diminuição de quantidade
+
         const btnMenos = document.createElement('button');
         btnMenos.textContent = '-';
         btnMenos.style.margin = '0 5px';
         btnMenos.onclick = () => {
           if (item.qtd > 1) {
-            item.qtd--; // Diminuir a quantidade
+            item.qtd--;
           } else {
-            // Caso a quantidade seja 1, deixa o item como 0 (mas não o remove)
             item.qtd = 0;
           }
-          atualizarResumo(); // Atualizar o resumo
-          atualizarRodape(); // Atualizar o rodapé
+          atualizarResumo();
+          atualizarRodape();
         };
-    
-        // Adiciona os elementos ao item
+
         li.appendChild(spanNome);
         li.appendChild(btnMenos);
         li.appendChild(spanQtd);
         li.appendChild(btnMais);
         li.appendChild(spanPreco);
-    
-        // Se houver observação, adiciona abaixo do nome do item
+
         if (item.obs) {
           const obsEl = document.createElement('div');
           obsEl.textContent = `Obs: ${item.obs}`;
@@ -189,18 +181,16 @@ document.addEventListener('DOMContentLoaded', () => {
           obsEl.style.marginLeft = '20px';
           li.appendChild(obsEl);
         }
-    
-        // Adiciona o item à lista de pedidos
+
         lista.appendChild(li);
-    
-        // Soma o preço total
-        soma += item.preco * item.qtd;
+        soma       += item.preco * item.qtd;
+        totalItens += item.qtd;
       });
-    
-      // Atualiza o valor total no rodapé
+
       totalE.textContent = soma.toFixed(2);
+      document.getElementById('total').textContent       = `Total de Sobremesas: ${totalItens}`;
+      document.getElementById('valor-total').textContent = `Total em Dinheiro: R$ ${soma.toFixed(2)}`;
     }
-    
 
     atualizarResumo();
   });
