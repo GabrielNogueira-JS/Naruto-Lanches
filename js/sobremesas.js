@@ -1,4 +1,3 @@
-// sobremesas.js
 document.addEventListener('DOMContentLoaded', () => {
   const container     = document.getElementById('menu');
   const detailView    = document.getElementById('detail-view');
@@ -72,7 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       detailView.classList.remove('hidden');
-      detailView.querySelector('.close-hint').onclick = () => detailView.classList.add('hidden');
+      detailView.querySelector('.close-hint').onclick = () => {
+        // Esconde o modal
+        detailView.classList.add('hidden');
+        // Limpa o conteúdo do modal
+        detailView.innerHTML = '';
+      };
 
       detailView.querySelector('#add-detail').onclick = () => {
         const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
@@ -154,4 +158,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   atualizarRodape();
 });
-// Fim do código
