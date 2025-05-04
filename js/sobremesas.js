@@ -1,20 +1,29 @@
-// sobremesas.js
-
 document.addEventListener('DOMContentLoaded', () => {
-  const container    = document.getElementById('menu');
-  const detailView   = document.getElementById('detail-view');
-  const finalizarBtn = document.getElementById('finalizar-pedido');
-  const resumoBox    = document.getElementById('resumo-pedido');
-  const pedido       = []; // Array fonte de pedidos
+  const container     = document.getElementById('menu');
+  const detailView    = document.getElementById('detail-view');
+  const summaryView   = document.getElementById('summary-view');
+  const finalizarBtn  = document.getElementById('finalizar-pedido');
+  const closeSummary  = document.getElementById('close-summary');
+  const pedido        = [];
 
-  // garante que o painel de resumo comece escondido
-  resumoBox.classList.add('hidden');
-
-  // Menu completo com caminhos de imagem duplicados (png.png)
+  // Menu com .png.png mantido
   const menu = [
     { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
-    /* ... resto do seu array de menu ... */
+    { nome: "🍨 Taça Colegial – Equipe 7",              descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👤Serve até duas pessoas.",          preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
+    { nome: "🍮 Pudim – Técnica Secreta do Clã Nara",   descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.", observacao: "👤👤Serve até três pessoas.",         preco: 12.50, imagem: "../imagens/pudim.png.png" },
+    { nome: "🥤 Milk-Shake – Onda de Chakra Rosa",      descricao: "Milk-shake cremoso de morango com essência natural e chantilly por cima.", observacao: "Serve uma pessoa.",               preco: 18.00, imagem: "../imagens/milkshake.png" },
+    { nome: "🧁 Cupcake – Estilo Sakura Blossom",      descricao: "Cupcake de limão com cobertura de calda de morango e confetes coloridos.", observacao: "Serve uma pessoa.",               preco: 10.90, imagem: "../imagens/cupcake.png" },
+    { nome: "🥐 Croissant – Golpe Sombrio do Uchiha",   descricao: "Croissant folhado recheado com chocolate ao leite derretido e pincelado com calda especial.", observacao: "Serve uma pessoa.", preco: 8.50,  imagem: "../imagens/croissant.png" },
+    { nome: "🦄 Taça Infantil Unicórnio – Invocação de Gamakichi", descricao: "Sorvete de morango com calda de amora, decoração de pasta americana em forma de unicórnio e MM's.", observacao: "👤Serve até duas crianças.", preco: 20.00, imagem: "../imagens/tacaunicornio.png.png" },
+    { nome: "🍫 Petit Gateau – Jutsu do Dragão Negro", descricao: "Bolinhas de massa de chocolate quente com sorvete de creme ao lado e calda quente.", observacao: "Serve uma pessoa.", preco: 19.90, imagem: "../imagens/petitgateau.png.png" },
+    { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito",  descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.", observacao: "Serve uma pessoa.", preco: 7.00,  imagem: "../imagens/doce.png.png" },
+    { nome: "☕ Café – Chakra da Madrugada",           descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.", observacao: "Serve uma pessoa.", preco: 7.50,  imagem: "../imagens/cafe.png.png" },
+    { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos...", observacao: "👤👤👤Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
   ];
+
+  // Esconde modais inicialmente
+  detailView.classList.add('hidden');
+  summaryView.classList.add('hidden');
 
   function mostrarErro(msg) {
     const msgEl = document.createElement('div');
@@ -27,157 +36,127 @@ document.addEventListener('DOMContentLoaded', () => {
   function atualizarRodape() {
     const totalElem = document.getElementById('total');
     const valorElem = document.getElementById('valor-total');
-    const qtd   = pedido.length;
+    totalElem.textContent = `Total de Sobremesas: ${pedido.length}`;
     const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
-    totalElem.textContent = `Total de Sobremesas: ${qtd}`;
     valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
-  // Renderizar cards do menu
-  menu.forEach((item, index) => {
+  // Renderiza os cards do menu
+  menu.forEach((item, idx) => {
     const card = document.createElement('div');
     card.className = 'card';
-    card.dataset.index = index;
+    card.dataset.index = idx;
     card.innerHTML = `
       <div class="card-left">
         <h3 class="item-title"><strong><em>${item.nome}</em></strong></h3>
         <p class="desc">${item.descricao}</p>
-        <div class="observacao"><span class="icon-users">👤</span><span>${item.observacao}</span></div>
+        <div class="observacao"><span>👤</span>${item.observacao}</div>
         <p class="price">R$ ${item.preco.toFixed(2)}</p>
       </div>
       <div class="card-right">
-        <img src="${item.imagem}" class="sobremesa-img" alt="${item.nome}">
+        <img src="${item.imagem}" alt="${item.nome}">
       </div>
     `;
     container.appendChild(card);
 
     card.addEventListener('click', () => {
-      if (!detailView.classList.contains('hidden')) hideDetail();
-      showDetail(index);
+      detailView.innerHTML = `
+        <div class="box">
+          <span class="close-hint">✖</span>
+          <h2><em>${item.nome}</em></h2>
+          <img src="${item.imagem}" alt="${item.nome}">
+          <p>${item.descricao}</p>
+          <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
+          <label>Observação:</label>
+          <textarea id="obs-detail" rows="3" placeholder="Retirar algo?"></textarea>
+          <div class="actions">
+            <button id="add-detail" class="botao-padrao">Adicionar</button>
+            <button id="remove-detail" class="botao-padrao">Remover</button>
+          </div>
+        </div>
+      `;
+      detailView.classList.remove('hidden');
+
+      detailView.querySelector('.close-hint').onclick = () => detailView.classList.add('hidden');
+
+      detailView.querySelector('#add-detail').onclick = () => {
+        const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
+        pedido.push({ nome: item.nome, preco: item.preco, obs });
+        atualizarRodape();
+        detailView.classList.add('hidden');
+      };
+
+      detailView.querySelector('#remove-detail').onclick = () => {
+        const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
+        const i = pedido.findIndex(p => p.nome === item.nome && p.obs === obs);
+        if (i > -1) pedido.splice(i, 1), atualizarRodape();
+        else mostrarErro('Nada desse item+obs no pedido!');
+        detailView.classList.add('hidden');
+      };
     });
   });
 
-  function showDetail(idx) {
-    const item = menu[idx];
-    detailView.innerHTML = `
-      <div class="box">
-        <span class="close-hint">✖</span>
-        <h2><em>${item.nome}</em></h2>
-        <img src="${item.imagem}" alt="${item.nome}">
-        <p>${item.descricao}</p>
-        <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
-        <label for="obs-detail">Observação:</label>
-        <textarea id="obs-detail" rows="4" maxlength="50" placeholder="Retirar algo?" style="width:100%;"></textarea>
-        <div class="actions">
-          <button id="add-detail" class="botao-padrao">Adicionar</button>
-          <button id="remove-detail" class="botao-padrao">Remover</button>
-        </div>
-      </div>
-    `;
-    detailView.classList.remove('hidden');
-    detailView.querySelector('.close-hint').onclick = hideDetail;
-
-    detailView.querySelector('#add-detail').onclick = () => {
-      const obsText = detailView.querySelector('#obs-detail').value.trim();
-      pedido.push({ nome: item.nome, preco: item.preco, obs: obsText || item.observacao });
-      atualizarRodape();
-      hideDetail();
-    };
-
-    detailView.querySelector('#remove-detail').onclick = () => {
-      const obsText = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
-      const idxPed = pedido.findIndex(p => p.nome === item.nome && p.obs === obsText);
-      if (idxPed > -1) {
-        pedido.splice(idxPed, 1);
-        atualizarRodape();
-      } else {
-        mostrarErro('Nada desse item+obs no pedido!');
-      }
-      hideDetail();
-    };
-  }
-
-  function hideDetail() {
-    detailView.classList.add('hidden');
-    detailView.innerHTML = '';
-  }
-
+  // Agrupa por nome+obs
   function agruparPedido() {
     const mapa = {};
-    pedido.forEach(({ nome, preco, obs }) => {
-      const key = `${nome}||${obs}`;
-      if (!mapa[key]) mapa[key] = { nome, preco, obs, qtd: 0 };
+    pedido.forEach(p => {
+      const key = `${p.nome}||${p.obs}`;
+      if (!mapa[key]) mapa[key] = { ...p, qtd: 0 };
       mapa[key].qtd++;
     });
     return Object.values(mapa);
   }
 
+  // Render do resumo no modal
   function renderizarResumo() {
     const lista = document.getElementById('lista-pedido');
     const totalE = document.getElementById('total-pedido');
     const grupos = agruparPedido();
-
+    let soma = 0;
     lista.innerHTML = '';
-    let soma = 0, totalItens = 0;
 
-    grupos.forEach(grp => {
-      const li        = document.createElement('li');
+    grupos.forEach(g => {
+      const li = document.createElement('li');
       const spanNome  = document.createElement('span');
       const spanQtd   = document.createElement('span');
       const spanPreco = document.createElement('span');
       const btnMais   = document.createElement('button');
       const btnMenos  = document.createElement('button');
 
-      spanNome.textContent  = grp.nome;
-      spanQtd.textContent   = ` x${grp.qtd} `;
-      spanPreco.textContent = `- R$ ${(grp.preco * grp.qtd).toFixed(2)}`;
+      spanNome.textContent  = g.nome;
+      spanQtd.textContent   = ` x${g.qtd} `;
+      spanPreco.textContent = `- R$ ${(g.preco * g.qtd).toFixed(2)}`;
+      btnMais.textContent   = '+';
+      btnMenos.textContent  = '-';
 
-      btnMais.textContent  = '+';
-      btnMenos.textContent = '-';
-
-      btnMais.onclick = () => {
-        pedido.push({ nome: grp.nome, preco: grp.preco, obs: grp.obs });
-        atualizarRodape();
-        renderizarResumo();
-      };
+      btnMais.onclick = () => { pedido.push({ nome: g.nome, preco: g.preco, obs: g.obs }); atualizarRodape(); renderizarResumo(); };
       btnMenos.onclick = () => {
-        const idx = pedido.findIndex(p => p.nome === grp.nome && p.preco === grp.preco && p.obs === grp.obs);
-        if (idx > -1) {
-          pedido.splice(idx, 1);
-          atualizarRodape();
-          renderizarResumo();
-        }
+        const i = pedido.findIndex(p => p.nome === g.nome && p.obs === g.obs);
+        if (i > -1) pedido.splice(i,1), atualizarRodape(), renderizarResumo();
       };
 
-      li.appendChild(spanNome);
-      li.appendChild(btnMenos);
-      li.appendChild(spanQtd);
-      li.appendChild(btnMais);
-      li.appendChild(spanPreco);
-
-      if (grp.obs) {
+      li.append(spanNome, btnMenos, spanQtd, btnMais, spanPreco);
+      if (g.obs) {
         const obsEl = document.createElement('div');
-        obsEl.textContent = `Obs: ${grp.obs}`;
-        obsEl.style.fontStyle   = 'italic';
-        obsEl.style.marginLeft  = '20px';
+        obsEl.textContent = `Obs: ${g.obs}`;
+        obsEl.style.fontStyle = 'italic';
+        obsEl.style.marginLeft = '20px';
         li.appendChild(obsEl);
       }
-
       lista.appendChild(li);
-      soma       += grp.preco * grp.qtd;
-      totalItens += grp.qtd;
+      soma += g.preco * g.qtd;
     });
 
     totalE.textContent = soma.toFixed(2);
-    document.getElementById('total').textContent       = `Total de Sobremesas: ${totalItens}`;
-    document.getElementById('valor-total').textContent = `Total em Dinheiro: R$ ${soma.toFixed(2)}`;
   }
 
+  // Finalizar → abre o modal de resumo
   finalizarBtn.addEventListener('click', () => {
-    resumoBox.classList.remove('hidden');
     renderizarResumo();
+    summaryView.classList.remove('hidden');
   });
+  closeSummary.onclick = () => summaryView.classList.add('hidden');
 
-  // Inicia rodapé zerado
+  // Inicializa rodapé
   atualizarRodape();
 });

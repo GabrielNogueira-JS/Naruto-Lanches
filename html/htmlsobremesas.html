@@ -28,15 +28,18 @@
         <p id="total">Total de sobremesas: 0</p>
         <p id="valor-total">Total em dinheiro: R$ 0,00</p>
       </div>
-
-      <!-- Resumo do Pedido dentro da container -->
-      <div id="resumo-pedido" class="hidden">
-        <h2>Resumo do Pedido</h2>
-        <ul id="lista-pedido"></ul>
-        <p>Total: R$ <span id="total-pedido">0.00</span></p>
-      </div>
     </div>
   </main>
+
+  <!-- Modal de Resumo -->
+  <div id="summary-view" class="hidden">
+    <div class="box">
+      <span class="close-hint" id="close-summary">✖</span>
+      <h2>Resumo do Pedido</h2>
+      <ul id="lista-pedido"></ul>
+      <p><strong>Total:</strong> R$ <span id="total-pedido">0.00</span></p>
+    </div>
+  </div>
 
   <footer>
     <div style="text-align: center;">
