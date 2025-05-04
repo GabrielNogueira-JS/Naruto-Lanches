@@ -194,4 +194,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     atualizarResumo();
   });
+
 });
