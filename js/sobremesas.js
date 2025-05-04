@@ -28,13 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function atualizarRodape() {
-    // agora comentado, pois não usamos mais total estático
-     const totalElem = document.getElementById('total');
-     const valorElem = document.getElementById('valor-total');
-     const qtd = pedido.length;
-     const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
-     totalElem.textContent = `Total de Itens: ${qtd}`;
-     valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
+    const totalElem = document.getElementById('total');
+    const valorElem = document.getElementById('valor-total');
+    const qtd = pedido.length;
+    const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
+    totalElem.textContent = `Total de Sobremesas: ${qtd}`;
+    valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
   menu.forEach((item, index) => {
@@ -97,50 +96,30 @@ document.addEventListener('DOMContentLoaded', () => {
     detailView.innerHTML = '';
   }
 
-  // === NOVA PARTE: FINALIZAR PEDIDO E RESUMO DINÂMICO ===
-
   function agruparPedido() {
     const mapa = {};
     pedido.forEach(({ nome, preco }) => {
-      if (!mapa[nome]) mapa[nome] = { nome, preco, qtd: 0 };
-      mapa[nome].qtd++;
+      mapa[nome] = (mapa[nome] || 0) + 1;
     });
-    return Object.values(mapa);
+    return Object.entries(mapa).map(([nome, qtd]) => ({ nome, qtd, preco: menu.find(i => i.nome === nome).preco }));
   }
 
-  function mostrarResumo() {
-    const lista = agruparPedido();
-    if (lista.length === 0) {
-      mostrarErro('Nenhuma sobremesa adicionada!');
-      return;
-    }
-    // salva na sessão
-    sessionStorage.setItem('pedidoShinobi', JSON.stringify(lista));
-    resumoBox.innerHTML = ''; // limpa antes
+  finalizarBtn.addEventListener('click', () => {
+    const listaPedido = document.getElementById('lista-pedido');
+    const totalPedido = document.getElementById('total-pedido');
+    const itensAgrupados = agruparPedido();
 
-    lista.forEach((item, idx) => {
-      const div = document.createElement('div');
-      div.className = 'resumo-item';
-      div.innerHTML = `
-        <span>${item.nome} — Quant: <span id="qtd-${idx}">${item.qtd}</span></span>
-        <button class="botao-padrao" data-idx="${idx}" data-delta="1">+</button>
-        <button class="botao-padrao" data-idx="${idx}" data-delta="-1">−</button>
-      `;
-      resumoBox.appendChild(div);
+    listaPedido.innerHTML = '';
+    let total = 0;
+    itensAgrupados.forEach(item => {
+      const itemPedido = document.createElement('li');
+      itemPedido.textContent = `${item.nome} (x${item.qtd}) - R$ ${(item.preco * item.qtd).toFixed(2)}`;
+      listaPedido.appendChild(itemPedido);
+      total += item.preco * item.qtd;
     });
 
-    // listeners dos botões +/−
-    resumoBox.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx   = +btn.dataset.idx;
-        const delta = +btn.dataset.delta;
-        const lista = JSON.parse(sessionStorage.getItem('pedidoShinobi'));
-        lista[idx].qtd = Math.max(1, lista[idx].qtd + delta);
-        sessionStorage.setItem('pedidoShinobi', JSON.stringify(lista));
-        document.getElementById(`qtd-${idx}`).textContent = lista[idx].qtd;
-      });
-    });
-  }
-
-  finalizarBtn.addEventListener('click', mostrarResumo);
+    totalPedido.textContent = total.toFixed(2);
+    resumoBox.classList.remove('hidden');
+  });
 });
+
