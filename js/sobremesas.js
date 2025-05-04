@@ -1,3 +1,4 @@
+// sobremesas.js
 document.addEventListener('DOMContentLoaded', () => {
   const container     = document.getElementById('menu');
   const detailView    = document.getElementById('detail-view');
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos...", observacao: "👤👤👤Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
   ];
 
+  // Garante que, ao carregar, nada relacionado ao resumo está ativo:
   detailView.classList.add('hidden');
   summaryView.classList.add('hidden');
 
@@ -37,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('valor-total').textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
+  // Renderiza os cards do menu
   menu.forEach((item, idx) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -71,26 +74,30 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       detailView.classList.remove('hidden');
+
+      // Fechar o modal de detalhes
       detailView.querySelector('.close-hint').onclick = () => {
-        // Esconde o modal
         detailView.classList.add('hidden');
-        // Limpa o conteúdo do modal
         detailView.innerHTML = '';
       };
 
+      // Adicionar item
       detailView.querySelector('#add-detail').onclick = () => {
         const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
         pedido.push({ nome: item.nome, preco: item.preco, obs });
         atualizarRodape();
         detailView.classList.add('hidden');
+        detailView.innerHTML = '';
       };
 
+      // Remover item
       detailView.querySelector('#remove-detail').onclick = () => {
         const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
         const i = pedido.findIndex(p => p.nome === item.nome && p.obs === obs);
         if (i > -1) pedido.splice(i, 1), atualizarRodape();
         else mostrarErro('Nada desse item+obs no pedido!');
         detailView.classList.add('hidden');
+        detailView.innerHTML = '';
       };
     });
   });
@@ -147,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     totalE.textContent = soma.toFixed(2);
   }
 
+  // === Só aqui o resumo é exibido! ===
   finalizarBtn.addEventListener('click', () => {
     renderizarResumo();
     summaryView.classList.remove('hidden');
@@ -156,5 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
     summaryView.classList.add('hidden');
   });
 
+  // Atualiza rodapé _sem_ mostrar modal
   atualizarRodape();
 });
