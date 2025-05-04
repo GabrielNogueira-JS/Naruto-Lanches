@@ -1,10 +1,13 @@
+// sobremesas.js
+
 document.addEventListener('DOMContentLoaded', () => {
   const container    = document.getElementById('menu');
   const detailView   = document.getElementById('detail-view');
   const finalizarBtn = document.getElementById('finalizar-pedido');
   const resumoBox    = document.getElementById('resumo-pedido');
-  const pedido       = [];
+  const pedido       = []; // Array fonte de pedidos
 
+  // Menu completo com caminhos de imagem duplicados (png.png)
   const menu = [
     { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
     { nome: "🍨 Taça Colegial – Equipe 7",              descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👤Serve até duas pessoas.",          preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
@@ -36,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
+  // Renderizar cards do menu
   menu.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -82,11 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     detailView.querySelector('#add-detail').onclick = () => {
       const obsText = detailView.querySelector('#obs-detail').value.trim();
-      pedido.push({
-        nome: item.nome,
-        preco: item.preco,
-        obs: obsText || item.observacao
-      });
+      pedido.push({ nome: item.nome, preco: item.preco, obs: obsText || item.observacao });
       atualizarRodape();
       hideDetail();
     };
@@ -113,86 +113,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const mapa = {};
     pedido.forEach(({ nome, preco, obs }) => {
       const key = `${nome}||${obs}`;
-      if (!mapa[key]) {
-        mapa[key] = { nome, preco, obs, qtd: 0 };
-      }
+      if (!mapa[key]) mapa[key] = { nome, preco, obs, qtd: 0 };
       mapa[key].qtd++;
     });
     return Object.values(mapa);
   }
 
-  finalizarBtn.addEventListener('click', () => {
+  function renderizarResumo() {
     const lista = document.getElementById('lista-pedido');
     const totalE = document.getElementById('total-pedido');
-    const itens  = agruparPedido();
+    const grupos = agruparPedido();
 
     lista.innerHTML = '';
+    let soma = 0, totalItens = 0;
+
+    grupos.forEach(grp => {
+      const li = document.createElement('li');
+      const spanNome  = document.createElement('span');
+      const spanQtd   = document.createElement('span');
+      const spanPreco = document.createElement('span');
+      const btnMais   = document.createElement('button');
+      const btnMenos  = document.createElement('button');
+
+      spanNome.textContent  = grp.nome;
+      spanQtd.textContent   = ` x${grp.qtd} `;
+      spanPreco.textContent = `- R$ ${(grp.preco * grp.qtd).toFixed(2)}`;
+
+      btnMais.textContent  = '+';
+      btnMenos.textContent = '-';
+
+      btnMais.onclick = () => { pedido.push({ nome: grp.nome, preco: grp.preco, obs: grp.obs }); atualizarRodape(); renderizarResumo(); };
+      btnMenos.onclick = () => {
+        const idx = pedido.findIndex(p => p.nome === grp.nome && p.preco === grp.preco && p.obs === grp.obs);
+        if (idx > -1) { pedido.splice(idx, 1); atualizarRodape(); renderizarResumo(); }
+      };
+
+      li.appendChild(spanNome);
+      li.appendChild(btnMenos);
+      li.appendChild(spanQtd);
+      li.appendChild(btnMais);
+      li.appendChild(spanPreco);
+
+      if (grp.obs) {
+        const obsEl = document.createElement('div');
+        obsEl.textContent = `Obs: ${grp.obs}`;
+        obsEl.style.fontStyle  = 'italic'; obsEl.style.marginLeft = '20px';
+        li.appendChild(obsEl);
+      }
+
+      lista.appendChild(li);
+      soma       += grp.preco * grp.qtd;
+      totalItens += grp.qtd;
+    });
+
+    totalE.textContent = soma.toFixed(2);
+    document.getElementById('total').textContent       = `Total de Sobremesas: ${totalItens}`;
+    document.getElementById('valor-total').textContent = `Total em Dinheiro: R$ ${soma.toFixed(2)}`;
+  }
+
+  finalizarBtn.addEventListener('click', () => {
     resumoBox.classList.remove('hidden');
-
-    function atualizarResumo() {
-      lista.innerHTML = '';
-      let soma = 0;
-      let totalItens = 0;
-
-      itens.forEach(item => {
-        const li = document.createElement('li');
-
-        const spanNome = document.createElement('span');
-        spanNome.textContent = item.nome;
-
-        const spanQtd = document.createElement('span');
-        spanQtd.textContent = `x${item.qtd}`;
-
-        const spanPreco = document.createElement('span');
-        spanPreco.textContent = ` - R$ ${(item.preco * item.qtd).toFixed(2)}`;
-
-        const btnMais = document.createElement('button');
-        btnMais.textContent = '+';
-        btnMais.style.margin = '0 5px';
-        btnMais.onclick = () => {
-          item.qtd++;
-          atualizarResumo();
-          atualizarRodape();
-        };
-
-        const btnMenos = document.createElement('button');
-        btnMenos.textContent = '-';
-        btnMenos.style.margin = '0 5px';
-        btnMenos.onclick = () => {
-          if (item.qtd > 1) {
-            item.qtd--;
-          } else {
-            item.qtd = 0;
-          }
-          atualizarResumo();
-          atualizarRodape();
-        };
-
-        li.appendChild(spanNome);
-        li.appendChild(btnMenos);
-        li.appendChild(spanQtd);
-        li.appendChild(btnMais);
-        li.appendChild(spanPreco);
-
-        if (item.obs) {
-          const obsEl = document.createElement('div');
-          obsEl.textContent = `Obs: ${item.obs}`;
-          obsEl.style.fontStyle = 'italic';
-          obsEl.style.marginLeft = '20px';
-          li.appendChild(obsEl);
-        }
-
-        lista.appendChild(li);
-        soma       += item.preco * item.qtd;
-        totalItens += item.qtd;
-      });
-
-      totalE.textContent = soma.toFixed(2);
-      document.getElementById('total').textContent       = `Total de Sobremesas: ${totalItens}`;
-      document.getElementById('valor-total').textContent = `Total em Dinheiro: R$ ${soma.toFixed(2)}`;
-    }
-
-    atualizarResumo();
+    renderizarResumo();
   });
 
+  // Inicia rodapé zerado
+  atualizarRodape();
 });
