@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const finalizarBtn = document.getElementById('finalizar-pedido');
   const resumoBox    = document.getElementById('resumo-pedido');
   const pedido       = []; // Array fonte de pedidos
+  resumoBox.classList.add('hidden');
 
   // Menu completo com caminhos de imagem duplicados (png.png)
   const menu = [
