@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const listaPedido = document.getElementById('lista-pedido');
     const totalPedido = document.getElementById('total-pedido');
     const itensAgrupados = agruparPedido();
-
+  
     listaPedido.innerHTML = '';
     let total = 0;
     itensAgrupados.forEach(item => {
@@ -117,9 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
       listaPedido.appendChild(itemPedido);
       total += item.preco * item.qtd;
     });
-
+  
     totalPedido.textContent = total.toFixed(2);
     resumoBox.classList.remove('hidden');
   });
-});
+  
+  });
+;
+resumoBox.classList.remove('hidden');
 
