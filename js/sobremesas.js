@@ -164,3 +164,14 @@ closeSummary.addEventListener('click', () => {
   // Inicializa rodapé
   atualizarRodape();
 });
+const summaryView = document.getElementById("summaryView");
+const finalizarPedidoBtn = document.getElementById("finalizar-pedido");
+const fecharResumoBtn = document.getElementById("close-summary");
+
+finalizarPedidoBtn.addEventListener("click", () => {
+  summaryView.classList.remove("hidden");
+});
+
+fecharResumoBtn.addEventListener("click", () => {
+  summaryView.classList.add("hidden");
+});
