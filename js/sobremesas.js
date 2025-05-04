@@ -160,7 +160,7 @@ finalizarBtn.addEventListener('click', () => {
 closeSummary.addEventListener('click', () => {
   summaryView.classList.add('hidden'); // esconde o modal
 });
-
+// Sem alterações 
   // Inicializa rodapé
   atualizarRodape();
 });
