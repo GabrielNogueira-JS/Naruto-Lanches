@@ -1,4 +1,3 @@
-// sobremesas.js
 document.addEventListener('DOMContentLoaded', () => {
   const container     = document.getElementById('menu');
   const detailView    = document.getElementById('detail-view');
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos...", observacao: "👤👤👤Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
   ];
 
-  // Garante que, ao carregar, nada relacionado ao resumo está ativo:
+  // Mantém modais ocultos ao iniciar
   detailView.classList.add('hidden');
   summaryView.classList.add('hidden');
 
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('valor-total').textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
-  // Renderiza os cards do menu
+  // Renderiza cards
   menu.forEach((item, idx) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -68,20 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
           <label>Observação:</label>
           <textarea id="obs-detail" rows="5" placeholder="Retirar algo?"></textarea>
           <div class="actions">
-            <button id="add-detail" class="botao-padrao">Adicionar</button>
-            <button id="remove-detail" class="botao-padrao">Remover</button>
+            <button id="add-detail">Adicionar</button>
+            <button id="remove-detail">Remover</button>
           </div>
         </div>
       `;
       detailView.classList.remove('hidden');
 
-      // Fechar o modal de detalhes
+      // fechar detalhe
       detailView.querySelector('.close-hint').onclick = () => {
         detailView.classList.add('hidden');
         detailView.innerHTML = '';
       };
 
-      // Adicionar item
+      // adicionar
       detailView.querySelector('#add-detail').onclick = () => {
         const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
         pedido.push({ nome: item.nome, preco: item.preco, obs });
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         detailView.innerHTML = '';
       };
 
-      // Remover item
+      // remover
       detailView.querySelector('#remove-detail').onclick = () => {
         const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
         const i = pedido.findIndex(p => p.nome === item.nome && p.obs === obs);
@@ -154,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     totalE.textContent = soma.toFixed(2);
   }
 
-  // === Só aqui o resumo é exibido! ===
+  // resumo só aparece após click
   finalizarBtn.addEventListener('click', () => {
     renderizarResumo();
     summaryView.classList.remove('hidden');
@@ -164,6 +163,5 @@ document.addEventListener('DOMContentLoaded', () => {
     summaryView.classList.add('hidden');
   });
 
-  // Atualiza rodapé _sem_ mostrar modal
   atualizarRodape();
 });
