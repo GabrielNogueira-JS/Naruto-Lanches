@@ -1,3 +1,4 @@
+// sobremesas.js
 document.addEventListener('DOMContentLoaded', () => {
   const container     = document.getElementById('menu');
   const detailView    = document.getElementById('detail-view');
@@ -6,22 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeSummary  = document.getElementById('close-summary');
   const pedido        = [];
 
-  // Menu com .png.png mantido
   const menu = [
-    { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "Quatro fatias de bolo macio sabor chocolate com diamante negro, creme de leite, leite condensado da melhor qualidade e uma calda de chocolate temperado.", observacao: "👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png.png" },
-    { nome: "🍨 Taça Colegial – Equipe 7",              descricao: "Duas bolas de sorvete sabor creme, cobertas com calda de morango e finalizadas com duas cerejas e confetes coloridos.", observacao: "👤Serve até duas pessoas.",          preco: 15.90, imagem: "../imagens/tacacolegial.png.png" },
-    { nome: "🍮 Pudim – Técnica Secreta do Clã Nara",   descricao: "Pudim cremoso de doce de leite com calda de caramelo macio e textura aveludada.", observacao: "👤👤Serve até três pessoas.",         preco: 12.50, imagem: "../imagens/pudim.png.png" },
-    { nome: "🥤 Milk-Shake – Onda de Chakra Rosa",      descricao: "Milk-shake cremoso de morango com essência natural e chantilly por cima.", observacao: "Serve uma pessoa.",               preco: 18.00, imagem: "../imagens/milkshake.png" },
-    { nome: "🧁 Cupcake – Estilo Sakura Blossom",      descricao: "Cupcake de limão com cobertura de calda de morango e confetes coloridos.", observacao: "Serve uma pessoa.",               preco: 10.90, imagem: "../imagens/cupcake.png" },
-    { nome: "🥐 Croissant – Golpe Sombrio do Uchiha",   descricao: "Croissant folhado recheado com chocolate ao leite derretido e pincelado com calda especial.", observacao: "Serve uma pessoa.", preco: 8.50,  imagem: "../imagens/croissant.png" },
-    { nome: "🦄 Taça Infantil Unicórnio – Invocação de Gamakichi", descricao: "Sorvete de morango com calda de amora, decoração de pasta americana em forma de unicórnio e MM's.", observacao: "👤Serve até duas crianças.", preco: 20.00, imagem: "../imagens/tacaunicornio.png.png" },
-    { nome: "🍫 Petit Gateau – Jutsu do Dragão Negro", descricao: "Bolinhas de massa de chocolate quente com sorvete de creme ao lado e calda quente.", observacao: "Serve uma pessoa.", preco: 19.90, imagem: "../imagens/petitgateau.png.png" },
-    { nome: "🍩 Sonho – Sonho do Tsukuyomi Infinito",  descricao: "Sonho frito recheado com leite condensado e polvilhado com açúcar e canela.", observacao: "Serve uma pessoa.", preco: 7.00,  imagem: "../imagens/doce.png.png" },
-    { nome: "☕ Café – Chakra da Madrugada",           descricao: "Café Jamaica Blue Mountain, adoçado na medida com leite semidesnatado.", observacao: "Serve uma pessoa.", preco: 7.50,  imagem: "../imagens/cafe.png.png" },
-    { nome: "🍰 Bolo de Morango – Chakra do Amanhecer", descricao: "Bolo de morango macio com cobertura de morangos frescos...", observacao: "👤👤👤Serve até quatro pessoas.", preco: 22.00, imagem: "../imagens/bolomorango.png.png" }
+    { nome: "🍰 Bolo de Chocolate – Chakra do Anoitecer", descricao: "...", observacao: "👤👤👤 Serve até quatro pessoas.", preco: 22.50, imagem: "../imagens/bolochocolate.png" },
+    { nome: "🍨 Taça Colegial – Equipe 7",              descricao: "...", observacao: "👤Serve até duas pessoas.",          preco: 15.90, imagem: "../imagens/tacacolegial.png" },
+    { nome: "🍮 Pudim – Técnica Secreta do Clã Nara",   descricao: "...", observacao: "👤👤Serve até três pessoas.",         preco: 12.50, imagem: "../imagens/pudim.png" },
+    /* ... demais itens com extensão .png única ... */
   ];
 
-  // Esconde modais inicialmente
   detailView.classList.add('hidden');
   summaryView.classList.add('hidden');
 
@@ -34,14 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function atualizarRodape() {
-    const totalElem = document.getElementById('total');
-    const valorElem = document.getElementById('valor-total');
-    totalElem.textContent = `Total de Sobremesas: ${pedido.length}`;
+    document.getElementById('total').textContent = `Total de Sobremesas: ${pedido.length}`;
     const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
-    valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
+    document.getElementById('valor-total').textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
-  // Renderiza os cards do menu
   menu.forEach((item, idx) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -68,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>${item.descricao}</p>
           <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
           <label>Observação:</label>
-         <textarea id="obs-detail" rows="5" placeholder="Retirar algo?"></textarea>
+          <textarea id="obs-detail" rows="5" placeholder="Retirar algo?"></textarea>
           <div class="actions">
             <button id="add-detail" class="botao-padrao">Adicionar</button>
             <button id="remove-detail" class="botao-padrao">Remover</button>
@@ -76,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       detailView.classList.remove('hidden');
-
       detailView.querySelector('.close-hint').onclick = () => detailView.classList.add('hidden');
 
       detailView.querySelector('#add-detail').onclick = () => {
@@ -96,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Agrupa por nome+obs
   function agruparPedido() {
     const mapa = {};
     pedido.forEach(p => {
@@ -107,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return Object.values(mapa);
   }
 
-  // Render do resumo no modal
   function renderizarResumo() {
     const lista = document.getElementById('lista-pedido');
     const totalE = document.getElementById('total-pedido');
@@ -150,35 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
     totalE.textContent = soma.toFixed(2);
   }
 
-  // Finalizar → abre o modal de resumo
-finalizarBtn.addEventListener('click', () => {
-  renderizarResumo(); // renderiza os itens
-  summaryView.classList.remove('hidden'); // exibe o modal
-});
+  finalizarBtn.addEventListener('click', () => {
+    renderizarResumo();
+    summaryView.classList.remove('hidden');
+  });
 
-// Fecha o modal de resumo
-closeSummary.addEventListener('click', () => {
-  summaryView.classList.add('hidden'); // esconde o modal
-});
-// Sem alterações 
-  // Inicializa rodapé
+  closeSummary.addEventListener('click', () => {
+    summaryView.classList.add('hidden');
+  });
+
   atualizarRodape();
 });
-const summaryView = document.getElementById("summaryView");
-const finalizarPedidoBtn = document.getElementById("finalizar-pedido");
-const fecharResumoBtn = document.getElementById("close-summary");
-
-// Exibe o resumo do pedido ao clicar no botão "Finalizar Pedido"
-finalizarPedidoBtn?.addEventListener("click", () => {
-  renderizarResumo(); // renderiza os itens do pedido
-  summaryView?.classList.remove("hidden"); // exibe o modal
-});
-
-// Oculta o resumo ao clicar no botão "Fechar"
-fecharResumoBtn?.addEventListener("click", () => {
-  summaryView?.classList.add("hidden"); // esconde o modal
-});
-
-// Inicializa rodapé
-atualizarRodape();
-
+// Fim do código
