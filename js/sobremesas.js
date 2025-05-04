@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function atualizarRodape() {
     // agora comentado, pois não usamos mais total estático
-    // const totalElem = document.getElementById('total');
-    // const valorElem = document.getElementById('valor-total');
-    // const qtd = pedido.length;
-    // const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
-    // totalElem.textContent = `Total de Itens: ${qtd}`;
-    // valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
+     const totalElem = document.getElementById('total');
+     const valorElem = document.getElementById('valor-total');
+     const qtd = pedido.length;
+     const valor = pedido.reduce((sum, p) => sum + p.preco, 0);
+     totalElem.textContent = `Total de Itens: ${qtd}`;
+     valorElem.textContent = `Total em Dinheiro: R$ ${valor.toFixed(2)}`;
   }
 
   menu.forEach((item, index) => {
