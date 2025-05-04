@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
     detailView.classList.remove('hidden');
-
     detailView.querySelector('.close-hint').onclick = hideDetail;
 
     detailView.querySelector('#add-detail').onclick = () => {
@@ -93,9 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     detailView.querySelector('#remove-detail').onclick = () => {
       const obsText = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
-      const idx = pedido.findIndex(p => p.nome === item.nome && p.obs === obsText);
-      if (idx > -1) {
-        pedido.splice(idx, 1);
+      const idxPed = pedido.findIndex(p => p.nome === item.nome && p.obs === obsText);
+      if (idxPed > -1) {
+        pedido.splice(idxPed, 1);
         atualizarRodape();
       } else {
         mostrarErro('Nada desse item+obs no pedido!');
@@ -128,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let soma = 0, totalItens = 0;
 
     grupos.forEach(grp => {
-      const li = document.createElement('li');
+      const li        = document.createElement('li');
       const spanNome  = document.createElement('span');
       const spanQtd   = document.createElement('span');
       const spanPreco = document.createElement('span');
@@ -142,10 +141,18 @@ document.addEventListener('DOMContentLoaded', () => {
       btnMais.textContent  = '+';
       btnMenos.textContent = '-';
 
-      btnMais.onclick = () => { pedido.push({ nome: grp.nome, preco: grp.preco, obs: grp.obs }); atualizarRodape(); renderizarResumo(); };
+      btnMais.onclick = () => {
+        pedido.push({ nome: grp.nome, preco: grp.preco, obs: grp.obs });
+        atualizarRodape();
+        renderizarResumo();
+      };
       btnMenos.onclick = () => {
         const idx = pedido.findIndex(p => p.nome === grp.nome && p.preco === grp.preco && p.obs === grp.obs);
-        if (idx > -1) { pedido.splice(idx, 1); atualizarRodape(); renderizarResumo(); }
+        if (idx > -1) {
+          pedido.splice(idx, 1);
+          atualizarRodape();
+          renderizarResumo();
+        }
       };
 
       li.appendChild(spanNome);
@@ -157,7 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (grp.obs) {
         const obsEl = document.createElement('div');
         obsEl.textContent = `Obs: ${grp.obs}`;
-        obsEl.style.fontStyle  = 'italic'; obsEl.style.marginLeft = '20px';
+        obsEl.style.fontStyle   = 'italic';
+        obsEl.style.marginLeft  = '20px';
         li.appendChild(obsEl);
       }
 
