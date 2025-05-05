@@ -1,11 +1,10 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contador de Sobremesas</title>
-  <link rel="stylesheet" href="../css/sobremesas.css">
+  <link rel="stylesheet" href="../css/sobremesas.css" />
 </head>
 <body>
   <header>
@@ -15,25 +14,23 @@
   <main class="layout">
     <div class="container">
       <h2>Um bom ninja precisa adoçar sua amargura...</h2>
-      <div id="menu-container">
-        <div id="menu"></div>
 
-        <div id="detail-view" class="hidden"></div>
-       
-      </div> 
-  
+      <section id="menu-container">
+        <div id="menu" aria-label="Lista de sobremesas disponíveis"></div>
+        <div id="detail-view" class="hidden" aria-live="polite"></div>
+      </section>
 
-      <div class="footer-box">
-        <button id="finalizar-pedido">Finalizar Pedido</button>
+      <section class="footer-box">
+        <button id="finalizar-pedido" type="button">Finalizar Pedido</button>
         <p id="total">Total de sobremesas: 0</p>
         <p id="valor-total">Total em dinheiro: R$ 0,00</p>
-      </div>
+      </section>
     </div>
   </main>
 
-  <div id="summary-view" class="hidden">
+  <div id="summary-view" class="hidden" role="dialog" aria-modal="true">
     <div class="box">
-      <span class="close-hint" id="close-summary">✖</span>
+      <button class="close-hint" id="close-summary" aria-label="Fechar resumo do pedido">✖</button>
       <h2>Resumo do Pedido</h2>
       <ul id="lista-pedido"></ul>
       <p><strong>Total:</strong> R$ <span id="total-pedido">0.00</span></p>
@@ -41,7 +38,9 @@
   </div>
 
   <footer>
-    <button id="return-button" onclick="window.location.href='index.html'">Retornar à Página Inicial</button>
+    <button id="return-button" onclick="window.location.href='index.html'" type="button">
+      Retornar à Página Inicial
+    </button>
   </footer>
 
   <script src="../js/sobremesas.js"></script>

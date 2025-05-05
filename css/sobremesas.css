@@ -110,8 +110,10 @@ header .borda {
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 8px;
+  color: #111;
 }
 .desc {
+  color: #444;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -146,7 +148,15 @@ header .borda {
 /* ===== Preço ===== */
 .price {
   font-size: 1.05rem;
-  color: #131313;
+  color: #444;
+  font-weight: 600;
+}
+
+/* ===== Serve para (pessoas) ===== */
+.serve-info {
+  font-size: 1rem;
+  color: #444;
+  font-weight: 500;
 }
 
 /* ===== Botões ===== */
@@ -202,6 +212,14 @@ button:hover {
   font-size: 1.1rem;
   color: #e7e5e5;
   margin: 8px 0;
+}
+
+/* ===== Resumo Centralizado Abaixo ===== */
+.resumo-pedido {
+  text-align: center;
+  margin-top: 20px;
+  color: #111;
+  font-size: 1.1rem;
 }
 
 /* ===== Botão Retornar ===== */
@@ -306,4 +324,61 @@ button:hover {
 .text-center:active {
   background-color: rgba(255, 102, 139, 0.1);
   transition: background-color 0.2s ease-in-out;
+}
+/* Centralizar visualmente o resumo do pedido */
+#summary-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* fundo escurecido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Centralizar conteúdo interno da box */
+#summary-view .box {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+/* Posiciona o botão fechar no canto superior direito da box */
+#summary-view .close-hint {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Ajustes extras (se ainda não existirem) */
+#lista-pedido {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+#lista-pedido li {
+  margin: 0.5rem 0;
+}
+
+/* escondendo modais */
+.hidden {
+  display: none !important;
+}
+
+/* textarea full width */
+#detail-view textarea {
+  width: 100%;
+  box-sizing: border-box;
 }
