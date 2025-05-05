@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contador de Sobremesas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/sobremesas.css">
 </head>
 <body>
@@ -17,37 +14,29 @@
   <main class="layout">
     <div class="container">
       <h2>Um bom ninja precisa adoçar sua amargura...</h2>
-  
       <div id="menu-container">
         <div id="menu"></div>
         <div id="detail-view" class="hidden"></div>
-      </div> 
-  
+      </div>
       <div class="footer-box">
-        <button class="button" id="finalizar-pedido">Finalizar Pedido</button>
+        <button id="finalizar-pedido">Finalizar Pedido</button>
         <p id="total">Total de sobremesas: 0</p>
-        <p id="valor-total">Total em dinheiro: R$ 0,00</p>
+        <p id="valor-total">Total em dinheiro: R$ 0,00</p>
       </div>
     </div>
   </main>
 
-  <!-- Modal de Resumo -->
   <div id="summary-view" class="hidden">
     <div class="box">
       <span class="close-hint" id="close-summary">✖</span>
       <h2>Resumo do Pedido</h2>
       <ul id="lista-pedido"></ul>
-      <p><strong>Total:</strong> R$ <span id="total-pedido">0.00</span></p>
+      <p><strong>Total:</strong> R$ <span id="total-pedido">0.00</span></p>
     </div>
   </div>
 
   <footer>
-    <div style="text-align: center;">
-      <button id="return-button" onclick="window.location.href='index.html'">
-        Retornar à Página Inicial
-      </button>
-      <p>🍥 Desenvolvido com alma shinobi e açúcar na medida 🍥</p>
-    </div>
+    <button id="return-button" onclick="window.location.href='index.html'">Retornar à Página Inicial</button>
   </footer>
 
   <script src="../js/sobremesas.js"></script>
