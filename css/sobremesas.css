@@ -146,7 +146,7 @@ header .borda {
 /* ===== Preço ===== */
 .price {
   font-size: 1.05rem;
-  color: #222;
+  color: #131313;
 }
 
 /* ===== Botões ===== */
@@ -196,7 +196,7 @@ button:hover {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border: 2px solid #ffaad4;
+  border: 2px solid #fd4ba4;
 }
 .footer-box p {
   font-size: 1.1rem;
@@ -217,7 +217,7 @@ button:hover {
   transition: background 0.3s;
 }
 #return-button:hover {
-  background-color: #e685bd;
+  background-color: #fa1299;
 }
 
 /* ===== Modal de Detalhes ===== */
@@ -278,7 +278,7 @@ button:hover {
 /* ===== Título Central ===== */
 .text-center {
   text-align: center;
-  color: #4a3a39;
+  color: #ee99a0;
   font-size: 1.5rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -294,7 +294,7 @@ button:hover {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(to right, #ff8c94, #ffaaa5);
+  background: linear-gradient(to right, #ff8c94, #fc908b);
   border-radius: 2px;
   z-index: -1;
 }
