@@ -111,4 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
   closeSummary.onclick = () => summaryView.classList.add('hidden');
 
   atualizarRodape();
+<<<<<<< HEAD
 });
+=======
+});
+const summaryView = document.getElementById("summaryView");
+const finalizarPedidoBtn = document.getElementById("finalizar-pedido");
+const fecharResumoBtn = document.getElementById("close-summary");
+
+finalizarPedidoBtn.addEventListener("click", () => {
+  summaryView.classList.remove("hidden");
+});
+
+fecharResumoBtn.addEventListener("click", () => {
+  summaryView.classList.add("hidden");
+});
+>>>>>>> a7f99b05a66f5a6038d1961ea7533c677836d8b0
