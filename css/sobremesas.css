@@ -508,11 +508,28 @@ header .borda {
   background: none; border: none; font-size: 1.2rem; cursor: pointer;
 }
 
-/* Utility */
-.hidden { display: none !important; }
-.resumo-pedido { margin-top: 20px; font-size: 1.1rem; color: #111; }
-#return-button {
-  background: #2c3e50; color: #fff; padding: 10px 20px; border: none;
-  border-radius: 8px; cursor: pointer; margin: 12px; transition: background .3s;
+.modal {
+  position: relative;
+  padding-top: 2rem; /* espaço pro botão lá em cima */
 }
-#return-button:hover { background: #fa1299; }
+
+/* Título do item */
+.modal h2,
+.modal .item-title {
+  margin-top: 1.5rem; /* desce o nome do item um pouco */
+}
+
+.card {
+  position: relative; /* necessário para posicionamento absoluto interno */
+}
+
+.card .buttons {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
