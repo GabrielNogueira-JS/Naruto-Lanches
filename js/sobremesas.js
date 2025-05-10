@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', () => {
       detailView.innerHTML = `
         <div class="box">
-          <button class="close-detail" aria-label="Fechar detalhe">✖</button>
+          <button class="close-detail" aria-label="Fechar detalhe">❌</button>
           <h2>${item.nome}</h2>
           <img src="${item.imagem}" alt="${item.nome}">
           <p>${item.descricao}</p>

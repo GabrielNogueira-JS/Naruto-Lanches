@@ -155,7 +155,7 @@ header .borda {
 /* ===== Serve para (pessoas) ===== */
 .serve-info {
   font-size: 1rem;
-  color: #444;
+  color: #777777;
   font-weight: 500;
 }
 
@@ -165,6 +165,7 @@ header .borda {
   align-items: center;
   gap: 10px;
   margin-top: 5px;
+ 
 }
 button.increment, button.decrement {
   background-color: #ff4d88;
