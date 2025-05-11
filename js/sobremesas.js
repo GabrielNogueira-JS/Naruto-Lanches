@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuContainer   = document.getElementById('menu');
   const detailView      = document.getElementById('detail-view');
   const summaryView     = document.getElementById('summary-view');
-  const btnFinalizar    = document.getElementById('finalizar-pedido');
+  const btnConfirmar    = document.getElementById('confirmar-pedido');
   const btnCloseSummary = document.getElementById('close-summary');
   const pedido          = [];
 
@@ -93,11 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   summaryView.classList.add('hidden');
 
   // Atualiza contador e total
-  function atualizarRodape() {
-    document.getElementById('total').textContent = `Total de sobremesas: ${pedido.length}`;
-    document.getElementById('valor-total').textContent =
-      `Total em dinheiro: R$ ${pedido.reduce((sum, p) => sum + p.preco, 0).toFixed(2)}`;
-  }
+  
 
   // Agrupa itens iguais
   function agruparPedido() {
@@ -149,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = agruparPedido()[e.target.dataset.index];
         pedido.push({ nome: item.nome, preco: item.preco, obs: item.obs });
         renderizarResumo();
-        atualizarRodape();
+      
       });
     });
 
@@ -160,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const i = pedido.findIndex(p => p.nome === item.nome && p.obs === item.obs);
         if (i > -1) pedido.splice(i, 1);
         renderizarResumo();
-        atualizarRodape();
+    
       });
     });
   }
@@ -206,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
       detailView.querySelector('#add-detail').onclick = () => {
         const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
         pedido.push({ nome: item.nome, preco: item.preco, obs });
-        atualizarRodape();
+       
         detailView.classList.add('hidden');
       };
 
@@ -214,14 +210,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
         const i = pedido.findIndex(p => p.nome === item.nome && p.obs === obs);
         if (i > -1) pedido.splice(i, 1);
-        atualizarRodape();
+       
         detailView.classList.add('hidden');
       };
     });
   });
 
   // Abre e fecha modal de resumo
-  btnFinalizar.onclick = () => {
+  btnConfirmar.onclick = () => {
     renderizarResumo();
     summaryView.classList.remove('hidden');
   };
@@ -231,5 +227,5 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Inicializa rodapé
-  atualizarRodape();
+ 
 }); 
