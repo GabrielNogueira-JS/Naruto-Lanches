@@ -197,11 +197,11 @@ button {
   color: white;
   cursor: pointer;
   transition: border-color 0.3s ease, transform 0.2s ease, background 0.2s;
-  box-shadow: 0 2px 5px rgba(245, 215, 215, 0.2);
+  box-shadow: 0 2px 5px rgb(250, 248, 248);
 }
 button:hover {
   border-color: #cc3f5a;
-  background: #131313;
+  background: #f56bd2;
   transform: scale(1.05);
 }
 
