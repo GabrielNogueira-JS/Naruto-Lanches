@@ -1,76 +1,138 @@
-const drinks = [
-    { name: "Piña Colada", emoji: "🍍", ingredients: ["Rum", "Leite de Coco", "Suco de Abacaxi"] },
-    { name: "Margarita", emoji: "🍸", ingredients: ["Tequila", "Licor de Laranja", "Suco de Limão"] },
-    { name: "Mojito", emoji: "🌿", ingredients: ["Rum Branco", "Hortelã", "Açúcar", "Suco de Limão", "Água com Gás"] },
-    { name: "Caipirinha", emoji: "🍋", ingredients: ["Cachaça", "Açúcar", "Limão"] },
-    { name: "Daiquiri", emoji: "🍹", ingredients: ["Rum Branco", "Suco de Limão", "Açúcar"] },
-    { name: "Tequila Sunrise", emoji: "🌅", ingredients: ["Tequila", "Suco de Laranja", "Groselha"] },
-    { name: "Negroni", emoji: "🍊", ingredients: ["Gin", "Vermute Rosso", "Campari"] },
-    { name: "Bloody Mary", emoji: "🍅", ingredients: ["Vodka", "Suco de Tomate", "Molho Inglês", "Pimenta", "Suco de Limão"] },
-    { name: "Mai Tai", emoji: "🌴", ingredients: ["Rum", "Licor de Laranja", "Suco de Limão", "Xarope de Amêndoa"] }
+document.addEventListener('DOMContentLoaded', () => {
+  const menuContainer   = document.getElementById('menu');
+  const detailView      = document.getElementById('detail-view');
+  const summaryView     = document.getElementById('summary-view');
+  const btnConfirmar    = document.getElementById('confirmar-pedido');
+  const btnCloseSummary = document.getElementById('close-summary');
+  const pedido          = [];
+
+ const drinks = [
+    { nome: "🍍 Piña Colada", descricao: "Rum, leite de coco e suco de abacaxi gelado.", observacao: "👤 Serve uma pessoa.", preco: 20.00, imagem: "../imagens/pinacolada.png.png" },
+    { nome: "🍸 Margarita", descricao: "Tequila, licor de laranja e suco de limão.", observacao: "👤 Serve uma pessoa.", preco: 22.00, imagem: "../imagens/margarita.png.jpeg" },
+    { nome: "🌿 Mojito", descricao: "Rum branco, hortelã, açúcar, limão e água com gás.", observacao: "👤 Serve uma pessoa.", preco: 18.50, imagem: "../imagens/mojito.png.jpeg" },
+    { nome: "🍋 Caipirinha", descricao: "Cachaça, açúcar e limão fresco.", observacao: "👤 Serve uma pessoa.", preco: 15.00, imagem: "../imagens/caipirosca.png.jpeg" },
+    { nome: "🍹 Daiquiri", descricao: "Rum branco, suco de limão e açúcar.", observacao: "👤 Serve uma pessoa.", preco: 19.00, imagem: "../imagens/daiquiri.png.jpeg" },
+    { nome: "🌅 Tequila Sunrise", descricao: "Tequila, suco de laranja e groselha.", observacao: "👤 Serve uma pessoa.", preco: 21.00, imagem: "../imagens/tequilasunrise.png" },
+    { nome: "🍊 Negroni", descricao: "Gin, vermute rosso e campari.", observacao: "👤 Serve uma pessoa.", preco: 25.00, imagem: "../imagens/negroni.png.png" },
+    { nome: "🍅 Bloody Mary", descricao: "Vodka, suco de tomate, molho inglês, pimenta e suco de limão.", observacao: "👤 Serve uma pessoa.", preco: 23.00, imagem: "imagens/bloodymary.png.jpeg" },
+    { nome: "🌴 Mai Tai", descricao: "Rum, licor de laranja, suco de limão e xarope de amêndoa.", observacao: "👤 Serve uma pessoa.", preco: 24.00, imagem: "../imagens/maitai.png.png" }
 ];
 
-const precoPorBebida = 20.00;
-let drinkCounts = {};
+  detailView.classList.add('hidden');
+  summaryView.classList.add('hidden');
 
-drinks.forEach(drink => {
-    drinkCounts[drink.name] = 0;
+  function agruparPedido() {
+    return Object.values(pedido.reduce((map, p) => {
+      const key = p.name + '||' + p.obs;
+      if (!map[key]) map[key] = { ...p, qtd: 0 };
+      map[key].qtd++;
+      return map;
+    }, {}));
+  }
+
+  function renderizarResumo() {
+    const lista = document.getElementById('lista-pedido');
+    lista.innerHTML = '';
+    let soma = 0;
+    let totalItens = 0;
+
+    agruparPedido().forEach((g, idx) => {
+      lista.innerHTML += `
+        <li>
+          ${g.nome} x${g.qtd} - R$ ${(g.preco * g.qtd).toFixed(2)}
+          <div style="font-style:italic; margin-left:20px">${g.obs}</div>
+          <div class="buttons">
+            <button class="decrement" data-index="${idx}">-</button>
+            <button class="increment" data-index="${idx}">+</button>
+          </div>
+        </li>
+      `;
+      soma += g.preco * g.qtd;
+      totalItens += g.qtd;
+    });
+
+    document.getElementById('total-pedido').textContent = soma.toFixed(2);
+    document.getElementById('total-itens').textContent = totalItens;
+
+    // Substitui ouvintes
+    document.querySelectorAll('.increment').forEach(btn => {
+      const clone = btn.cloneNode(true);
+      btn.replaceWith(clone);
+      clone.addEventListener('click', e => {
+        e.stopPropagation();
+        const item = agruparPedido()[e.target.dataset.index];
+        pedido.push({ nome: item.nome, preco: item.preco, obs: item.obs });
+        renderizarResumo();
+      });
+    });
+    document.querySelectorAll('.decrement').forEach(btn => {
+      const clone = btn.cloneNode(true);
+      btn.replaceWith(clone);
+      clone.addEventListener('click', e => {
+        e.stopPropagation();
+        const item = agruparPedido()[e.target.dataset.index];
+        const i = pedido.findIndex(p => p.nome === item.nome && p.obs === item.obs);
+        if (i > -1) pedido.splice(i, 1);
+        renderizarResumo();
+      });
+    });
+  }
+
+  // Renderiza cards e configura detalhes
+  drinks.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.index = idx;
+    card.innerHTML = `
+      <div class="card-left">
+        <h3 class="item-name">${item.nome}</h3>
+        <p class="desc">${item.descricao}</p>
+        <div class="observacao">${item.observacao}</div>
+        <p class="price">R$ ${item.preco.toFixed(2)}</p>
+      </div>
+      <div class="card-right">
+        <img src="${item.imagem}" alt="${item.nome}">
+      </div>
+    `;
+    document.getElementById('menu').appendChild(card);
+
+    card.addEventListener('click', () => {
+      detailView.innerHTML = `
+        <div class="box">
+          <button class="close-detail" aria-label="Fechar detalhe">❌</button>
+          <h2>${item.nome}</h2>
+          <img src="${item.imagem}" alt="${item.nome}">
+          <p>${item.descricao}</p>
+          <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
+          <label for="obs-detail">Observação:</label>
+          <textarea id="obs-detail" rows="3" placeholder="Deseja algo especial?"></textarea>
+          <div class="actions">
+            <button id="add-detail">Adicionar</button>
+            <button id="remove-detail">Remover</button>
+          </div>
+        </div>
+      `;
+      detailView.classList.remove('hidden');
+
+      detailView.querySelector('.close-detail').onclick = () => detailView.classList.add('hidden');
+      detailView.querySelector('#add-detail').onclick = () => {
+        const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
+        pedido.push({ nome: item.nome, preco: item.preco, obs });
+        detailView.classList.add('hidden');
+      };
+      detailView.querySelector('#remove-detail').onclick = () => {
+        const obs = detailView.querySelector('#obs-detail').value.trim() || item.observacao;
+        const i = pedido.findIndex(p => p.nome === item.nome && p.obs === obs);
+        if (i > -1) pedido.splice(i, 1);
+        detailView.classList.add('hidden');
+      };
+    });
+  });
+
+  btnConfirmar.onclick = () => {
+    renderizarResumo();
+    summaryView.classList.remove('hidden');
+  };
+  btnCloseSummary.onclick = () => summaryView.classList.add('hidden');
 });
-
-function createDrinkCounters() {
-    const container = document.getElementById("drinks-container");
-    if (!container) {
-        console.error("Erro: Elemento #drinks-container não encontrado.");
-        return;
-    }
-    container.innerHTML = ""; // Limpa antes de adicionar
-    
-    drinks.forEach(drink => {
-        const drinkDiv = document.createElement("div");
-        drinkDiv.classList.add("ingredient");
-
-        drinkDiv.innerHTML = `
-            <span><strong>${drink.emoji} ${drink.name}</strong> (R$ ${precoPorBebida.toFixed(2)}):</span>
-            <p class="ingredients">${drink.ingredients.join(", ")}</p>
-            <button class="decrement" data-drink="${drink.name}">-</button>
-            <span id="${drink.name}-count">0</span>
-            <button class="increment" data-drink="${drink.name}">+</button>
-        `;
-
-        container.appendChild(drinkDiv);
-    });
-    
-    attachEventListeners();
-}
-
-function attachEventListeners() {
-    document.querySelectorAll(".increment").forEach(button => {
-        button.addEventListener("click", () => updateCount(button.dataset.drink, 1));
-    });
-    
-    document.querySelectorAll(".decrement").forEach(button => {
-        button.addEventListener("click", () => updateCount(button.dataset.drink, -1));
-    });
-}
-
-function updateCount(drink, change) {
-    if (!(drink in drinkCounts)) return;
-    
-    let newValue = drinkCounts[drink] + change;
-    if (newValue < 0) newValue = 0;
-    if (newValue > 10) newValue = 10;
-    
-    drinkCounts[drink] = newValue;
-    document.getElementById(`${drink}-count`).textContent = newValue;
-    updateTotal();
-}
-
-function updateTotal() {
-    let totalBebidas = Object.values(drinkCounts).reduce((sum, value) => sum + value, 0); 
-    let totalDinheiro = totalBebidas * precoPorBebida;
-
-    document.getElementById("total").textContent = `Total de bebidas: ${totalBebidas}`;
-    document.getElementById("valor-total").textContent = `Total em dinheiro: R$ ${totalDinheiro.toFixed(2)}`;
-}
-
-document.addEventListener("DOMContentLoaded", createDrinkCounters);
+document.querySelector("#return-button").classList.add("hide");

@@ -1,43 +1,47 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🍹Cardápio Shinobi🍹</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/cssdrinks.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contador de Drinks Ninja</title>
+  <link rel="stylesheet" href="../css/cssdrinks.css" />
 </head>
 <body>
   <header>
-    <h1 class="titulo-com-borda">🍶Cardápio Shinobi - Drinks Ninja🍶</h1>
+    <div class="borda">🍹 Cardápio Shinobi 🍹 - Drinks Ninja</div>
   </header>
 
-  
-  <div class="flex-container">
-    
-    <div class="side-image left">
-      <img src="../imagens/random.png" alt="Imagem Esquerda">
-      <img src="../imagens/sasuke.png" alt="Imagem Esquerda">
-    </div>
+  <main class="layout">
+    <div class="container">
+      <h2>Um Bom Shinobi Precisa Refrescar Seu Chakra...</h2>
 
-   
-    <div class="main-content">
-      <h2>Drinks da Perdição</h2>
-      <div id="drinks-container"></div>
-      <div id="total">Total de bebidas: 0</div>
-      <div id="valor-total">Total em dinheiro: R$ 0,00</div>
-    </div>
+      <section id="menu-container">
+        <div id="menu" aria-label="Lista de drinks disponíveis"></div>
+        <div id="detail-view" class="hidden" aria-live="polite"></div>
+      </section>
 
-   
-    <div class="side-image right">
-      <img src="../imagens/jutso.png" alt="Imagem Direita">
-      <img src="../imagens/veio.png"  alt="Imagem Direita" style="width: 300px; height: 600px";>   
+      <section class="footer-box">
+        <button id="confirmar-pedido" type="button">Confirmar Pedido</button>
+      </section>
+    </div>
+  </main>
+
+  <div id="summary-view" class="hidden" role="dialog" aria-modal="true">
+    <div class="box summary">
+      <button class="close-hint" id="close-summary" aria-label="Fechar Resumo do pedido">❌</button>
+      <h2>Resumo do Pedido</h2>
+      <ul id="lista-pedido"></ul>
+      <p><strong>Total de Drinks:</strong> <span id="total-itens">0</span></p>
+      <p><strong>Total:</strong> R$ <span id="total-pedido">0.00</span></p>
+      <button class="botao-pedido" type="button">Finalizar Pedido</button>
     </div>
   </div>
 
-  <a href="index.html">
-    <button id="return-button">Retorne para a Página Inicial</button>
-  </a>
+  <footer>
+    <button id="return-button" onclick="window.location.href='index.html'" type="button">
+      Retornar à Página Inicial
+    </button>
+  </footer>
 
   <script src="../js/drinks.js"></script>
 </body>
