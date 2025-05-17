@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { nome: "🍹 Daiquiri", descricao: "Rum branco, suco de limão e açúcar.", observacao: "👤 Serve uma pessoa.", preco: 19.00, imagem: "../imagens/daiquiri.png.jpeg" },
     { nome: "🌅 Tequila Sunrise", descricao: "Tequila, suco de laranja e groselha.", observacao: "👤 Serve uma pessoa.", preco: 21.00, imagem: "../imagens/tequila.png" },
     { nome: "🍊 Negroni", descricao: "Gin, vermute rosso e campari.", observacao: "👤 Serve uma pessoa.", preco: 25.00, imagem: "../imagens/negroni.png" },
-    { nome: "🍅 Bloody Mary", descricao: "Vodka, suco de tomate, molho inglês, pimenta e suco de limão.", observacao: "👤 Serve uma pessoa.", preco: 23.00, imagem: "../imagens/jpeg.png" },
+    { nome: "🍅 Bloody Mary", descricao: "Vodka, suco de tomate, molho inglês, pimenta e suco de limão.", observacao: "👤 Serve uma pessoa.", preco: 23.00, imagem: "..imagens/jpeg.png" },
     { nome: "🌴 Mai Tai", descricao: "Rum, licor de laranja, suco de limão e xarope de amêndoa.", observacao: "👤 Serve uma pessoa.", preco: 24.00, imagem: "../imagens/maitai.png" }
 ];
 
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
       lista.innerHTML += `
         <li>
           ${g.nome} x${g.qtd} - R$ ${(g.preco * g.qtd).toFixed(2)}
-          <div style="font-style:italic; margin-left:20px">${g.obs}</div>
+          <div style="font-style:italic; margin-left:10px">${g.obs}</div>
           <div class="buttons">
             <button class="decrement" data-index="${idx}">-</button>
             <button class="increment" data-index="${idx}">+</button>
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>${item.descricao}</p>
           <p><strong>R$ ${item.preco.toFixed(2)}</strong></p>
           <label for="obs-detail">Observação:</label>
-          <textarea id="obs-detail" rows="3" placeholder="Deseja algo especial?"></textarea>
+          <textarea id="obs-detail" rows="5" placeholder="Obs?" style="width: 100%;"></textarea>
           <div class="actions">
             <button id="add-detail">Adicionar</button>
             <button id="remove-detail">Remover</button>
