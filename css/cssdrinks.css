@@ -253,19 +253,33 @@ button.increment:hover, button.decrement:hover {
 
 /* ===== Botão Retornar ===== */
 #return-button {
-  background-color: #4b6cb7;
-  color: #fff;
+  background-color: #0ff8c6;
+  color: #003333; /* Texto mais escuro pra dar contraste */
+  font-weight: 700;
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 1rem;
+  border-radius: 12px;
+  padding: 12px 28px;
+  font-size: 1.1rem;
   margin: 12px 0;
   cursor: pointer;
-  transition: background 0.3s;
+  box-shadow: 0 4px 12px rgba(15, 248, 198, 0.6);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
+
 #return-button:hover {
-  background-color: #6a82fb;
+  background-color: #00d3a9;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 211, 169, 0.8);
+  transform: translateY(-3px);
 }
+
+#return-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 211, 169, 0.5);
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #111;
