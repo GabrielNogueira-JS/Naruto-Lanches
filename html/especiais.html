@@ -1,46 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lanches Especiais</title>
-  <link rel="stylesheet" href="../css/csspaginaespeciais.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contador de Lanches</title>
+  <link rel="stylesheet" href="../css/csspaginaespeciais.css" />
 </head>
 <body>
   <header>
-    <img src="../imagens/pena2.png">
-    <h1 class="titulo-com-borda">🍔Cardápio Shinobi - Lanches Ninjas🍔</h1>
-    <img src="../imagens/samehada.png" style="width:100px; height:100px;">
+    <div class="borda">🍡 Cardápio Shinobi 🍡 - Lanches Da Aldeia do Fogo </div>
   </header>
 
-  <div class="container">
-    <h2>Fome da Akatsuki</h2>
+  <main class="layout">
+    <div class="container">
+      <h2>Deliciosos Hambúrgueres para Transformar seu Chakra...</h2>
 
-    <div class="img-left"> … </div>
+      <section id="menu-container">
+        <div id="menu" aria-label="Lista de lanches disponíveis"></div>
+        <div id="detail-view" class="hidden" aria-live="polite"></div>
+      </section>
 
-    <div id="lanches-container"></div>
-    <div id="detail-view" class="hidden"></div>
+      <section class="footer-box">
+        <button id="confirmar-pedido" type="button">Confirmando Pedido</button>
+      </section>
+    </div>
+  </main>
 
-    <div id="total">Total de lanches: 0</div>
-    <div id="valor-total">Total em dinheiro: R$ 0,00</div>
-
-    <a href="index.html">…</a>
+  <div id="summary-view" class="hidden" role="dialog" aria-modal="true">
+    <div class="box summary">
+      <button class="close-hint" id="close-summary" aria-label="Fechar Resumo do pedido">❌</button>
+     
+      <h2>Resumo do Pedido</h2>
+      <ul id="lista-pedido"></ul>
+      <p><strong>Total:</strong> R$ <span id="total-pedido">0.00</span></p>
+     <button class="botao-pedido" type="button">Finalizar Pedido</button>
+    </div>
   </div>
 
-
-    <!-- Este é o container onde os lanches gerados pelo JS serão inseridos -->
-    <div id="lanches-container"></div>
-
-    <div class="img-right">
-      <img src="../imagens/choji.png">
-      <img src="../imagens/random.png">
-      <img src="../imagens/hinata.png">
-    </div>
-
-    
-
   <footer>
-    <p>🍥 Desenvolvido com alma shinobi e açúcar na medida 🍥</p>
+    <button id="return-button" onclick="window.location.href='index.html'" type="button">
+      Retornar à Página Inicial
+    </button>
   </footer>
 
   <script src="../js/especial.js"></script>
