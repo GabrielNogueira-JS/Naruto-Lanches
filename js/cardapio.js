@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: "🍟 Batata Frita com Cheddar e Bacon- Jutsu das Lâminas Douradas Cremosas", ingredients: ["Batata (600 gramas)", "Sal"], price: 29.90, imagem: "../imagens/bttcb.jpg" },
     { name: "💧 Água Mineral - Fonte de Energia Natural", ingredients: ["Água Mineral (500ml)"], price: 5, imagem: "../imagens/agua.jpg" },
     { name: "💦 Água com Gás - Técnica Borbulhante", ingredients: ["Água Gasificada (500ml)"], price: 6, imagem: "../imagens/agua-gas.jpg" },
-    { name: "🥤 Coca-Cola - Chakra Explosivo", ingredients: ["Refrigerante de Cola (600ml Tradicional ou zero)"], price: 10, imagem: "../imagens/coca.jpg" },
+    { name: "🥤 Coca-Cola - Chakra Explosivo", ingredients: ["Refrigerante de Cola (600ml Tradicional ou zero)"], price: 10, imagem: "../imagens/coca.jpeg" },
     { name: "🍊 Fanta Laranja - Modo Kurama", ingredients: ["Refrigerante de Laranja (600ml) Tradicional ou zero"], price: 7, imagem: "../imagens/fanta-laranja.jpg" },
     { name: "🍇 Fanta Uva - Genjutsu Roxo", ingredients: ["Refrigerante de Uva (600ml) Tradicional ou zero"], price: 7, imagem: "../imagens/fanta-uva.jpg" },
     { name: "🌿 Kuat - Força do País do Chá", ingredients: ["Refrigerante de Guaraná (600ml) Tradicional ou zero"], price: 5, imagem: "../imagens/kuat.jpg" },
