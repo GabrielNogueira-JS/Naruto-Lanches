@@ -7,7 +7,7 @@
 html, body {
   height: 100vh;
   font-family: 'Bree Serif', serif;
-  background-color: #f6c1d0;
+  background-color: #fd4e4e;
   color: #333;
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@ footer {
   padding: 25px 0;
 }
 header .borda {
-  background-color: #9b4d9e;
+  background-color: #fda31c;
   padding: 12px 24px;
   color: #fff;
   border-radius: 10px;
@@ -51,7 +51,7 @@ header .borda {
 /* ===== Container ===== */
 .container {
   background-color: #fff;
-  border: 5px solid #9b4d9e;
+  border: 5px solid #fc1d1d;
   border-radius: 16px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   width: 90%;
@@ -62,7 +62,7 @@ header .borda {
   align-items: center;
 }
 .container h2 {
-  color: #9b4d9e;
+  color: #f7a63e;
   font-size: 1.8rem;
   margin-bottom: 20px;
   text-align: center;
@@ -147,7 +147,7 @@ header .borda {
 
 .obs-detail {
   font-size: 0.9rem;
-  color: #fc7e7e;
+  color: #ff5353;
   background-color: #dbdbdb;
   padding: 8px;
   border-radius: 6px;
@@ -175,7 +175,7 @@ header .borda {
   margin-top: 5px;
 }
 button.increment, button.decrement {
-  background-color: #ff4d88;
+  background-color: #e1fd44;
   color: white;
   border: none;
   padding: 6px 10px;
@@ -185,11 +185,11 @@ button.increment, button.decrement {
   transition: background-color 0.3s ease;
 }
 button.increment:hover, button.decrement:hover {
-  background-color: #e6005c;
+  background-color: #6bfa66;
 }
 button {
-  background: linear-gradient(135deg, #ff8c94, #ffaaa5);
-  border: 2px solid #ff647c;
+  background: linear-gradient(135deg, #31ebf8, #88dbf5);
+  border: 2px solid #64ff6c;
   border-radius: 8px;
   padding: 6px 12px;
   font-size: 1.2rem;
@@ -200,8 +200,8 @@ button {
   box-shadow: 0 2px 5px rgb(250, 248, 248);
 }
 button:hover {
-  border-color: #cc3f5a;
-  background: #f56bd2;
+  border-color: #f5b641;
+  background: #faf73c;
   transform: scale(1.05);
 }
 
@@ -214,7 +214,7 @@ button:hover {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border: 2px solid #fd4ba4;
+  border: 2px solid #664bfd;
 }
 .footer-box p {
   font-size: 1.1rem;
@@ -243,7 +243,7 @@ button:hover {
   transition: background 0.3s;
 }
 #return-button:hover {
-  background-color: #fa1299;
+  background-color: #d6af5cbb;
 }
 
 /* ===== Modal de Detalhes ===== */
