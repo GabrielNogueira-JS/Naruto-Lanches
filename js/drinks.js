@@ -23,11 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function agruparPedido() {
     return Object.values(pedido.reduce((map, p) => {
-      const key = p.name + '||' + p.obs;
+      const key = p.nome + '||' + p.obs;
       if (!map[key]) map[key] = { ...p, qtd: 0 };
       map[key].qtd++;
       return map;
     }, {}));
+  }
+  function exibirPedidoConsole(){
+
+    const agrupamento = agruparPedido()
+    console.log(agrupamento);
+  }
+  function setPedidoSession(){
+    const pedidoAgrupado = agruparPedido();
+    localStorage.setItem("pedido",JSON.stringify(pedidoAgrupado));
   }
 
   function renderizarResumo() {
@@ -61,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clone.addEventListener('click', e => {
         e.stopPropagation();
         const item = agruparPedido()[e.target.dataset.index];
+        console.log(item);
         pedido.push({ nome: item.nome, preco: item.preco, obs: item.obs });
         renderizarResumo();
       });
@@ -131,8 +141,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnConfirmar.onclick = () => {
     renderizarResumo();
+
     summaryView.classList.remove('hidden');
   };
+
+  document.getElementById("button-finsh").addEventListener('click', () => {
+    exibirPedidoConsole();
+
+    setPedidoSession();
+  })
+
+
   btnCloseSummary.onclick = () => summaryView.classList.add('hidden');
 });
 document.querySelector("#return-button").classList.add("hide");
+
+
