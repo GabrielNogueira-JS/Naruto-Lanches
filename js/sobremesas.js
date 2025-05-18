@@ -229,3 +229,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicializa rodapé
  
 }); 
+document.getElementById('botao-finalizar').addEventListener('click', () => {
+  finalizarPedido();
+
+});
+function finalizarPedido() {
+    pedido.forEach((item) => {
+      console.log(`Item: ${item.nome}, Preço: R$ ${item.preco.toFixed(2)}, Observação: ${item.obs}`);
+    });
+}
+
+
+
+
+
