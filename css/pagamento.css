@@ -1,0 +1,87 @@
+/* Reseta margem e padding do body e html para garantir o centralização */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f5;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* para o body organizar container e footer em coluna */
+    justify-content: center; /* centraliza verticalmente os filhos do body */
+    align-items: center;     /* centraliza horizontalmente */
+    min-height: 100vh;
+}
+
+/* Container PIX centralizado com estilo */
+.container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    border: 3px dashed #adff2f;
+    animation: pulseBorder 2s infinite alternate;
+    /* remove o display flex do body para evitar conflito e usar o flex na body */
+}
+
+/* Animação da borda pulsante */
+@keyframes pulseBorder {
+    0% { border-color: #adff2f; }
+    100% { border-color: #7fff00; }
+}
+
+/* Títulos e parágrafos do container */
+h1 {
+    color: #222;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 17px;
+    margin: 10px 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+/* Botão estiloso */
+a.button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #00ff7f, #32cd32);
+    color: #fff;
+    border: 2px solid #adff2f;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 15px #00ff7f, 0 0 25px #32cd32;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+a.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #32cd32, 0 0 35px #00ff7f;
+}
+
+/* Footer estilizado e fixado logo abaixo do container */
+.footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}

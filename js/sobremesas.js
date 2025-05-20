@@ -238,8 +238,9 @@ function finalizarPedido() {
       console.log(`Item: ${item.nome}, Preço: R$ ${item.preco.toFixed(2)}, Observação: ${item.obs}`);
     });
 }
-
-
-
-
-
+document.getElementById('botao-finalizar')
+  .addEventListener('click', () => {
+    const total = parseFloat(document.getElementById('total-pedido').textContent);
+    const pedidoId = String(Math.floor(Math.random() * 900) + 100); // ex: 123
+    window.location.href = `pagamento.html?order=${pedidoId}&total=${total.toFixed(2)}`;
+  });
