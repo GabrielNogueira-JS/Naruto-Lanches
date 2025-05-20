@@ -5,35 +5,19 @@
   <meta charset="UTF-8">
   <title>Pagamento PIX</title>
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-   <link rel="stylesheet" href="../css/pagamento.css">
+  <link rel="stylesheet" href="../css/pagamento.css">
 </head>
 <body>
   <div class="container">
     <h1>Pagamento PIX – Pedido #<span id="pedido-id"></span></h1>
     <p>Estabelecimento: Naruto-Lanches LTDA<br>CNPJ: 12.345.678/0001‑99</p>
     <p><strong>Valor: R$ <span id="valor"></span></strong></p>
+    <!-- Somente UMA vez -->
     <div id="qrcode"></div>
     <p><a href="index.html" class="button">Voltar para o início</a></p>
   </div>
 
-  <script>
-    const params = new URLSearchParams(location.search);
-    const pedidoId = params.get('order') || '00';
-    const total    = params.get('total') || '0.00';
-    document.getElementById('pedido-id').textContent = pedidoId;
-    document.getElementById('valor').textContent     = total;
-
-    const payloadPIX = 
-      `00020126580014BR.GOV.BCB.PIX0114+551199999999520400005303986540${total.replace('.', '')}` +
-      `5802BR5925Ninja Doce LTDA6008SAO PAULO62070503***6304`;
-
-    QRCode.toCanvas(document.getElementById('qrcode'), payloadPIX, { width: 256 }, function (error) {
-      if (error) console.error(error);
-    });
-  </script>
-</body>
-
-<footer class="footer">
+  <footer class="footer">
     <div class="footer-content">
       <p><strong>Para mais informações, entre em contato conosco:</strong></p>
       <p><strong>Email: gabrielhnogueira015@gmail.com</strong></p>
@@ -42,4 +26,7 @@
     </div>
   </footer>
 
+  <!-- Seu script deve vir depois de todo o HTML -->
+  <script src="../js/pagamento.js"></script>
+</body>
 </html>
