@@ -50,10 +50,10 @@ function gerarPayloadPix({ pixKey, descricao, nomeLoja, cidade, valor }) {
   return payloadSemCRC + crc;
 }
 
-const pixKey = "+5511999999999";
+const pixKey = "+5515997538136";
 const descricao = "Pagamento do pedido #" + pedidoId;
 const nomeLoja = "Naruto-Lanches LTDA";
-const cidade = "SAO PAULO";
+const cidade = "SOROCABA";
 
 const payloadPIX = gerarPayloadPix({
   pixKey,
