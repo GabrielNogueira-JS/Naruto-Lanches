@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pedido          = [];
 
   // CARDÁPIO DE LANCHES
-  const lanches = [
+  const cardapio = [
     { name: "🍜 Lámen Ichiraku - Ramen do Naruto", ingredients: ["Macarrão", "Caldo de Porco", "Ovo", "Cebolinha", "Chashu"], price: 39.90, imagem: "../imagens/ramen.jpeg" },
     { name: "🍙 Bola de Arroz Onigiri - Missão Rápida", ingredients: ["Arroz Japonês", "Alga Nori", "Recheio Variado"], price: 9.50, imagem: "../imagens/onigiri.jpeg" },
     { name: "🍙 Onigiri da Hinata", ingredients: ["Arroz Japonês", "Alga Nori", "Salmão Grelhado", "Gergelim"], price: 17.50, imagem: "../imagens/oniguiri.jpeg" },
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Renderiza cards e detalhe dos lanches
-  lanches.forEach((item, idx) => {
+  cardapio.forEach((item, idx) => {
     const card = document.createElement('div');
     card.className = 'card';
     card.dataset.index = idx;
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>Ingredientes: ${item.ingredients.join(', ')}</p>
           <p><strong>R$ ${item.price.toFixed(2)}</strong></p>
           <label for="obs-detail">Observação:</label>
-          <textarea id="obs-detail" rows="2" placeholder="Ex: sem maionese"></textarea>
+          <textarea id="obs-detail" rows="5" placeholder="Observação?"></textarea>
           <div class="actions">
             <button id="add-detail">Adicionar</button>
             <button id="remove-detail">Remover</button>
