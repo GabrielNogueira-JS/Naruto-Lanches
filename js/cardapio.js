@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>Ingredientes: ${item.ingredients.join(', ')}</p>
           <p><strong>R$ ${item.price.toFixed(2)}</strong></p>
           <label for="obs-detail">Observação:</label>
-          <textarea id="obs-detail" rows="5" placeholder="Observação?"></textarea>
+          <textarea id="obs-detail" rows="5" placeholder="Observação?"></textarea> width="100%">
           <div class="actions">
             <button id="add-detail">Adicionar</button>
             <button id="remove-detail">Remover</button>
