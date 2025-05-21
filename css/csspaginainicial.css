@@ -59,17 +59,7 @@ nav a {
   text-shadow: 2px 2px 5px #000;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 2rem;        /* ligeiro aumento p/ mockup */
-  background-color: #FFCB05;   /* antes #f1c40f */
-  color: #000;
-  border-radius: 12px;         /* menos oval */
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,.2);
-}
+
 
 /* — DESTAQUES — */
 .destaques {
